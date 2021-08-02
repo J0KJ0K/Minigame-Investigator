@@ -1,4 +1,4 @@
-.set LOCALID_CHALLENGE_BIKER, 21
+.set LOCALID_SHADOWFREDDY, 1
 .set LOCALID_RIVAL, 28
 .set LOCALID_RIVAL_ON_BIKE, 29
 .set LOCALID_BIRCH, 36
@@ -14,10 +14,12 @@ Route110_OnResume: @ 81EF279
 	end
 
 Route110_OnTransition: @ 81EF27D
+	setflag FLAG_HIDE_AFTON
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	compare VAR_CYCLING_CHALLENGE_STATE, 1
 	call_if_eq Route110_EventScript_SaveCyclingMusic
+	goto AnimatronicCheck
 	end
 
 Route110_EventScript_SaveCyclingMusic:: @ 81EF293
@@ -27,6 +29,71 @@ Route110_EventScript_SaveCyclingMusic:: @ 81EF293
 Route110_OnFrame: @ 81EF297
 	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_BeginCylcingRoadChallenge
 	.2byte 0
+
+AnimatronicCheck:
+	setvar VAR_ANIMATRONIC_ID, 1
+	setflag FLAG_HIDE_FREDDY_SCRAPS
+	setflag FLAG_HIDE_BONNIE_SCRAPS
+	setflag FLAG_HIDE_CHICA_SCRAPS
+	setflag FLAG_HIDE_FOXY_SCRAPS
+	compare VAR_ANIMATRONIC_ID, 1
+	goto_if_eq Night1
+	@goto_if_set FLAG_HIDE_FREDDY, DontHideScrapsFreddy
+	compare VAR_ANIMATRONIC_ID, 2
+	goto_if_eq Night2
+	@goto_if_set FLAG_HIDE_BONNIE, DontHideScrapsBonnie
+	compare VAR_ANIMATRONIC_ID, 3
+	goto_if_eq Night3
+	@goto_if_set FLAG_HIDE_CHICA, DontHideScrapsChica
+	compare VAR_ANIMATRONIC_ID, 4
+	@goto_if_set FLAG_HIDE_FOXY, DontHideScrapsFoxy
+	call Night4
+	clearflag FLAG_HIDE_FOXY_SCRAPS
+	end
+
+Night1:
+	setflag FLAG_HIDE_FREDDY
+	return
+	end
+
+Night2:
+	call Night1
+	setflag FLAG_HIDE_BONNIE
+	clearflag FLAG_HIDE_FREDDY_SCRAPS
+	return
+	end
+
+Night3:
+	call Night2
+	setflag FLAG_HIDE_CHICA
+	clearflag FLAG_HIDE_BONNIE_SCRAPS
+	return
+	end
+
+Night4:
+	call Night3
+	setflag FLAG_HIDE_FOXY
+	clearflag FLAG_HIDE_CHICA_SCRAPS
+	return
+	end
+
+
+
+
+
+DontHideScrapsFreddy:
+	clearflag FLAG_HIDE_FREDDY_SCRAPS
+
+DontHideScrapsBonnie:
+	clearflag FLAG_HIDE_BONNIE_SCRAPS
+
+DontHideScrapsChica:
+	clearflag FLAG_HIDE_CHICA_SCRAPS
+
+DontHideScrapsFoxy:
+	clearflag FLAG_HIDE_FOXY_SCRAPS
+
+
 
 Route110_EventScript_BeginCylcingRoadChallenge:: @ 81EF2A1
 	special Special_BeginCyclingRoadChallenge
@@ -312,7 +379,7 @@ Route110_EventScript_Alyssa:: @ 81EF64A
 
 Route110_EventScript_CyclingChallengeEnd:: @ 81EF661
 	lockall
-	applymovement LOCALID_CHALLENGE_BIKER, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_SHADOWFREDDY, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	call Route110_EventScript_CyclingChallengeResults
 	releaseall

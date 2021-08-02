@@ -77,12 +77,7 @@
 #define OBJ_EVENT_GFX_SPENSER                     73
 #define OBJ_EVENT_GFX_NOLAND                      74
 #define OBJ_EVENT_GFX_LUCY                        75
-#define OBJ_EVENT_GFX_UNUSED_NATU_DOLL            76
-#define OBJ_EVENT_GFX_UNUSED_MAGNEMITE_DOLL       77
-#define OBJ_EVENT_GFX_UNUSED_SQUIRTLE_DOLL        78
-#define OBJ_EVENT_GFX_UNUSED_WOOPER_DOLL          79
-#define OBJ_EVENT_GFX_UNUSED_PIKACHU_DOLL         80
-#define OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL        81
+
 #define OBJ_EVENT_GFX_CUTTABLE_TREE               82
 #define OBJ_EVENT_GFX_MART_EMPLOYEE               83
 #define OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN          84
@@ -185,9 +180,7 @@
 #define OBJ_EVENT_GFX_BIG_CHARIZARD_DOLL         181
 #define OBJ_EVENT_GFX_BIG_BLASTOISE_DOLL         182
 #define OBJ_EVENT_GFX_BIG_WAILMER_DOLL           183
-#define OBJ_EVENT_GFX_BIG_REGIROCK_DOLL          184
-#define OBJ_EVENT_GFX_BIG_REGICE_DOLL            185
-#define OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL         186
+
 #define OBJ_EVENT_GFX_LATIAS                     187
 #define OBJ_EVENT_GFX_LATIOS                     188
 #define OBJ_EVENT_GFX_GAMEBOY_KID                189
@@ -241,6 +234,18 @@
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
 
+//custom
+#define OBJ_EVENT_GFX_FREDBEAR					  76  //custom
+#define OBJ_EVENT_GFX_FREDDY					  77  //custom
+#define OBJ_EVENT_GFX_SHADOW_FREDDY			      78  //custom
+#define OBJ_EVENT_GFX_GHOST_CHILD				  79  //custom
+#define OBJ_EVENT_GFX_PLUSHIE			          80  //custom
+#define OBJ_EVENT_GFX_BONNIE        81  //custom
+
+//unused, but used; custom
+#define OBJ_EVENT_GFX_FOXY         184 //used to be OBJ_EVENT_GFX_BIG_REGIROCK_DOLL
+#define OBJ_EVENT_GFX_BIG_REGICE_DOLL            185
+#define OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL         186
 #define NUM_OBJ_EVENT_GFX                        239
 
 

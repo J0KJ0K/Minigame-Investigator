@@ -229,9 +229,6 @@ const u32 gObjectEventPic_BigVenusaurDoll[] = INCBIN_U32("graphics/object_events
 const u32 gObjectEventPic_BigCharizardDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_charizard_doll.4bpp");
 const u32 gObjectEventPic_BigBlastoiseDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_blastoise_doll.4bpp");
 const u32 gObjectEventPic_BigWailmerDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_wailmer_doll.4bpp");
-const u32 gObjectEventPic_BigRegirockDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regirock_doll.4bpp");
-const u32 gObjectEventPic_BigRegiceDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regice_doll.4bpp");
-const u32 gObjectEventPic_BigRegisteelDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_registeel_doll.4bpp");
 const u32 gObjectEventPic_CuttableTree[] = INCBIN_U32("graphics/object_events/pics/misc/cuttable_tree.4bpp");
 const u32 gObjectEventPic_BreakableRock[] = INCBIN_U32("graphics/object_events/pics/misc/breakable_rock.4bpp");
 const u32 gObjectEventPic_PushableBoulder[] = INCBIN_U32("graphics/object_events/pics/misc/pushable_boulder.4bpp");
@@ -360,3 +357,19 @@ const u32 gObjectEventPic_Lugia[] = INCBIN_U32("graphics/object_events/pics/poke
 const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/lugia.gbapal");
 const u32 gObjectEventPic_HoOh[] = INCBIN_U32("graphics/object_events/pics/pokemon/ho_oh.4bpp");
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
+//custom palettes
+const u16 gObjectEventPal_Purple[] = INCBIN_U16("graphics/object_events/pics/custom/purple.gbapal");
+const u16 gObjectEventPal_Freddy[] = INCBIN_U16("graphics/object_events/pics/custom/freddy.gbapal");
+const u16 gObjectEventPal_Fredbear[] = INCBIN_U16("graphics/object_events/pics/custom/fredbear.gbapal");
+//custom sprites
+const u32 gObjectEventPic_Freddy[] = INCBIN_U32("graphics/object_events/pics/custom/Freddy.4bpp");
+const u32 gObjectEventPic_Fredbear[] = INCBIN_U32("graphics/object_events/pics/custom/Fredbear.4bpp");
+const u16 gObjectEventPic_Plushie[] = INCBIN_U16("graphics/object_events/pics/pokemon/plushie.4bpp");
+const u32 gObjectEventPic_SFreddy[] = INCBIN_U32("graphics/object_events/pics/custom/ShadowFreddy.4bpp");
+const u32 gObjectEventPic_GhostChild[] = INCBIN_U32("graphics/object_events/pics/custom/GhostChild.4bpp");
+const u32 gObjectEventPic_Foxy[] = INCBIN_U32("graphics/object_events/pics/custom/Foxy.4bpp");
+const u32 gObjectEventPic_Bonnie[] = INCBIN_U32("graphics/object_events/pics/custom/Bonnie.4bpp");
+
+const u32 gObjectEventPic_BigRegirockDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regirock_doll.4bpp");
+const u32 gObjectEventPic_BigRegiceDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regice_doll.4bpp");
+const u32 gObjectEventPic_BigRegisteelDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_registeel_doll.4bpp");

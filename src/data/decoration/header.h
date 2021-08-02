@@ -1418,8 +1418,8 @@ const struct Decoration gDecorations[] =
  
     [DECOR_REGIROCK_DOLL] =
     {
-        .id = DECOR_REGIROCK_DOLL,
-        .name = _("REGIROCK DOLL"),
+       .id = DECOR_REGIROCK_DOLL,
+       .name = _("REGIROCK DOLL"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,

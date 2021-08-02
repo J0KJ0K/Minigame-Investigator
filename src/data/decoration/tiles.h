@@ -631,7 +631,7 @@ const u16 DecorGfx_WAILMER_DOLL[] = {
 };
 
 const u16 DecorGfx_REGIROCK_DOLL[] = {
-    OBJ_EVENT_GFX_BIG_REGIROCK_DOLL
+    OBJ_EVENT_GFX_FOXY
 };
 
 const u16 DecorGfx_REGICE_DOLL[] = {

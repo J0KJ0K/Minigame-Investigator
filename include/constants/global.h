@@ -119,4 +119,9 @@
 #define DIR_NORTHWEST   7
 #define DIR_NORTHEAST   8
 
+#define DEFAULT_COSTUME 0
+#define COSTUME_FREDDY  1
+#define COSTUME_GHOST	2
+#define COSTUME_COUNT   3
+
 #endif // GUARD_CONSTANTS_GLOBAL_H

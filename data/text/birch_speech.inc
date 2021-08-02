@@ -59,3 +59,30 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "Well, I'll be expecting you later.\n"
 	.string "Come see me in my POKéMON LAB.\p"
 	.string "$"
+
+gText_PlayerName::
+	.string "This diary belongs to...$"
+
+gText_PlayerConfirmed::
+	.string "This diary belongs to {PLAYER}.$"
+
+gText_DearDiary::
+	.string "Dear diary,\p"
+	.string "I'm back in Hurricane, Utah.$"
+
+gText_WhoWould::
+	.string "Who would have thought\n"
+	.string "that, after so many years,\l"
+	.string "I'd come back here?$"
+
+gText_TheyWould::
+	.string "...well, my parents\p"
+	.string "certainly did.$"
+
+gText_Everyone::
+	.string "And so did everyone else,\n"
+	.string "apparently.\p"
+	.string "This is supposedly a town\n"
+	.string "where everyone seems to \l"
+	.string "come back to, but the population\l"
+	.string "rarely grows.\p"

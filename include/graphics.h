@@ -3173,8 +3173,9 @@ extern const u32 gDecorIcon_BlastoiseDoll[];
 extern const u32 gDecorIconPalette_BlastoiseDoll[];
 extern const u32 gDecorIcon_WailmerDoll[];
 extern const u32 gDecorIconPalette_WailmerDoll[];
-extern const u32 gDecorIcon_RegirockDoll[];
-extern const u32 gDecorIconPalette_RegirockDoll[];
+
+//extern const u32 gDecorIcon_RegirockDoll[];
+//extern const u32 gDecorIconPalette_RegirockDoll[];
 extern const u32 gDecorIcon_RegiceDoll[];
 extern const u32 gDecorIconPalette_RegiceDoll[];
 extern const u32 gDecorIcon_RegisteelDoll[];
