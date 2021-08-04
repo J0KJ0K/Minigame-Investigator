@@ -31,7 +31,7 @@ Route110_OnFrame: @ 81EF297
 	.2byte 0
 
 AnimatronicCheck:
-	setvar VAR_ANIMATRONIC_ID, 1
+	setvar VAR_ANIMATRONIC_ID, 2
 	setflag FLAG_HIDE_FREDDY_SCRAPS
 	setflag FLAG_HIDE_BONNIE_SCRAPS
 	setflag FLAG_HIDE_CHICA_SCRAPS

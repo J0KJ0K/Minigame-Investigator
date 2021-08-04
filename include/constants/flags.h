@@ -53,9 +53,9 @@
 #define FLAG_HIDE_BONNIE_SCRAPS    0x23 // Unused Flag
 #define FLAG_HIDE_CHICA_SCRAPS    0x21 // Unused Flag
 #define FLAG_HIDE_FREDDY_SCRAPS    0x22 // Unused Flag
+#define FLAG_SPAWN_INVISIBLE    0x24 // Unused Flag
+#define FLAG_TURNED_HIMSELF_INTO_SCRAPS   0x29 // Unused Flag
 
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag

@@ -199,6 +199,12 @@ static const union AnimCmd sAnim_FaceEast[] =
     ANIMCMD_JUMP(0),
 };
 
+static const union AnimCmd sAnim_FaceEastScraps[] =
+{
+    ANIMCMD_FRAME(3, 16),
+    ANIMCMD_JUMP(0),
+};
+
 static const union AnimCmd sAnim_GoSouth[] =
 {
     ANIMCMD_FRAME(3, 8),
@@ -843,6 +849,13 @@ static const union AnimCmd *const sAnimTable_Standard[] = {
     sAnim_GoFastestNorth,
     sAnim_GoFastestWest,
     sAnim_GoFastestEast,
+};
+
+static const union AnimCmd* const sAnimTable_Scraps[] = {
+    sAnim_FaceSouth,
+    sAnim_FaceNorth,
+    sAnim_FaceWest,
+    sAnim_FaceEastScraps,
 };
 
 static const union AnimCmd *const sAnimTable_HoOh[] = {

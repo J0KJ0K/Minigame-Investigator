@@ -224,8 +224,8 @@
 #define VAR_ANIMATRONIC_ID              0x4052 // Tracks the AnimatronicID
 #define VAR_COMPLETIONIST_COSTUME           0x4055 // Might track the costume set by the player, after Story Mode is completed
 
-#define VAR_PACIFIDLOG_TOWN_STATE            0x4056 // Unused Var
-#define VAR_MAUVILLE_CITY_STATE              0x4059 // Unused Var
+#define VAR_PLAYER_X            0x4056 // Unused Var
+#define VAR_PLAYER_Y              0x4059 // Unused Var
 #define VAR_FORTREE_CITY_STATE               0x405B // Unused Var
 #define VAR_LILYCOVE_CITY_STATE              0x405C // Unused Var
 #define VAR_EVER_GRANDE_CITY_STATE           0x405F // Unused Var

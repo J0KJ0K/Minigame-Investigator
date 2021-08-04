@@ -176,9 +176,6 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigVenusaurDoll;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigCharizardDoll;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigBlastoiseDoll;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigWailmerDoll;
-
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Latias;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Latios;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GameboyKid;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ContestJudge;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanWatering;
@@ -244,7 +241,11 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GhostChild;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Plushie;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Foxy;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bonnie;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedPorygon2Doll;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Chica;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scraps;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scraps2;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PurpleMan;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Springbonnie_Minigames;
 
 //technically unused, but still referenced
 //repurposed
@@ -432,8 +433,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BIG_CHARIZARD_DOLL] =       &gObjectEventGraphicsInfo_BigCharizardDoll,
     [OBJ_EVENT_GFX_BIG_BLASTOISE_DOLL] =       &gObjectEventGraphicsInfo_BigBlastoiseDoll,
     [OBJ_EVENT_GFX_BIG_WAILMER_DOLL] =         &gObjectEventGraphicsInfo_BigWailmerDoll,
-    [OBJ_EVENT_GFX_LATIAS] =                   &gObjectEventGraphicsInfo_Latias,
-    [OBJ_EVENT_GFX_LATIOS] =                   &gObjectEventGraphicsInfo_Latios,
     [OBJ_EVENT_GFX_GAMEBOY_KID] =              &gObjectEventGraphicsInfo_GameboyKid,
     [OBJ_EVENT_GFX_CONTEST_JUDGE] =            &gObjectEventGraphicsInfo_ContestJudge,
     [OBJ_EVENT_GFX_BRENDAN_WATERING] =         &gObjectEventGraphicsInfo_BrendanWatering,
@@ -484,7 +483,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
-
+    
+    //used, but repurposed
     //custom
     [OBJ_EVENT_GFX_FREDBEAR] = &gObjectEventGraphicsInfo_Fredbear,
     [OBJ_EVENT_GFX_FREDDY] = &gObjectEventGraphicsInfo_Freddy,
@@ -496,8 +496,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     //technically unused, but still referenced
     //repurposed
     [OBJ_EVENT_GFX_FOXY] = &gObjectEventGraphicsInfo_Foxy,
-    [OBJ_EVENT_GFX_BIG_REGICE_DOLL] = &gObjectEventGraphicsInfo_BigRegiceDoll,
-    [OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL] = &gObjectEventGraphicsInfo_BigRegisteelDoll,
+    [OBJ_EVENT_GFX_CHICA] = &gObjectEventGraphicsInfo_Chica,
+    [OBJ_EVENT_GFX_SCRAPS] = &gObjectEventGraphicsInfo_Scraps,
+        [OBJ_EVENT_GFX_SCRAPS_2] = &gObjectEventGraphicsInfo_Scraps2,
+        [OBJ_EVENT_GFX_SPRINGBONNIE_MINIGAMES] = &gObjectEventGraphicsInfo_Springbonnie_Minigames,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

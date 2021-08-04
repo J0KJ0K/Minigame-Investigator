@@ -180,9 +180,6 @@
 #define OBJ_EVENT_GFX_BIG_CHARIZARD_DOLL         181
 #define OBJ_EVENT_GFX_BIG_BLASTOISE_DOLL         182
 #define OBJ_EVENT_GFX_BIG_WAILMER_DOLL           183
-
-#define OBJ_EVENT_GFX_LATIAS                     187
-#define OBJ_EVENT_GFX_LATIOS                     188
 #define OBJ_EVENT_GFX_GAMEBOY_KID                189
 #define OBJ_EVENT_GFX_CONTEST_JUDGE              190
 #define OBJ_EVENT_GFX_BRENDAN_WATERING           191
@@ -234,18 +231,23 @@
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
 
-//custom
+//used, but replaced; custom
 #define OBJ_EVENT_GFX_FREDBEAR					  76  //custom
 #define OBJ_EVENT_GFX_FREDDY					  77  //custom
 #define OBJ_EVENT_GFX_SHADOW_FREDDY			      78  //custom
 #define OBJ_EVENT_GFX_GHOST_CHILD				  79  //custom
 #define OBJ_EVENT_GFX_PLUSHIE			          80  //custom
 #define OBJ_EVENT_GFX_BONNIE        81  //custom
+#define OBJ_EVENT_GFX_SPRINGBONNIE_MINIGAMES                     188
+
+//#define OBJ_EVENT_GFX_PURPLE_MAN                     187 (we still need someone for this)
+#define OBJ_EVENT_GFX_SCRAPS_2						   187
 
 //unused, but used; custom
 #define OBJ_EVENT_GFX_FOXY         184 //used to be OBJ_EVENT_GFX_BIG_REGIROCK_DOLL
-#define OBJ_EVENT_GFX_BIG_REGICE_DOLL            185
-#define OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL         186
+#define OBJ_EVENT_GFX_CHICA            185//used to be OBJ_EVENT_GFX_BIG_REGICE_DOLL
+#define OBJ_EVENT_GFX_SCRAPS         186//used to be OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL
+
 #define NUM_OBJ_EVENT_GFX                        239
 
 

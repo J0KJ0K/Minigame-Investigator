@@ -695,3 +695,12 @@ $(OBJEVENTGFXDIR)/custom/Bonnie.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/custom/Foxy.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/custom/Chica.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/custom/Scraps.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/custom/Springbonnie_Minigame.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
