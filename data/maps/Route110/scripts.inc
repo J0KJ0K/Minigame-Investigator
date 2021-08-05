@@ -15,6 +15,7 @@ Route110_OnResume: @ 81EF279
 
 Route110_OnTransition: @ 81EF27D
 	setflag FLAG_HIDE_AFTON
+	clearflag  FLAG_TURNED_HIMSELF_INTO_SCRAPS
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	compare VAR_CYCLING_CHALLENGE_STATE, 1
@@ -30,7 +31,7 @@ Route110_OnFrame: @ 81EF297
 	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_BeginCylcingRoadChallenge
 	.2byte 0
 
-AnimatronicCheck:
+AnimatronicCheck::
 	setvar VAR_ANIMATRONIC_ID, 2
 	setflag FLAG_HIDE_FREDDY_SCRAPS
 	setflag FLAG_HIDE_BONNIE_SCRAPS

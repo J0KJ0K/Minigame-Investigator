@@ -11,6 +11,47 @@ Route114_MapScripts:: @ 81F252F
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route114_OnFrame
 	.byte 0
 
+ItsBonnie:
+	msgbox YOURE_GOING_TO_HORNY_JAIL, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, BonnieWalk
+	waitmovement 0
+	msgbox RESTARTING, MSGBOX_DEFAULT
+	addobject LOCALID_AFTON
+	applymovement LOCALID_AFTON, Movement_From_Door_Afton_Bo
+	waitmovement 0
+	fadescreenspeed FADE_TO_BLACK, 1
+	setflag FLAG_SPAWN_INVISIBLE
+	clearflag FLAG_HIDE_BONNIE_SCRAPS
+	call OhShit
+	end
+OhShit:
+	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
+	setvar VAR_TURNED_HIMSELF_INTO_SCRAPS, 1
+	releaseall
+	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	waitstate
+	end
+
+TurnedHimselfIntoScraps:
+	lockall
+	delay 24
+	fadescreenspeed FADE_TO_BLACK, 1
+	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
+	waitmovement 0
+	setvar VAR_TURNED_HIMSELF_INTO_SCRAPS, 0
+	releaseall
+	warp MAP_PETALBURG_CITY, 1, 0, 0
+	waitstate
+	end
+
+Route114_OnFrame: @ 81F2578
+	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
+	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
+	.2byte 0
+
+Route114_OnLoad: @ 81F256
+	end
+
 Route114_OnTransition: @ 81F253F
 	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
@@ -19,15 +60,6 @@ Route114_OnTransition: @ 81F253F
 	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH
 	call_if_eq AbnormalWeather_StartGroudonWeather
 	end
-
-Route114_OnLoad: @ 81F256
-
-	end
-
-Route114_OnFrame: @ 81F2578
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
-	goto_if_set FLAG_TURNED_HIMSELF_INTO_SCRAPS, Shit
-	.2byte 0
 
 MotionTrigger::
 	lockall
@@ -50,45 +82,24 @@ ItsFreddy:
 	addobject LOCALID_AFTON
 	applymovement LOCALID_AFTON, Movement_From_Door_Afton_Fd
 	waitmovement 0
-	setflag FLAG_SPAWN_INVISIBLE
-	addobject LOCALID_SCRAP_FREDDY
-	fadescreenspeed FADE_TO_BLACK, 1
-	fadescreenspeed FADE_FROM_BLACK, 1
-	releaseall
-	end
-
-ItsBonnie:
-	msgbox YOURE_GOING_TO_HORNY_JAIL, MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER, BonnieWalk
-	waitmovement 0
-	msgbox RESTARTING, MSGBOX_DEFAULT
-	addobject LOCALID_AFTON
-	applymovement LOCALID_AFTON, Movement_From_Door_Afton_Bo
-	waitmovement 0
 	fadescreenspeed FADE_TO_BLACK, 1
 	setflag FLAG_SPAWN_INVISIBLE
-	clearflag FLAG_HIDE_BONNIE_SCRAPS
-	setflag FLAG_TURNED_HIMSELF_INTO_SCRAPS
-	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
-	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
-	fadescreenspeed FADE_FROM_BLACK, 1
-	releaseall
+	clearflag FLAG_HIDE_FREDDY_SCRAPS
+	call OhShit
 	end
 
 ItsChica:
-	msgbox YOURE_GOING_TO_HORNY_JAIL, MSGBOX_DEFAULT
+msgbox YOURE_GOING_TO_HORNY_JAIL, MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, ChicaWalk
 	waitmovement 0
 	msgbox RESTARTING, MSGBOX_DEFAULT
 	addobject LOCALID_AFTON
 	applymovement LOCALID_AFTON, Movement_From_Door_Afton_Ch
 	waitmovement 0
-	setflag FLAG_SPAWN_INVISIBLE
 	fadescreenspeed FADE_TO_BLACK, 1
-	fadescreenspeed FADE_FROM_BLACK, 1
-	addobject LOCALID_SCRAP_CHICA
-	waitbuttonpress
-	releaseall
+	setflag FLAG_SPAWN_INVISIBLE
+	clearflag FLAG_HIDE_CHICA_SCRAPS
+	call OhShit
 	end
 
 ItsFoxy:
@@ -99,32 +110,14 @@ ItsFoxy:
 	addobject LOCALID_AFTON
 	applymovement LOCALID_AFTON, Movement_From_Door_Afton_Fx
 	waitmovement 0
-	setflag FLAG_SPAWN_INVISIBLE
 	fadescreenspeed FADE_TO_BLACK, 1
-	fadescreenspeed FADE_FROM_BLACK, 1
-	addobject LOCALID_SCRAP_FOXY
-	waitbuttonpress
-	releaseall
+	setflag FLAG_SPAWN_INVISIBLE
+	clearflag FLAG_HIDE_FOXY_SCRAPS
+	call OhShit
 	end
 
-Shit:
-	lockall
-	msgbox YOURE_GOING_TO_HORNY_JAIL, MSGBOX_DEFAULT
-	releaseall
-	end
 
-TurnedHimselfIntoScraps:
-	lockall
-	delay 24
-	fadescreenspeed FADE_TO_BLACK, 12
-	applymovement OBJ_EVENT_ID_PLAYER, makevisible
-	waitmovement 0
-	clearflag FLAG_TURNED_HIMSELF_INTO_SCRAPS
-	warp MAP_PETALBURG_CITY, 1, 0, 0
-	releaseall
-	end
-
-makevisible:
+MakeVisible:
 	set_visible
 	step_end
 
