@@ -227,8 +227,9 @@
 #define VAR_PLAYER_X            0x4056 // Unused Var
 #define VAR_PLAYER_Y              0x4059 // Unused Var
 #define VAR_TURNED_HIMSELF_INTO_SCRAPS               0x405B // Unused Var
-#define VAR_LILYCOVE_CITY_STATE              0x405C // Unused Var
-#define VAR_EVER_GRANDE_CITY_STATE           0x405F // Unused Var
+#define VAR_SHOULD_MILES_BE_HERE              0x405C // Unused Var
+
+#define VAR_TRIGGER_NUMBER           0x405F // Unused Var
 #define VAR_ROUTE102_STATE                   0x4061 // Unused Var
 #define VAR_ROUTE103_STATE                   0x4062 // Unused Var
 #define VAR_ROUTE105_STATE                   0x4064 // Unused Var

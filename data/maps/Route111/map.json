@@ -3,7 +3,7 @@
   "name": "Route111",
   "layout": "LAYOUT_ROUTE112",
   "music": "MUS_NONE",
-  "region_map_section": "MAPSEC_ROUTE_101",
+  "region_map_section": "MAPSEC_ROUTE_FREDDY",
   "requires_flash": false,
   "weather": "WEATHER_RAIN_THUNDERSTORM",
   "map_type": "MAP_TYPE_INDOOR",

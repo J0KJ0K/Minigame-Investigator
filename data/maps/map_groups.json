@@ -46,7 +46,8 @@
   ],
   "gMapGroup_MilesRoom": [
     "PetalburgCity",
-    "Route123"
+    "Route123",
+    "Route125"
   ],
   "gMapGroup_FNaF1": [
     "Route110",
@@ -61,8 +62,9 @@
     "Route120",
     "Route121",
     "Route122",
-    "Route124",
-    "Route125",
+    "Route124"
+  ],
+  "gMapGroup_FNaF2": [
     "Route126",
     "Route127",
     "Route128",
@@ -72,9 +74,6 @@
     "Route132",
     "Route133",
     "Route134"
-  ],
-  "gMapGroup_FNaF2": [
-
   ],
   "gMapGroup_FNaF4": [
 

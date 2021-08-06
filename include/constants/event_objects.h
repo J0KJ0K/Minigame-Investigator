@@ -111,7 +111,6 @@
 #define OBJ_EVENT_GFX_MAY_UNDERWATER             112
 #define OBJ_EVENT_GFX_MOVING_BOX                 113
 #define OBJ_EVENT_GFX_CABLE_CAR                  114
-#define OBJ_EVENT_GFX_SCIENTIST_2                115
 #define OBJ_EVENT_GFX_DEVON_EMPLOYEE             116
 #define OBJ_EVENT_GFX_AQUA_MEMBER_M              117
 #define OBJ_EVENT_GFX_AQUA_MEMBER_F              118
@@ -242,6 +241,7 @@
 
 //#define OBJ_EVENT_GFX_PURPLE_MAN                     187 (we still need someone for this)
 #define OBJ_EVENT_GFX_SCRAPS_2						   187
+#define OBJ_EVENT_GFX_MILES                            115 //originally OBJ_EVENT_GFX_SCIENTIST_2
 
 //unused, but used; custom
 #define OBJ_EVENT_GFX_FOXY         184 //used to be OBJ_EVENT_GFX_BIG_REGIROCK_DOLL

@@ -14,8 +14,6 @@ Route110_OnResume: @ 81EF279
 	end
 
 Route110_OnTransition: @ 81EF27D
-	setflag FLAG_HIDE_AFTON
-	clearflag  FLAG_TURNED_HIMSELF_INTO_SCRAPS
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	compare VAR_CYCLING_CHALLENGE_STATE, 1
@@ -32,23 +30,14 @@ Route110_OnFrame: @ 81EF297
 	.2byte 0
 
 AnimatronicCheck::
-	setvar VAR_ANIMATRONIC_ID, 2
-	setflag FLAG_HIDE_FREDDY_SCRAPS
-	setflag FLAG_HIDE_BONNIE_SCRAPS
-	setflag FLAG_HIDE_CHICA_SCRAPS
-	setflag FLAG_HIDE_FOXY_SCRAPS
 	compare VAR_ANIMATRONIC_ID, 1
 	goto_if_eq Night1
-	@goto_if_set FLAG_HIDE_FREDDY, DontHideScrapsFreddy
 	compare VAR_ANIMATRONIC_ID, 2
 	goto_if_eq Night2
-	@goto_if_set FLAG_HIDE_BONNIE, DontHideScrapsBonnie
 	compare VAR_ANIMATRONIC_ID, 3
 	goto_if_eq Night3
-	@goto_if_set FLAG_HIDE_CHICA, DontHideScrapsChica
 	compare VAR_ANIMATRONIC_ID, 4
-	@goto_if_set FLAG_HIDE_FOXY, DontHideScrapsFoxy
-	call Night4
+	goto_if_eq Night4
 	clearflag FLAG_HIDE_FOXY_SCRAPS
 	end
 
@@ -72,14 +61,14 @@ Night3:
 	end
 
 Night4:
-	call Night3
 	setflag FLAG_HIDE_FOXY
+	setflag FLAG_HIDE_FREDDY
+	setflag FLAG_HIDE_BONNIE
+	clearflag FLAG_HIDE_FREDDY_SCRAPS
+	setflag FLAG_HIDE_CHICA
+	clearflag FLAG_HIDE_BONNIE_SCRAPS
 	clearflag FLAG_HIDE_CHICA_SCRAPS
-	return
 	end
-
-
-
 
 
 DontHideScrapsFreddy:

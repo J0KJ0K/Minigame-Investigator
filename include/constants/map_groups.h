@@ -8,6 +8,7 @@
 // gMapGroup_MilesRoom
 #define MAP_PETALBURG_CITY (0 | (0 << 8))
 #define MAP_ROUTE123       (1 | (0 << 8))
+#define MAP_ROUTE125       (2 | (0 << 8))
 
 // gMapGroup_FNaF1
 #define MAP_ROUTE110 (0 | (1 << 8))
@@ -23,18 +24,17 @@
 #define MAP_ROUTE121 (10 | (1 << 8))
 #define MAP_ROUTE122 (11 | (1 << 8))
 #define MAP_ROUTE124 (12 | (1 << 8))
-#define MAP_ROUTE125 (13 | (1 << 8))
-#define MAP_ROUTE126 (14 | (1 << 8))
-#define MAP_ROUTE127 (15 | (1 << 8))
-#define MAP_ROUTE128 (16 | (1 << 8))
-#define MAP_ROUTE129 (17 | (1 << 8))
-#define MAP_ROUTE130 (18 | (1 << 8))
-#define MAP_ROUTE131 (19 | (1 << 8))
-#define MAP_ROUTE132 (20 | (1 << 8))
-#define MAP_ROUTE133 (21 | (1 << 8))
-#define MAP_ROUTE134 (22 | (1 << 8))
 
 // gMapGroup_FNaF2
+#define MAP_ROUTE126 (0 | (2 << 8))
+#define MAP_ROUTE127 (1 | (2 << 8))
+#define MAP_ROUTE128 (2 | (2 << 8))
+#define MAP_ROUTE129 (3 | (2 << 8))
+#define MAP_ROUTE130 (4 | (2 << 8))
+#define MAP_ROUTE131 (5 | (2 << 8))
+#define MAP_ROUTE132 (6 | (2 << 8))
+#define MAP_ROUTE133 (7 | (2 << 8))
+#define MAP_ROUTE134 (8 | (2 << 8))
 
 // gMapGroup_FNaF4
 

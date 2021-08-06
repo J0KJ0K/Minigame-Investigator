@@ -107,7 +107,6 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanUnderwater;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayUnderwater;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MovingBox;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CableCar;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist2;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DevonEmployee;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMemberM;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMemberF;
@@ -246,6 +245,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scraps;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scraps2;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PurpleMan;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Springbonnie_Minigames;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Miles;
 
 //technically unused, but still referenced
 //repurposed
@@ -364,7 +364,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAY_UNDERWATER] =           &gObjectEventGraphicsInfo_MayUnderwater,
     [OBJ_EVENT_GFX_MOVING_BOX] =               &gObjectEventGraphicsInfo_MovingBox,
     [OBJ_EVENT_GFX_CABLE_CAR] =                &gObjectEventGraphicsInfo_CableCar,
-    [OBJ_EVENT_GFX_SCIENTIST_2] =              &gObjectEventGraphicsInfo_Scientist2,
+    [OBJ_EVENT_GFX_MILES] =              &gObjectEventGraphicsInfo_Miles,
     [OBJ_EVENT_GFX_DEVON_EMPLOYEE] =           &gObjectEventGraphicsInfo_DevonEmployee,
     [OBJ_EVENT_GFX_AQUA_MEMBER_M] =            &gObjectEventGraphicsInfo_AquaMemberM,
     [OBJ_EVENT_GFX_AQUA_MEMBER_F] =            &gObjectEventGraphicsInfo_AquaMemberF,

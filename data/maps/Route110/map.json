@@ -3,14 +3,14 @@
   "name": "Route110",
   "layout": "LAYOUT_ROUTE110",
   "music": "MUS_NONE",
-  "region_map_section": "MAPSEC_ROUTE_101",
+  "region_map_section": "MAPSEC_ROUTE_FREDDY",
   "requires_flash": false,
   "weather": "WEATHER_RAIN_THUNDERSTORM",
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -77,7 +77,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_CHICA"
     }
   ],
   "warp_events": [

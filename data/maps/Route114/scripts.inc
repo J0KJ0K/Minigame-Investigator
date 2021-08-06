@@ -39,6 +39,7 @@ TurnedHimselfIntoScraps:
 	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
 	waitmovement 0
 	setvar VAR_TURNED_HIMSELF_INTO_SCRAPS, 0
+	setvar VAR_COSTUME, 0
 	releaseall
 	warp MAP_PETALBURG_CITY, 1, 0, 0
 	waitstate

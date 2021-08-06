@@ -361,6 +361,7 @@ const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/h
 const u16 gObjectEventPal_Purple[] = INCBIN_U16("graphics/object_events/pics/custom/purple.gbapal");
 const u16 gObjectEventPal_Freddy[] = INCBIN_U16("graphics/object_events/pics/custom/freddy.gbapal");
 const u16 gObjectEventPal_Fredbear[] = INCBIN_U16("graphics/object_events/pics/custom/fredbear.gbapal");
+const u16 gObjectEventPal_Miles[] = INCBIN_U16("graphics/object_events/pics/custom/miles.gbapal");
 //custom sprites
 const u32 gObjectEventPic_Freddy[] = INCBIN_U32("graphics/object_events/pics/custom/Freddy.4bpp");
 const u32 gObjectEventPic_Fredbear[] = INCBIN_U32("graphics/object_events/pics/custom/Fredbear.4bpp");
@@ -371,6 +372,8 @@ const u32 gObjectEventPic_Foxy[] = INCBIN_U32("graphics/object_events/pics/custo
 const u32 gObjectEventPic_Bonnie[] = INCBIN_U32("graphics/object_events/pics/custom/Bonnie.4bpp");
 const u32 gObjectEventPic_Chica[] = INCBIN_U32("graphics/object_events/pics/custom/Chica.4bpp");
 const u32 gObjectEventPic_Scraps[] = INCBIN_U32("graphics/object_events/pics/custom/Scraps.4bpp");
+const u32 gObjectEventPic_Miles[] = INCBIN_U32("graphics/object_events/pics/custom/Miles.4bpp");
+
 
 const u32 gObjectEventPic_BigRegirockDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regirock_doll.4bpp");
 const u32 gObjectEventPic_BigRegiceDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regice_doll.4bpp");
