@@ -54,22 +54,24 @@ Trigger3::
 	end
 
 Trigger4::
-	msgbox Night_4, MSGBOX_DEFAULT
-	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_FOXY
 	setvar VAR_ANIMATRONIC_ID, 4
 	setvar VAR_COSTUME, 3
+	msgbox Night_4, MSGBOX_DEFAULT
+	fadescreen FADE_TO_BLACK
 	special SwapPlayersCostume
-	warp MAP_ROUTE118, 0xFF, 1, 5
+	warp MAP_ROUTE118, 0, 1, 5
 	waitstate
 	end
 
 Trigger5::
-	msgbox Night_5, MSGBOX_DEFAULT
-	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_FOXY
 	setvar VAR_ANIMATRONIC_ID, 5
 	setvar VAR_COSTUME, 5
+	msgbox Night_5, MSGBOX_DEFAULT
+	fadescreen FADE_TO_BLACK
 	special SwapPlayersCostume
-	warp MAP_ROUTE118, 0xFF, 1, 5
+	warp MAP_ROUTE118, 0, 1, 5
 	waitstate
 	end
 

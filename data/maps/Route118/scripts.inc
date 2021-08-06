@@ -7,7 +7,6 @@ Route118_MapScripts:: @ 81F3DBC
 	.byte 0
 
 Route118_OnTransition: @ 81F3DCC
-	special	SwapPlayersCostume
 	call GabbyAndTy_EventScript_UpdateLocation
 	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup

@@ -43,6 +43,7 @@ AnimatronicCheck::
 
 Night1:
 	setflag FLAG_HIDE_FREDDY
+	clearflag FLAG_HIDE_FOXY
 	return
 	end
 
@@ -61,7 +62,6 @@ Night3:
 	end
 
 Night4:
-	setflag FLAG_HIDE_FOXY
 	setflag FLAG_HIDE_FREDDY
 	setflag FLAG_HIDE_BONNIE
 	clearflag FLAG_HIDE_FREDDY_SCRAPS
@@ -69,21 +69,6 @@ Night4:
 	clearflag FLAG_HIDE_BONNIE_SCRAPS
 	clearflag FLAG_HIDE_CHICA_SCRAPS
 	end
-
-
-DontHideScrapsFreddy:
-	clearflag FLAG_HIDE_FREDDY_SCRAPS
-
-DontHideScrapsBonnie:
-	clearflag FLAG_HIDE_BONNIE_SCRAPS
-
-DontHideScrapsChica:
-	clearflag FLAG_HIDE_CHICA_SCRAPS
-
-DontHideScrapsFoxy:
-	clearflag FLAG_HIDE_FOXY_SCRAPS
-
-
 
 Route110_EventScript_BeginCylcingRoadChallenge:: @ 81EF2A1
 	special Special_BeginCyclingRoadChallenge
