@@ -126,6 +126,5 @@
 	create_movement_action figure_8
 	create_movement_action fly_up
 	create_movement_action fly_down
-
 	enum_start 0xfe
 	create_movement_action step_end

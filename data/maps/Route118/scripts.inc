@@ -1,4 +1,4 @@
-.set LOCALID_STEVEN, 19
+.set LOCALID_FOXY, 1
 
 Route118_MapScripts:: @ 81F3DBC
 	map_script MAP_SCRIPT_ON_TRANSITION, Route118_OnTransition
@@ -7,23 +7,18 @@ Route118_MapScripts:: @ 81F3DBC
 	.byte 0
 
 Route118_OnTransition: @ 81F3DCC
-	call GabbyAndTy_EventScript_UpdateLocation
-	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_EAST
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_WEST
-	call_if_eq AbnormalWeather_StartGroudonWeather
+	compare VAR_ANIMATRONIC_ID, 4
+	call_if_eq DeleteFoxy
+	compare VAR_ANIMATRONIC_ID, 5
+	call_if_eq DeleteFoxy
 	end
 
 Route118_OnLoad: @ 81F3DF3
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_EAST
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute118East
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_WEST
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute118West
 	end
 
 Route118_OnFrame: @ 81F3E0A
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
 	.2byte 0
 
+DeleteFoxy:
+	setflag FLAG_HIDE_FOXY_2
+	end

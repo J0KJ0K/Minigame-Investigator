@@ -1,20 +1,220 @@
 .set LOCALID_MILES, 1
 
-
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_OnFrame
 	.byte 0
 
 PetalburgCity_OnTransition: @ 81DC2D7
+	setvar VAR_COSTUME, 0
 	special	SwapPlayersCostume
 	end
 
 PetalburgCity_OnFrame: @ 81DC31C
 	.2byte 0
 
+Miles_Resetposition1:
+	walk_down
+	walk_left
+	walk_left
+	walk_up
+	step_end
 
-Miles_Introduction1::
+Resetpositionpart2:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_up
+	step_end
+
+Miles_Resetposition2:
+	walk_up
+	walk_left
+	walk_left
+	step_end
+
+Miles_ResetpositionPlayer2:
+	walk_up
+	step_end
+
+Miles_ResetpositionPlayer3:
+	walk_up
+	walk_up
+	step_end
+
+Miles_ResetpositionPlayer4:
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	step_end
+
+Miles_Resetposition3:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	step_end
+
+Miles_Resetposition4:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	step_end
+
+Miles_Intro1::
+	lockall
+	call Miles_Introduction
+	setvar VAR_MILES_STATE, 1
+	applymovement LOCALID_MILES, WalkupToPlayer1
+	waitmovement 0
+	msgbox Miles_Intro, MSGBOX_DEFAULT
+	applymovement LOCALID_MILES, Miles_Resetposition1
+	waitmovement 0
+	applymovement LOCALID_MILES, Resetpositionpart2
+	applymovement OBJ_EVENT_ID_PLAYER, Resetpositionpart2
+	waitmovement 0
+	call Miles_Intro_Normal
+	releaseall
+	end
+
+Miles_Intro2::
+	lockall
+	call Miles_Introduction
+	setvar VAR_MILES_STATE, 1
+	applymovement LOCALID_MILES, WalkupToPlayer2
+	waitmovement 0
+	msgbox Miles_Intro, MSGBOX_DEFAULT
+	applymovement LOCALID_MILES, Miles_Resetposition2
+	waitmovement 0
+	applymovement LOCALID_MILES, Resetpositionpart2
+	applymovement OBJ_EVENT_ID_PLAYER, Miles_ResetpositionPlayer2
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Resetpositionpart2
+	waitmovement 0
+	call Miles_Intro_Normal
+	releaseall
+	end
+
+Miles_Intro3::
+	lockall
+	call Miles_Introduction
+	setvar VAR_MILES_STATE, 1
+	applymovement LOCALID_MILES, WalkupToPlayer3
+	waitmovement 0
+	msgbox Miles_Intro, MSGBOX_DEFAULT
+	applymovement LOCALID_MILES, Miles_Resetposition3
+	waitmovement 0
+	applymovement LOCALID_MILES, Resetpositionpart2
+	applymovement OBJ_EVENT_ID_PLAYER, Miles_ResetpositionPlayer3
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Resetpositionpart2
+	waitmovement 0
+	call Miles_Intro_Normal
+	releaseall
+	end
+
+Miles_Intro4::
+	lockall
+	call Miles_Introduction
+	setvar VAR_MILES_STATE, 10
+	applymovement LOCALID_MILES, WalkupToPlayer4
+	waitmovement 0
+	msgbox Miles_Intro, MSGBOX_DEFAULT
+	applymovement LOCALID_MILES, Miles_Resetposition4
+	waitmovement 0
+	applymovement LOCALID_MILES, Resetpositionpart2
+	applymovement OBJ_EVENT_ID_PLAYER, Miles_ResetpositionPlayer4
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Resetpositionpart2
+	waitmovement 0
+	call Miles_Intro_Normal
+	releaseall
+	end
+
+ToBacktrack:
+	walk_left
+	step_end
+
+ToBack:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	step_end
+
+ToBackMiles:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	face_down
+	step_end
+
+Miles_Out:
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+Miles_Intro_Normal:
+	msgbox Miles_View, MSGBOX_DEFAULT
+	applymovement LOCALID_MILES, ToBackMiles
+	applymovement OBJ_EVENT_ID_PLAYER, ToBacktrack
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, ToBack
+	waitmovement 0
+	msgbox Miles_Back, MSGBOX_DEFAULT
+	msgbox ThisUpdate, MSGBOX_DEFAULT
+	msgbox IfYouNeedMe, MSGBOX_DEFAULT
+	applymovement LOCALID_MILES, Miles_Out
+	waitmovement 0
+	removeobject LOCALID_MILES
+	setflag FLAG_HIDE_MILES_2
+	clearflag FLAG_HIDE_MILES
+	return
+	releaseall
+
+Miles_Introduction:
 	lockall
 	addobject LOCALID_MILES
 	msgbox Miles_Tired, MSGBOX_DEFAULT
@@ -22,20 +222,7 @@ Miles_Introduction1::
 	applymovement OBJ_EVENT_ID_PLAYER, LookatMiles1
 	waitmovement 0
 	msgbox Miles_Notice
-	applymovement LOCALID_MILES, WalkupToPlayer1
-	waitmovement 0
-	msgbox Miles_Intro, MSGBOX_DEFAULT
-	@applymovement LOCALID_MILES, ResetPosition
-	@applymovement OBJ_EVENT_ID_PLAYER, ResetPositionPlayer
-	@applymovement LOCALID_MILES, ToView
-	msgbox Miles_View, MSGBOX_DEFAULT
-	@applymovement LOCALID_MILES, ToBack
-	msgbox Miles_Back, MSGBOX_DEFAULT
-	msgbox ThisUpdate, MSGBOX_DEFAULT
-	msgbox IfYouNeedMe, MSGBOX_DEFAULT
-	setflag FLAG_HIDE_MILES_2
-	@applymovement LOCALID_MILES, Miles_Out
-	releaseall
+	return
 	end
 	
 LookatMiles1:
@@ -109,9 +296,7 @@ WalkupToPlayer4:
 	walk_left
 	walk_down
 	walk_down
-
-
-
+	step_end
 
 Door_FNaF1::
 	lockall

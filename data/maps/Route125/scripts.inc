@@ -54,7 +54,6 @@ Trigger3::
 	end
 
 Trigger4::
-	setflag FLAG_HIDE_FOXY
 	setvar VAR_ANIMATRONIC_ID, 4
 	setvar VAR_COSTUME, 3
 	msgbox Night_4, MSGBOX_DEFAULT
@@ -65,7 +64,6 @@ Trigger4::
 	end
 
 Trigger5::
-	setflag FLAG_HIDE_FOXY
 	setvar VAR_ANIMATRONIC_ID, 5
 	setvar VAR_COSTUME, 5
 	msgbox Night_5, MSGBOX_DEFAULT

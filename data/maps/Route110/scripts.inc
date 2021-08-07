@@ -43,7 +43,6 @@ AnimatronicCheck::
 
 Night1:
 	setflag FLAG_HIDE_FREDDY
-	clearflag FLAG_HIDE_FOXY
 	return
 	end
 
@@ -62,11 +61,8 @@ Night3:
 	end
 
 Night4:
-	setflag FLAG_HIDE_FREDDY
-	setflag FLAG_HIDE_BONNIE
-	clearflag FLAG_HIDE_FREDDY_SCRAPS
-	setflag FLAG_HIDE_CHICA
-	clearflag FLAG_HIDE_BONNIE_SCRAPS
+	call Night3
+	setflag FLAG_HIDE_FOXY_2
 	clearflag FLAG_HIDE_CHICA_SCRAPS
 	end
 

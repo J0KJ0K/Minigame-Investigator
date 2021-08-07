@@ -59,18 +59,22 @@
 
 #define FLAG_HIDE_MILES_2   0x2B // Unused Flag
 
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
+#define FLAG_HIDE_FOXY_2    0x2C // Unused Flag
+
+#define FLAG_LAST_IN_ROOM_R    0x2F // Prevents spawn in kitchen
+#define FLAG_LAST_IN_CORRIDOR_R    0x32 // Prevents spawn in office
+#define FLAG_LAST_IN_OFFICE	0x33 // Prevents spawn in corridor L
+#define FLAG_LAST_IN_ROOM_S    0x34 // Prevents spawn in pirate cove
+#define FLAG_LAST_IN_BATHROOMS    0x35 // Prevents spawn in party room R and in bathrooms, once the animation finishes
+#define FLAG_LAST_IN_KITCHEN    0x37 // Prevents spawning in corridor r and room s
+ 
+//Unused
+#define FLAG_LAST_IN_PARTS_AND_SERVICE    0x36 // Shadow Freddy never goes to the Parts and Services room
+#define FLAG_LAST_IN_STAGE    0x2D // Shadow Freddy never goes to the stage
+#define FLAG_LAST_IN_ROOM_L    0x2E // Shadow Freddy never goes to the party room on the left
+#define FLAG_LAST_IN_CORRIDOR_L    0x31 // Shadow  Freddy doesn't go to corridor L unless you get misguided
+#define FLAG_LAST_IN_PIRATE_COVE    0x30 // Shadow Freddy doesn't go to pirate cove unless you get misguided
+
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag

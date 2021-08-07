@@ -113,6 +113,9 @@ EventScript_ResetAllBerries:: @ 827149D
 	return
 
 EventScript_ResetAllMapFlags:: @ 82715DE
+	setvar VAR_GAME_VERSION, 1
+	setflag FLAG_HIDE_MILES_2
+	setflag FLAG_HIDE_MILES
 	setflag FLAG_HIDE_CONTEST_POKE_BALL
 	setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE

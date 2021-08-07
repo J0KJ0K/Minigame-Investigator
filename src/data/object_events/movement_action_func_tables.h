@@ -421,6 +421,7 @@ u8 (*const gMovementActionFuncs_Figure8[])(struct ObjectEvent *, struct Sprite *
 u8 (*const gMovementActionFuncs_FlyUp[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FlyDown[])(struct ObjectEvent *, struct Sprite *);
 
+
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
     [MOVEMENT_ACTION_FACE_UP] = gMovementActionFuncs_FaceUp,

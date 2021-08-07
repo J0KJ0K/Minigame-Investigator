@@ -3,6 +3,7 @@
 .set LOCALID_SCRAP_BONNIE, 4
 .set LOCALID_SCRAP_CHICA, 3
 .set LOCALID_SCRAP_FOXY, 5
+.set LOCALID_SHADOW_FREDDY, 6
 
 
 Route114_MapScripts:: @ 81F252F
@@ -24,6 +25,7 @@ ItsBonnie:
 	clearflag FLAG_HIDE_BONNIE_SCRAPS
 	call OhShit
 	end
+
 OhShit:
 	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
 	setvar VAR_TURNED_HIMSELF_INTO_SCRAPS, 1
@@ -46,7 +48,7 @@ TurnedHimselfIntoScraps:
 	end
 
 Route114_OnFrame: @ 81F2578
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
+	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
 	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
 	.2byte 0
 
@@ -54,6 +56,8 @@ Route114_OnLoad: @ 81F256
 	end
 
 Route114_OnTransition: @ 81F253F
+	@compare VAR_ANIMATRONIC_ID, 5
+	@call_if_eq DestroyShadowFreddy
 	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
 	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH
