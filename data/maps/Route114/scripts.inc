@@ -56,8 +56,6 @@ Route114_OnLoad: @ 81F256
 	end
 
 Route114_OnTransition: @ 81F253F
-	@compare VAR_ANIMATRONIC_ID, 5
-	@call_if_eq DestroyShadowFreddy
 	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
 	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH

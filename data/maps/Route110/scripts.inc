@@ -39,6 +39,12 @@ AnimatronicCheck::
 	compare VAR_ANIMATRONIC_ID, 4
 	goto_if_eq Night4
 	clearflag FLAG_HIDE_FOXY_SCRAPS
+	setflag FLAG_LAST_IN_KITCHEN
+	setflag FLAG_LAST_IN_BATHROOMS
+	setflag FLAG_LAST_IN_ROOM_S
+	setflag FLAG_LAST_IN_ROOM_R
+	setflag FLAG_LAST_IN_OFFICE
+	setflag FLAG_LAST_IN_CORRIDOR_R
 	end
 
 Night1:
