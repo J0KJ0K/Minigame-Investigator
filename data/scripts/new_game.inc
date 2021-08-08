@@ -114,6 +114,7 @@ EventScript_ResetAllBerries:: @ 827149D
 
 EventScript_ResetAllMapFlags:: @ 82715DE
 	setvar VAR_GAME_VERSION, 1
+	setvar VAR_STORIES_TO_TELL, 5
 	setflag FLAG_HIDE_MILES_2
 	setflag FLAG_HIDE_MILES
 	setflag FLAG_HIDE_CONTEST_POKE_BALL

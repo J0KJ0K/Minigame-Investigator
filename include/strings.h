@@ -3016,4 +3016,10 @@ extern const u8 gText_PkmnForSwap[];
 extern const u8 gText_SamePkmnInPartyAlready[];
 extern const u8 gText_Cancel3[];
 
+
+extern const u8 gText_Story[];
+extern const u8 gText_RememberMe[];
+extern const u8 gText_NextUpdate[];
+extern const u8 gText_ThisUpdate[];
+extern const u8 gText_YouSuck[];
 #endif // GUARD_STRINGS_H

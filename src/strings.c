@@ -252,6 +252,11 @@ const u8 gText_TheBattle[] = _("the battle");
 const u8 gText_ThePokemonList[] = _("the POKéMON LIST");
 const u8 gText_TheShop[] = _("the shop");
 const u8 gText_ThePC[] = _("the PC");
+const u8 gText_Story[] = _("STORY");
+const u8 gText_RememberMe[] = _("REMEMBER?");
+const u8 gText_NextUpdate[] = _("NEXT UPDT");
+const u8 gText_ThisUpdate[] = _("THIS UPDT");
+const u8 gText_YouSuck[] = _("YOU SUCK");
 
 const u8 *const gBagMenu_ReturnToStrings[] =
 {

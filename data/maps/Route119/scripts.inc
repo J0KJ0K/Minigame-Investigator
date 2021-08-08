@@ -23,7 +23,6 @@ Route119_OnTransition: @ 81F444D
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	compare VAR_WEATHER_INSTITUTE_STATE, 1
 	call_if_eq Route119_EventScript_MoveInstituteWorkersDownstairs
-	special SetRoute119Weather
 	end
 
 Route119_EventScript_MoveInstituteWorkersDownstairs:: @ 81F4466

@@ -12,6 +12,193 @@ PetalburgCity_OnTransition: @ 81DC2D7
 
 PetalburgCity_OnFrame: @ 81DC31C
 	.2byte 0
+	
+Miles_Normal::
+	lockall
+	msgbox Wassup, MSGBOX_DEFAULT
+	multichoicegrid 0, 1, MULTI_MILES_MENU, 1, FALSE
+	switch VAR_RESULT
+	case 0, Miles_Story
+	case 1, ThisUpdate_Description
+	case 2, NextUpdate
+	case 3, Remember
+	case 4, WeSuck
+	case 5, Goodnight
+	case MULTI_B_PRESSED, Goodnight
+	releaseall
+	end
+
+Remember:
+	compare VAR_GAME_VERSION, 1
+	goto_if_lt DistantPast
+	goto_if_eq Present
+	goto_if_gt Future
+	end
+
+Future:
+	lockall
+	msgbox Futa, MSGBOX_DEFAULT
+	releaseall
+
+Futa:
+	.string "Hey, future boy,\n"
+	.string "did you miss me that much?\p"
+	.string "I mean, why are you looking\n"
+	.string "into old versions of the game?\p"
+	.string "Maybe curiosity?\n"
+	.string "Maybe ignorance...$"
+
+Present:
+	lockall
+	msgbox Gift, MSGBOX_DEFAULT
+	releaseall
+
+Gift:
+	.string "Nope, I met you today.\n"
+	.string "Still, it's nice to meet you!$"
+	
+DistantPast:
+	lockall
+	msgbox Past, MSGBOX_DEFAULT
+	releaseall
+
+Past:
+	.string "Well, last time you were here,\n"
+	.string "I was wandering in my lab, so...\l"
+	.string "Yeah, today is my first day with you.$"
+
+
+NextUpdate:
+	lockall
+	msgbox NextUpdate_Miles, MSGBOX_DEFAULT
+	releaseall
+	end
+
+NextUpdate_Miles:
+	.string "Oh, about the next one?\p"
+	.string "We'll try to fix whatever\n"
+	.string "bugs and glitches you find,\l"
+	.string	"we'll add Pirate Cove here,\l"
+	.string "and probably a few more known\l"
+	.string "characters, like the Puppet!\p"
+	.string "Expect to see more\n"
+	.string "expressions as well!$"
+
+
+Goodnight:
+	lockall
+	releaseall
+	end
+
+WeSuck:
+	lockall
+	msgbox Succ, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Succ:
+	.string "Ouch...\n"
+	.string "You could have at least been\l"
+	.string "polite about it, you know?$"
+
+ThisUpdate_Description:
+	lockall
+	msgbox ThisUpdate, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Miles_Story:
+	subvar VAR_STORIES_TO_TELL, 1
+	compare VAR_STORIES_TO_TELL, 0
+	call_if_le NoStoriesForYouNoo
+	compare VAR_STORIES_TO_TELL, 1
+	call_if_eq Story1Noo
+	compare VAR_STORIES_TO_TELL, 2
+	call_if_eq Story2Noo
+	compare VAR_STORIES_TO_TELL, 3
+	call_if_eq Story3Noo
+	compare VAR_STORIES_TO_TELL, 4
+	call_if_eq Story4Noo
+	end
+
+NoStoriesForYouNoo:
+	lockall
+	msgbox NoStoriesForYou, MSGBOX_DEFAULT
+	setvar VAR_STORIES_TO_TELL, 5
+	releaseall
+	end
+
+Story1Noo:
+	lockall
+	msgbox Story1, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Story2Noo:
+	lockall
+	msgbox Story2, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Story3Noo:
+	lockall
+	msgbox Story3, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Story4Noo:
+	lockall
+	msgbox Story4, MSGBOX_DEFAULT
+	releaseall
+	end
+
+
+NoStoriesForYou:
+	.string "Sorry, that was all my stories.\p"
+	.string "I can repeat them to you, though.$"
+
+Story1:
+	.string "This is my last story today.\p"
+	.string "In one of those boxes, there is\n"
+	.string "a cat cage. It's empty all year\l"
+	.string "unless I need to bring Schrodinger\l"
+	.string "to the vet, or in travels.$"
+
+Story2:
+	.string "This is a funny one.\p"
+	.string "I'm the one that's most\n"
+	.string "related to science in the team.\p"
+	.string "That gave me the nickname of\n"
+	.string "'professor Miles', even though\l"
+	.string "I'm not even old enough to be one.$"
+
+Story3:
+	.string "We're actually considering\n"
+	.string "making a physical copy of\l"
+	.string "Minigame Investigator after\l"
+	.string "we complete the project.\p"
+	.string "Then we'll send it to\n"
+	.string "Scott Cawthon as thanks.$"
+
+Story4:
+	.string "You wouldn't believe what\n"
+	.string "was the state of the studio\l"
+	.string "this past week!\p"
+	.string "We noticed FNaF's anniversary\n"
+	.string "would be on thr 8th, and that\l"
+	.string "just made us try to make this\l"
+	.string "update more complete.\p"
+	.string "Problem is, that brought us a\n"
+	.string "lot of stress, and certain things\l"
+	.string "were clearly rushed... Sorry;;$"
+
+Wassup:
+	.string "Hey, {PLAYER}!\n"
+	.string "What's up?$"
+
+
+
+
 
 Miles_Resetposition1:
 	walk_down

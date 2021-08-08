@@ -1,3 +1,4 @@
+.set LOCALID_SHADOW_FREDDY, 1
 .set LOCALID_BRIDGE_KECLEON, 30
 .set LOCALID_STEVEN, 31
 .set LOCALID_BRIDGE_KECLEON_SHADOW, 36  @ They use a second object which is identical to Kecleon but has a reflection palette tag for the bridge shadow
@@ -6,41 +7,15 @@ Route120_MapScripts:: @ 81F53EC
 	map_script MAP_SCRIPT_ON_RESUME, Route120_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Route120_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route120_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route120_OnFrame
 	.byte 0
 
 Route120_OnResume: @ 81F53FC
-	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Route120_EventScript_RemoveKecleonObject
 	end
 
-Route120_EventScript_RemoveKecleonObject:: @ 81F5406
-	compare VAR_0x8009, 0
-	call_if_eq Route120_EventScript_RemoveBridgeKecleon
-	compare VAR_0x8009, 1
-	call_if_eq Route120_EventScript_RemoveKecleon
-	compare VAR_0x8009, 2
-	call_if_eq Route120_EventScript_RemoveKecleon
-	compare VAR_0x8009, 3
-	call_if_eq Route120_EventScript_RemoveKecleon
-	compare VAR_0x8009, 4
-	call_if_eq Route120_EventScript_RemoveKecleon
-	compare VAR_0x8009, 5
-	call_if_eq Route120_EventScript_RemoveKecleon
-	return
+Route120_OnFrame: @ 81F3E0A
+	.2byte 0
 
-Route120_EventScript_RemoveBridgeKecleon:: @ 81F5449
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne Common_EventScript_NopReturn
-	removeobject LOCALID_BRIDGE_KECLEON
-	removeobject LOCALID_BRIDGE_KECLEON_SHADOW
-	return
-
-Route120_EventScript_RemoveKecleon:: @ 81F5460
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne Common_EventScript_NopReturn
-	removeobject VAR_LAST_TALKED
-	return
 
 Route120_OnLoad: @ 81F5474
 	call_if_unset FLAG_REGI_DOORS_OPENED, Route120_EventScript_CloseAncientTomb

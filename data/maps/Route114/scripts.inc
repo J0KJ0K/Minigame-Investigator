@@ -49,20 +49,55 @@ TurnedHimselfIntoScraps:
 
 Route114_OnFrame: @ 81F2578
 	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
-	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
+	map_script_2 VAR_TEMP_0, 0, GototheDoor
 	.2byte 0
+
+GototheDoor:
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Reset
+	addobject LOCALID_SHADOW_FREDDY
+	lockall
+	msgbox Follower, MSGBOX_DEFAULT
+	releaseall
+	lockall
+	applymovement LOCALID_SHADOW_FREDDY, GoingUp
+	waitmovement 0
+	removeobject LOCALID_SHADOW_FREDDY
+	setflag FLAG_LAST_IN_BATHROOMS
+	setvar VAR_TEMP_0, 1
+	releaseall
+	end
+
+Reset::
+	setvar VAR_TEMP_0, 1
+	end
+Follower::
+	.string "FOLLOW ME$"
+
+GoingUp::
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	set_invisible
+	step_end
+
+GoingDown::
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	set_invisible
+	step_end
 
 Route114_OnLoad: @ 81F256
 	end
 
 Route114_OnTransition: @ 81F253F
-	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH
-	call_if_eq AbnormalWeather_StartGroudonWeather
 	end
+
 
 MotionTrigger::
 	lockall

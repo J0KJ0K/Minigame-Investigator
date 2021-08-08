@@ -1,3 +1,9 @@
+.set LOCALID_SPRINGBONNIE, 5
+.set LOCALID_GHOST1, 1
+.set LOCALID_GHOST2, 2
+.set LOCALID_GHOST3, 3
+.set LOCALID_GHOST4, 4
+
 Route124_MapScripts:: @ 81F656C
 	map_script MAP_SCRIPT_ON_TRANSITION, Route124_OnTransition
 	.byte 0
@@ -5,6 +11,67 @@ Route124_MapScripts:: @ 81F656C
 Route124_OnTransition: @ 81F6572
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	end
+
+
+SpringbonnieDeath::
+	lockall
+	applymovement LOCALID_SPRINGBONNIE, LaughEvil
+	waitmovement 0
+	delay 30
+	applymovement LOCALID_SPRINGBONNIE, LaughEvil
+	waitmovement 0
+	delay 30
+	applymovement LOCALID_SPRINGBONNIE, LaughEvil
+	waitmovement 0
+	delay 30
+	applymovement LOCALID_SPRINGBONNIE, LaughEvil
+	waitmovement 0
+	delay 30
+	applymovement LOCALID_SPRINGBONNIE, CrushCrush
+	waitmovement 0
+	delay 50
+	applymovement LOCALID_SPRINGBONNIE, ImminentDeath
+	waitmovement 0
+	applymovement LOCALID_GHOST1, GhostDisappear
+	applymovement LOCALID_GHOST2, GhostDisappear
+	applymovement LOCALID_GHOST3, GhostDisappear
+	applymovement LOCALID_GHOST4, GhostDisappear
+	applymovement LOCALID_SPRINGBONNIE, ImminentDeath
+	waitmovement 0
+	applymovement LOCALID_SPRINGBONNIE, ImminentDeath
+	fadescreenspeed FADE_TO_BLACK, 1
+	setvar VAR_COSTUME, 0
+	releaseall
+	warp MAP_PETALBURG_CITY, 1, 0, 0
+	waitstate
+	releaseall
+	end
+
+LaughEvil:
+	walk_in_place_down
+	step_end
+
+CrushCrush:
+	face_left
+	step_end
+
+ImminentDeath:
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	step_end
+
+GhostDisappear:
+	set_invisible
+	step_end
+
+
 
 Route124_EventScript_HuntersHouseSign:: @ 81F657C
 	msgbox Route124_Text_HuntersHouse, MSGBOX_SIGN

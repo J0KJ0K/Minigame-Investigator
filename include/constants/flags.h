@@ -61,14 +61,15 @@
 
 #define FLAG_HIDE_FOXY_2    0x2C // Unused Flag
 
+
+//Unused
 #define FLAG_LAST_IN_ROOM_R    0x2F // Prevents spawn in kitchen
 #define FLAG_LAST_IN_CORRIDOR_R    0x32 // Prevents spawn in office
 #define FLAG_LAST_IN_OFFICE	0x33 // Prevents spawn in corridor L
 #define FLAG_LAST_IN_ROOM_S    0x34 // Prevents spawn in pirate cove
 #define FLAG_LAST_IN_BATHROOMS    0x35 // Prevents spawn in party room R and in bathrooms, once the animation finishes
 #define FLAG_LAST_IN_KITCHEN    0x37 // Prevents spawning in corridor r and room s
- 
-//Unused
+
 #define FLAG_LAST_IN_PARTS_AND_SERVICE    0x36 // Shadow Freddy never goes to the Parts and Services room
 #define FLAG_LAST_IN_STAGE    0x2D // Shadow Freddy never goes to the stage
 #define FLAG_LAST_IN_ROOM_L    0x2E // Shadow Freddy never goes to the party room on the left

@@ -1,5 +1,3 @@
-.set LOCALID_FOXY, 1
-
 Route118_MapScripts:: @ 81F3DBC
 	map_script MAP_SCRIPT_ON_TRANSITION, Route118_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route118_OnLoad
@@ -18,6 +16,14 @@ Route118_OnLoad: @ 81F3DF3
 
 Route118_OnFrame: @ 81F3E0A
 	.2byte 0
+
+
+GoingRight::
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
 DeleteFoxy:
 	setflag FLAG_HIDE_FOXY_2

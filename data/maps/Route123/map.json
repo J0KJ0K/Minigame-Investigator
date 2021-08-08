@@ -146,7 +146,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCRAPS",
-      "x": 8,
+      "x": 6,
       "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -171,9 +171,9 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-      "x": 3,
-      "y": 6,
+      "graphics_id": "OBJ_EVENT_GFX_SPRINGBONNIE_MINIGAMES",
+      "x": 8,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,

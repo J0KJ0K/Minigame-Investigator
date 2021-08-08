@@ -38,7 +38,6 @@ AnimatronicCheck::
 	goto_if_eq Night3
 	compare VAR_ANIMATRONIC_ID, 4
 	goto_if_eq Night4
-
 	end
 
 Night1:

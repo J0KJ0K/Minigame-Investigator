@@ -21,6 +21,16 @@ static const struct MenuAction MultichoiceList_ContestInfo[] =
     {gText_Cancel2},
 };
 
+static const struct MenuAction MultichoiceList_Miles[] =
+{
+    {gText_Story},
+    {gText_ThisUpdate},
+    {gText_NextUpdate},
+    {gText_RememberMe},
+    {gText_YouSuck},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_ContestType[] =
 {
     {gText_CoolnessContest},
@@ -898,6 +908,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
+    [MULTI_MILES_MENU]                 = MULTICHOICE(MultichoiceList_Miles),
 };
 
 const u8 *const gStdStrings[] =

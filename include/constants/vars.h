@@ -232,8 +232,10 @@
 #define VAR_TRIGGER_NUMBER           0x405F // Unused Var
 #define VAR_GAME_VERSION                   0x4061 // Unused Var
 
-#define VAR_ROUTE103_STATE                   0x4062 // Unused Var
-#define VAR_ROUTE105_STATE                   0x4064 // Unused Var
+#define VAR_STORIES_TO_TELL                   0x4062 // Unused Var
+
+#define VAR_KEEP_AT_0                   0x4064 // Unused Var
+
 #define VAR_ROUTE106_STATE                   0x4065 // Unused Var
 #define VAR_ROUTE107_STATE                   0x4066 // Unused Var
 #define VAR_ROUTE108_STATE                   0x4067 // Unused Var

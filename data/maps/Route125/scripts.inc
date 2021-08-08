@@ -55,7 +55,8 @@ Trigger3::
 
 Trigger4::
 	setvar VAR_ANIMATRONIC_ID, 4
-	setvar VAR_COSTUME, 3
+	setvar VAR_COSTUME, 4
+	setflag FLAG_LAST_IN_ROOM_S
 	msgbox Night_4, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	special SwapPlayersCostume
@@ -66,6 +67,7 @@ Trigger4::
 Trigger5::
 	setvar VAR_ANIMATRONIC_ID, 5
 	setvar VAR_COSTUME, 5
+	setflag FLAG_LAST_IN_ROOM_S
 	msgbox Night_5, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	special SwapPlayersCostume
