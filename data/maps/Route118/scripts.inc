@@ -12,18 +12,15 @@ Route118_OnTransition: @ 81F3DCC
 	end
 
 Route118_OnLoad: @ 81F3DF3
+	setflag FLAG_LAST_IN_PIRATE_COVE
+	clearflag FLAG_LAST_IN_STAGE
+	clearflag FLAG_LAST_IN_CORRIDOR_L
+	clearflag FLAG_LAST_IN_ROOM_S
 	end
 
 Route118_OnFrame: @ 81F3E0A
 	.2byte 0
 
-
-GoingRight::
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
 
 DeleteFoxy:
 	setflag FLAG_HIDE_FOXY_2

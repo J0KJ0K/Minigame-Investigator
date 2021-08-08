@@ -16,6 +16,13 @@ Route110_OnResume: @ 81EF279
 Route110_OnTransition: @ 81EF27D
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
+	setflag FLAG_LAST_IN_STAGE
+	call_if_set FLAG_LAST_IN_ROOM_S, TrueReset
+	call_if_set FLAG_LAST_IN_ROOM_R, TrueReset
+		call_if_set FLAG_LAST_IN_PIRATE_COVE, TrueReset
+	clearflag FLAG_LAST_IN_ROOM_S
+	clearflag FLAG_LAST_IN_ROOM_R
+	clearflag FLAG_LAST_IN_PIRATE_COVE
 	compare VAR_CYCLING_CHALLENGE_STATE, 1
 	call_if_eq Route110_EventScript_SaveCyclingMusic
 	goto AnimatronicCheck

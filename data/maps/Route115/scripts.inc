@@ -12,17 +12,60 @@ Route115_OnLoad: @ 81F2930
 	end
 
 Route115_OnTransition: @ 81F2947
-	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_WEST
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_EAST
-	call_if_eq AbnormalWeather_StartGroudonWeather
+	call_if_set FLAG_LAST_IN_KITCHEN, TrueReset
+	call_if_set FLAG_LAST_IN_BATHROOMS, TrueReset
+	clearflag FLAG_LAST_IN_KITCHEN
+	clearflag FLAG_LAST_IN_BATHROOMS
 	end
 
 Route115_OnFrame: @ 81F2969
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
+	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyHiii
+	map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyHiii
 	.2byte 0
+
+ShadowFreddyHiii:
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Reset
+	goto_if_set FLAG_LAST_IN_ROOM_R, Reset
+	setvar VAR_KEEP_AT_0, 1
+	lockall
+	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
+	setflag	FLAG_SPAWN_INVISIBLE
+	fadescreenspeed FADE_TO_BLACK, 1
+	warpsilent MAP_ROUTE115, 0xFF, 9, 9
+	waitstate
+	end
+
+ContinueShadowFreddyHiii:
+	lockall
+	setvar VAR_KEEP_AT_0, 2
+	compare VAR_ANIMATRONIC_ID, 1
+	call_if_eq RemoveNotFreddy
+	compare VAR_ANIMATRONIC_ID, 2
+	call_if_eq RemoveNotBonnie
+	compare VAR_ANIMATRONIC_ID, 3
+	call_if_eq RemoveNotChica
+	compare VAR_ANIMATRONIC_ID, 4
+	call_if_eq RemoveNotFoxy
+	fadescreenspeed FADE_FROM_BLACK, 1
+	call GoRightToThePoint
+	fadescreenspeed FADE_TO_BLACK, 1
+	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
+	setflag FLAG_LAST_IN_ROOM_R
+	warpsilent MAP_ROUTE115, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	setvar VAR_KEEP_AT_0, 0
+	releaseall
+	end
+
+
+
+
+
+
+
+
+
+
 
 Route115_EventScript_Woman:: @ 81F2973
 	msgbox Route115_Text_NeverKnowWhenCavePokemonWillAppear, MSGBOX_NPC

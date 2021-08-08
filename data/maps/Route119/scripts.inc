@@ -5,6 +5,7 @@
 Route119_MapScripts:: @ 81F4424
 	map_script MAP_SCRIPT_ON_RESUME, Route119_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Route119_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route119_OnFrame
 	.byte 0
 
 Route119_OnResume: @ 81F442F
@@ -19,11 +20,63 @@ Route119_EventScript_TryRemoveKecleon:: @ 81F4439
 	return
 
 Route119_OnTransition: @ 81F444D
-	call Common_EventScript_SetupRivalGfxId
-	call Common_EventScript_SetupRivalOnBikeGfxId
-	compare VAR_WEATHER_INSTITUTE_STATE, 1
-	call_if_eq Route119_EventScript_MoveInstituteWorkersDownstairs
+	call_if_set FLAG_LAST_IN_PIRATE_COVE, TrueReset
+	call_if_set FLAG_LAST_IN_OFFICE, TrueReset
+	clearflag FLAG_LAST_IN_PIRATE_COVE
+	clearflag FLAG_LAST_IN_OFFICE
 	end
+
+Route119_OnFrame: @ 81F2C66
+	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyNEEE
+	map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyNEEE
+	.2byte 0
+
+ShadowFreddyNEEE:
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Reset
+	goto_if_set FLAG_LAST_IN_CORRIDOR_L, Reset
+	setvar VAR_KEEP_AT_0, 1
+	lockall
+	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
+	setflag	FLAG_SPAWN_INVISIBLE
+	fadescreenspeed FADE_TO_BLACK, 1
+	warpsilent MAP_ROUTE119, 0xFF, 8, 6
+	waitstate
+	end
+
+ContinueShadowFreddyNEEE:
+	lockall
+	setvar VAR_KEEP_AT_0, 2
+	compare VAR_ANIMATRONIC_ID, 1
+	call_if_eq RemoveNotFreddy
+	compare VAR_ANIMATRONIC_ID, 2
+	call_if_eq RemoveNotBonnie
+	compare VAR_ANIMATRONIC_ID, 3
+	call_if_eq RemoveNotChica
+	compare VAR_ANIMATRONIC_ID, 4
+	call_if_eq RemoveNotFoxy
+	fadescreenspeed FADE_FROM_BLACK, 1
+	call WelcomeToTheFazZone
+	fadescreenspeed FADE_TO_BLACK, 1
+	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
+	setflag FLAG_LAST_IN_CORRIDOR_L
+	warpsilent MAP_ROUTE119, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	setvar VAR_KEEP_AT_0, 0
+	releaseall
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route119_EventScript_MoveInstituteWorkersDownstairs:: @ 81F4466
 	setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS

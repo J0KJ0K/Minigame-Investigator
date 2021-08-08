@@ -1,10 +1,98 @@
-.set LOCALID_AFTON, 1
+.set LOCALID_AFTON, 6
 .set LOCALID_SCRAP_FREDDY, 2
 .set LOCALID_SCRAP_BONNIE, 4
 .set LOCALID_SCRAP_CHICA, 3
 .set LOCALID_SCRAP_FOXY, 5
-.set LOCALID_SHADOW_FREDDY, 6
+.set LOCALID_SHADOW_FREDDY, 1
+.set LOCALID_FREDDY, 7
+.set LOCALID_BONNIE, 8
+.set LOCALID_CHICA, 9
+.set LOCALID_FOXY, 10
 
+Route114_OnFrame: @ 81F2578
+	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
+	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyCutscene
+		map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyCutscene
+	.2byte 0
+
+ShadowFreddyCutscene:
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Reset
+	goto_if_set FLAG_LAST_IN_BATHROOMS, Reset
+	setvar VAR_KEEP_AT_0, 1
+	lockall
+	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
+	setflag	FLAG_SPAWN_INVISIBLE
+	fadescreenspeed FADE_TO_BLACK, 1
+	warpsilent MAP_ROUTE114, 0xFF, 3, 5
+	waitstate
+	end
+
+ContinueShadowFreddyCutscene:
+	lockall
+	setvar VAR_KEEP_AT_0, 2
+	compare VAR_ANIMATRONIC_ID, 1
+	call_if_eq RemoveNotFreddy
+	compare VAR_ANIMATRONIC_ID, 2
+	call_if_eq RemoveNotBonnie
+	compare VAR_ANIMATRONIC_ID, 3
+	call_if_eq RemoveNotChica
+	compare VAR_ANIMATRONIC_ID, 4
+	call_if_eq RemoveNotFoxy
+	fadescreenspeed FADE_FROM_BLACK, 1
+	call GototheDoor
+	fadescreenspeed FADE_TO_BLACK, 1
+	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
+	setflag FLAG_LAST_IN_BATHROOMS
+	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	releaseall
+	end
+
+RemoveNotFreddy::
+	lockall
+	addobject LOCALID_FREDDY
+	setobjectxy LOCALID_FREDDY, VAR_PLAYER_X, VAR_PLAYER_Y
+	return
+	end
+
+RemoveNotBonnie::
+	lockall
+	addobject LOCALID_BONNIE
+	setobjectxy LOCALID_BONNIE, VAR_PLAYER_X, VAR_PLAYER_Y
+	return
+	end
+
+RemoveNotChica::
+	lockall
+	addobject LOCALID_CHICA
+	setobjectxy LOCALID_CHICA, VAR_PLAYER_X, VAR_PLAYER_Y
+	return
+	end
+
+RemoveNotFoxy::
+	lockall
+	addobject LOCALID_FOXY
+	setobjectxy LOCALID_FOXY, VAR_PLAYER_X, VAR_PLAYER_Y
+	return
+	end
+
+GototheDoor:
+	addobject LOCALID_SHADOW_FREDDY
+	lockall
+	msgbox Follower, MSGBOX_DEFAULT
+	releaseall
+	lockall
+	applymovement LOCALID_SHADOW_FREDDY, GoingDoor
+	waitmovement 0
+	removeobject LOCALID_SHADOW_FREDDY
+	return
+	end
+
+GoingDoor:
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 Route114_MapScripts:: @ 81F252F
 	map_script MAP_SCRIPT_ON_TRANSITION, Route114_OnTransition
@@ -34,6 +122,7 @@ OhShit:
 	waitstate
 	end
 
+
 TurnedHimselfIntoScraps:
 	lockall
 	delay 24
@@ -47,30 +136,11 @@ TurnedHimselfIntoScraps:
 	waitstate
 	end
 
-Route114_OnFrame: @ 81F2578
-	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
-	map_script_2 VAR_TEMP_0, 0, GototheDoor
-	.2byte 0
-
-GototheDoor:
-	compare VAR_ANIMATRONIC_ID, 5
-	goto_if_eq Reset
-	addobject LOCALID_SHADOW_FREDDY
-	lockall
-	msgbox Follower, MSGBOX_DEFAULT
-	releaseall
-	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingUp
-	waitmovement 0
-	removeobject LOCALID_SHADOW_FREDDY
-	setflag FLAG_LAST_IN_BATHROOMS
-	setvar VAR_TEMP_0, 1
-	releaseall
-	end
 
 Reset::
-	setvar VAR_TEMP_0, 1
+	setvar VAR_KEEP_AT_0, 2
 	end
+
 Follower::
 	.string "FOLLOW ME$"
 
@@ -92,12 +162,27 @@ GoingDown::
 	set_invisible
 	step_end
 
+GoingRight::
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	set_invisible
+	step_end
+
 Route114_OnLoad: @ 81F256
 	end
 
-Route114_OnTransition: @ 81F253F
+Route114_OnTransition:
+	call_if_set FLAG_LAST_IN_ROOM_R, TrueReset
+	clearflag FLAG_LAST_IN_ROOM_R
 	end
 
+TrueReset::
+	setvar VAR_KEEP_AT_0, 0
+	return
+	end
 
 MotionTrigger::
 	lockall

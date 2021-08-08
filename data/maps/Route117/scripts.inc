@@ -2,11 +2,67 @@
 
 Route117_MapScripts:: @ 81F397D
 	map_script MAP_SCRIPT_ON_TRANSITION, Route117_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Route117_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route117_OnFrame
 	.byte 0
 
 Route117_OnTransition: @ 81F3983
-	call Route117_EventScript_TryMoveDayCareMan
+	call_if_set FLAG_LAST_IN_STAGE, TrueReset
+	call_if_set FLAG_LAST_IN_PIRATE_COVE, TrueReset
+	clearflag FLAG_LAST_IN_STAGE
+	clearflag FLAG_LAST_IN_PIRATE_COVE
+	clearflag FLAG_LAST_IN_KITCHEN
 	end
+
+Route117_OnLoad:
+	end
+
+Route117_OnFrame:
+	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyYooo
+	map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyYooo
+	.2byte 0
+
+ShadowFreddyYooo:
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Reset
+	goto_if_set FLAG_LAST_IN_ROOM_S, Reset
+	setvar VAR_KEEP_AT_0, 1
+	lockall
+	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
+	setflag	FLAG_SPAWN_INVISIBLE
+	fadescreenspeed FADE_TO_BLACK, 1
+	warpsilent MAP_ROUTE117, 0xFF, 9, 5
+	waitstate
+	end
+
+ContinueShadowFreddyYooo:
+	lockall
+	setvar VAR_KEEP_AT_0, 2
+	compare VAR_ANIMATRONIC_ID, 1
+	call_if_eq RemoveNotFreddy
+	compare VAR_ANIMATRONIC_ID, 2
+	call_if_eq RemoveNotBonnie
+	compare VAR_ANIMATRONIC_ID, 3
+	call_if_eq RemoveNotChica
+	compare VAR_ANIMATRONIC_ID, 4
+	call_if_eq RemoveNotFoxy
+	fadescreenspeed FADE_FROM_BLACK, 1
+	call GoRightToThePoint
+	fadescreenspeed FADE_TO_BLACK, 1
+	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
+	setflag FLAG_LAST_IN_ROOM_S
+	warpsilent MAP_ROUTE117, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	setvar VAR_KEEP_AT_0, 0
+	releaseall
+	end
+
+
+
+
+
+
+
+
 
 Route117_EventScript_TryMoveDayCareMan:: @ 81F3989
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_StopMoveDayCareMan

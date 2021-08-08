@@ -40,8 +40,11 @@ Route120_EventScript_SetBridgeKecleonMovement:: @ 81F54C8
 	return
 
 Route120_OnTransition: @ 81F54CD
-	call GabbyAndTy_EventScript_UpdateLocation
-	call Route120_EventScript_SetWeather
+	call_if_set FLAG_LAST_IN_CORRIDOR_L, TrueReset
+	call_if_set FLAG_LAST_IN_CORRIDOR_R, TrueReset
+	clearflag FLAG_LAST_IN_CORRIDOR_L
+	clearflag FLAG_LAST_IN_CORRIDOR_R
+	setflag FLAG_LAST_IN_OFFICE
 	end
 
 Route120_EventScript_SetWeather:: @ 81F54D8
