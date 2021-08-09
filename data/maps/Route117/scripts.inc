@@ -7,6 +7,9 @@ Route117_MapScripts:: @ 81F397D
 	.byte 0
 
 Route117_OnTransition: @ 81F3983
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
 	call_if_set FLAG_LAST_IN_STAGE, TrueReset
 	call_if_set FLAG_LAST_IN_PIRATE_COVE, TrueReset
 	clearflag FLAG_LAST_IN_STAGE

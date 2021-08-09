@@ -5,6 +5,9 @@ Route116_MapScripts:: @ 81F2C0C
 	.byte 0
 
 Route116_OnTransition: @ 81F2C1C
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare	VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
 	call_if_set FLAG_LAST_IN_ROOM_R, TrueReset
 	call_if_set FLAG_LAST_IN_ROOM_S, TrueReset
 	call_if_set FLAG_LAST_IN_CORRIDOR_R, TrueReset
@@ -13,6 +16,8 @@ Route116_OnTransition: @ 81F2C1C
 	clearflag FLAG_LAST_IN_ROOM_R
 	end
 
+Deletehim::
+	end
 
 Route116_OnLoad: @ 81F2C4F
 	end

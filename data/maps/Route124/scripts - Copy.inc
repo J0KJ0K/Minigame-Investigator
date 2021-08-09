@@ -10,92 +10,204 @@ Route124_MapScripts:: @ 81F656C
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route124_OnFrame
 	.byte 0
 
-Route124_OnTransition: @ 81F6572
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	end
-
 Route124_OnFrame:
+	map_script_2 VAR_AFTON_STATE, 0, Running1
+	@map_script_2 VAR_AFTON_STATE, 1, RunningAlways
+	@map_script_2 VAR_AFTON_STATE, 2, ResetPositionY1
+	@map_script_2 VAR_AFTON_STATE, 3, RunningAlways2
+	@map_script_2 VAR_AFTON_STATE, 4, ResetPositionY2
+	@map_script_2 VAR_AFTON_STATE, 5, Running4
 	.2byte 0
 
-
-Trigger::
-	setvar VAR_TEMP_0, 1
-	specialvar VAR_FACING, GetPlayerFacingDirection
-		switch VAR_FACING
-		case DIR_NORTH, GoNorth
-		case DIR_SOUTH, ThatEscalatedQuickly
-		case DIR_WEST, KanyeQuest
-		case DIR_EAST, YouCanGetThisYeast	
-		return
+Running1::
+	lockall
+	msgbox GET_AWAY, MSGBOX_DEFAULT
+	releaseall
+	setvar VAR_AFTON_STATE, 1
 	end
 
-Trigger20202020::
-	setvar VAR_TEMP_0, 0
-	specialvar VAR_FACING, GetPlayerFacingDirection
-		switch VAR_FACING
-		case DIR_NORTH, GoNorth
-		case DIR_SOUTH, ThatEscalatedQuickly
-		case DIR_WEST, KanyeQuest
-		case DIR_EAST, YouCanGetThisYeast	
-		return
+RunningAlways:
+	compare VAR_AFTON_X, 10
+	goto_if_eq Change
 	end
 
-GoNorth:
-	applymovement LOCALID_PURPLE_MAN, UpYours
-	waitmovement 0
+RunningAlways2:
+	compare VAR_AFTON_X, 1
+	goto_if_eq Change2
+	end
+
+Triggers::
+	lockall
+	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
+	setvar VAR_PLAYER_Y2, VAR_PLAYER_Y
+	call Afton_Check_Y
+	setvar VAR_PLAYER_X2, VAR_PLAYER_X
+	call Afton_Check_X
+	releaseall
+	end
+
+Afton_Check_X:
+	compare VAR_PLAYER_X, VAR_PLAYER_X2
+	call_if_eq Ok
+	compare VAR_PLAYER_X, VAR_PLAYER_X2
+	call_if_lt Afton_Decrease_X
+	compare VAR_PLAYER_X, VAR_PLAYER_X2
+	call_if_gt Afton_Increase_X
+	releaseall
+	end
+
+Afton_Check_Y:
+	compare VAR_PLAYER_Y, VAR_PLAYER_Y2
+	call_if_eq Ok2
+	compare VAR_PLAYER_Y, VAR_PLAYER_Y2
+	call_if_gt Afton_Increase_Y
+	compare VAR_PLAYER_Y, VAR_PLAYER_Y2
+	call_if_lt Afton_Decrease_Y
 	return
 	end
 
-ThatEscalatedQuickly:
-	applymovement LOCALID_PURPLE_MAN, Downstairs
-	waitmovement 0
+Ok:
+	lockall
+	msgbox OKI, MSGBOX_DEFAULT
+	releaseall
+	setvar VAR_PLAYER_X2, VAR_PLAYER_X
+	return
 	end
 
-KanyeQuest:
-	applymovement LOCALID_PURPLE_MAN, Eh
-	waitmovement 0
+Ok2:
+	lockall
+	msgbox OKI2, MSGBOX_DEFAULT
+	setvar VAR_PLAYER_Y2, VAR_PLAYER_Y
+	releaseall
+	return
 	end
 
-YouCanGetThisYeast:
-	applymovement LOCALID_PURPLE_MAN, Yeah
-	waitmovement 0
+OKI:
+	.string "Check on X is equal$"
+
+OKI2:
+	.string "Check on Y is equal$"
+
+Change:
+	setvar VAR_AFTON_STATE, 2
 	end
 
-UpYours:
-	walk_up
-	step_end
+Change2:
+	setvar VAR_AFTON_STATE, 4
+	end
 
-Downstairs:
-	walk_down
-	step_end
+ResetPositionY1:
+	compare VAR_AFTON_Y, 5
+	goto_if_gt Afton_Decrease_Y
+	goto_if_eq ResetPositionX1
+	goto_if_lt Afton_Increase_Y
+	end
 
-Eh:
+ResetPositionX1:
+	compare VAR_AFTON_X, 5
+	goto_if_gt Afton_Decrease_X
+	goto_if_eq FinalRun
+	goto_if_lt Afton_Increase_X
+	end
+
+ResetPositionY2:
+	compare VAR_AFTON_Y, 7
+	goto_if_gt Afton_Decrease_Y
+	goto_if_eq ResetPositionX2
+	goto_if_lt Afton_Increase_Y
+	end
+
+ResetPositionX2:
+	compare VAR_AFTON_X, 9
+	goto_if_gt Afton_Decrease_X
+	goto_if_eq FinalRun
+	goto_if_lt Afton_Increase_X
+	end
+
+Afton_Decrease_X:
+	lockall
+	msgbox DecreaseInXDetected, MSGBOX_DEFAULT
+	releaseall
+	applymovement LOCALID_PURPLE_MAN, WalkLeftOnce
+	subvar VAR_AFTON_X, 1
+	setvar VAR_PLAYER_X2, VAR_PLAYER_X
+	return
+	end
+
+WalkLeftOnce:
 	walk_left
 	step_end
 
-Yeah:
+WalkDownOnce:
+	walk_down
+	step_end
+
+WalkUpOnce:
+	walk_up
+	step_end
+
+WalkRightOnce:
 	walk_right
 	step_end
 
+Afton_Decrease_Y:
+	lockall
+	msgbox DecreaseInYDetected, MSGBOX_DEFAULT
+	releaseall
+	applymovement LOCALID_PURPLE_MAN, WalkUpOnce
+	subvar VAR_AFTON_Y, 1
+	setvar VAR_PLAYER_Y2, VAR_PLAYER_Y
+	return
+	end
 
+Afton_Increase_X:
+	lockall
+	msgbox IncreaseInXDetected, MSGBOX_DEFAULT
+	releaseall
+	applymovement LOCALID_PURPLE_MAN, WalkRightOnce
+	addvar VAR_AFTON_X, 1
+	setvar VAR_PLAYER_X2, VAR_PLAYER_X
+	return
+	end
 
+Afton_Increase_Y:
+	lockall
+	msgbox IncreaseInYDetected, MSGBOX_DEFAULT
+	releaseall
+	applymovement LOCALID_PURPLE_MAN, WalkDownOnce
+	addvar VAR_AFTON_Y, 1
+	setvar VAR_PLAYER_Y2, VAR_PLAYER_Y
+	return
+	end
 
+DecreaseInXDetected:
+	.string  "Decrease in X detected$"
+DecreaseInYDetected:
+	.string  "Decrease in Y detected$"
+IncreaseInXDetected:
+	.string  "Increase in X detected$"
+IncreaseInYDetected:
+	.string  "Increase in Y detected$"
 
-
-
-
-
-
-
-
-
-
-
-
+FinalRun:
+	setvar VAR_AFTON_STATE, 5
+	msgbox GET_AWAY, MSGBOX_DEFAULT
+	end
 
 GET_AWAY:
 	.string "GET AWAY FROM ME!!$"
 
+
+Route124_OnTransition: @ 81F6572
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	setvar VAR_AFTON_STATE, 1
+	setvar VAR_AFTON_X, 3
+	setvar VAR_AFTON_Y, 6
+	@setvar VAR_PLAYER_X, 6
+	setvar VAR_PLAYER_Y, 7
+	@setvar VAR_PLAYER_X2, 6
+	setvar VAR_PLAYER_Y2, 6
+	end
 
 AintAfraidOfNoGhosts:
 	walk_right

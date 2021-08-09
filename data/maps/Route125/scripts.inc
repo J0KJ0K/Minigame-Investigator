@@ -23,6 +23,10 @@ Route125_OnLoad: @ 81F6783
 Route125_OnFrame: @ 81F679A
 	.2byte 0
 
+GoBackHome::
+	warp MAP_PETALBURG_CITY, 17, 0, 0
+	end
+
 Trigger1::
 	msgbox Night_1, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
@@ -67,7 +71,15 @@ Trigger4::
 Trigger5::
 	setvar VAR_ANIMATRONIC_ID, 5
 	setvar VAR_COSTUME, 5
+	setflag FLAG_LAST_IN_OFFICE
+	setflag FLAG_LAST_IN_BATHROOMS
 	setflag FLAG_LAST_IN_ROOM_S
+	setflag FLAG_LAST_IN_ROOM_R
+	setflag FLAG_LAST_IN_STAGE
+	setflag FLAG_LAST_IN_CORRIDOR_R
+	setflag FLAG_LAST_IN_CORRIDOR_L
+	setflag FLAG_LAST_IN_KITCHEN
+	setflag FLAG_LAST_IN_PIRATE_COVE
 	msgbox Night_5, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	special SwapPlayersCostume

@@ -50,13 +50,6 @@
       "dest_warp_id": 2
     },
     {
-      "x": 25,
-      "y": 6,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE125",
-      "dest_warp_id": 0
-    },
-    {
       "x": 3,
       "y": 1,
       "elevation": 0,
@@ -166,6 +159,13 @@
       "y": 27,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 25,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE125",
       "dest_warp_id": 0
     }
   ],

@@ -40,6 +40,9 @@ Route120_EventScript_SetBridgeKecleonMovement:: @ 81F54C8
 	return
 
 Route120_OnTransition: @ 81F54CD
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
 	call_if_set FLAG_LAST_IN_CORRIDOR_L, TrueReset
 	call_if_set FLAG_LAST_IN_CORRIDOR_R, TrueReset
 	clearflag FLAG_LAST_IN_CORRIDOR_L

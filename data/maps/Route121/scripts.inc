@@ -7,6 +7,9 @@ Route121_MapScripts:: @ 81F5DFC
 	.byte 0
 
 Route121_OnTransition:
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
 	call_if_set FLAG_LAST_IN_KITCHEN, TrueReset
 	call_if_set FLAG_LAST_IN_OFFICE, TrueReset
 	clearflag FLAG_LAST_IN_KITCHEN

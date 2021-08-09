@@ -12,6 +12,9 @@ Route115_OnLoad: @ 81F2930
 	end
 
 Route115_OnTransition: @ 81F2947
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
 	call_if_set FLAG_LAST_IN_KITCHEN, TrueReset
 	call_if_set FLAG_LAST_IN_BATHROOMS, TrueReset
 	clearflag FLAG_LAST_IN_KITCHEN

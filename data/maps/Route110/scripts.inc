@@ -14,6 +14,9 @@ Route110_OnResume: @ 81EF279
 	end
 
 Route110_OnTransition: @ 81EF27D
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	setflag FLAG_LAST_IN_STAGE

@@ -175,6 +175,9 @@ Route114_OnLoad: @ 81F256
 	end
 
 Route114_OnTransition:
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
 	call_if_set FLAG_LAST_IN_ROOM_R, TrueReset
 	clearflag FLAG_LAST_IN_ROOM_R
 	end

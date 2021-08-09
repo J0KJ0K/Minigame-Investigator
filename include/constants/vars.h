@@ -236,11 +236,14 @@
 
 #define VAR_KEEP_AT_0                   0x4064 // Unused Var
 
-#define VAR_ROUTE106_STATE                   0x4065 // Unused Var
-#define VAR_ROUTE107_STATE                   0x4066 // Unused Var
-#define VAR_ROUTE108_STATE                   0x4067 // Unused Var
-#define VAR_ROUTE109_STATE                   0x4068 // Unused Var
-#define VAR_ROUTE111_STATE                   0x406A // Unused Var
+#define VAR_AFTON_STATE                   0x4065 // Unused Var
+
+#define VAR_AFTON_X                   0x4066 // Unused Var
+#define VAR_AFTON_Y                   0x4067 // Unused Var
+
+#define VAR_PLAYER_X2                 0x4068 // Unused Var
+#define VAR_PLAYER_Y2                   0x406A // Unused Var
+
 #define VAR_ROUTE112_STATE                   0x406B // Unused Var
 #define VAR_ROUTE113_STATE                   0x406C // Unused Var
 #define VAR_ROUTE114_STATE                   0x406D // Unused Var
