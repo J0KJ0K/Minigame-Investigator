@@ -132,7 +132,7 @@ TurnedHimselfIntoScraps:
 	setvar VAR_TURNED_HIMSELF_INTO_SCRAPS, 0
 	setvar VAR_COSTUME, 0
 	releaseall
-	warp MAP_PETALBURG_CITY, 1, 0, 0
+	warp MAP_PETALBURG_CITY, 17, 0, 0
 	waitstate
 	end
 

@@ -15,6 +15,7 @@ PetalburgCity_OnFrame: @ 81DC31C
 	
 Miles_Normal::
 	lockall
+	faceplayer
 	msgbox Wassup, MSGBOX_DEFAULT
 	multichoicegrid 0, 1, MULTI_MILES_MENU, 1, FALSE
 	switch VAR_RESULT

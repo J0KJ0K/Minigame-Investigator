@@ -710,3 +710,6 @@ $(OBJEVENTGFXDIR)/custom/Springbonnie.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/custom/Miles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/custom/Purple_Man.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4

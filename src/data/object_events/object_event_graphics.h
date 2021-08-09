@@ -375,6 +375,7 @@ const u32 gObjectEventPic_Scraps2[] = INCBIN_U32("graphics/object_events/pics/cu
 const u32 gObjectEventPic_Scraps[] = INCBIN_U32("graphics/object_events/pics/custom/Scraps2.4bpp");
 const u32 gObjectEventPic_Miles[] = INCBIN_U32("graphics/object_events/pics/custom/Miles.4bpp");
 const u32 gObjectEventPic_Springbonnie[] = INCBIN_U32("graphics/object_events/pics/custom/Springbonnie.4bpp");
+const u32 gObjectEventPic_PurpleMan[] = INCBIN_U32("graphics/object_events/pics/custom/Purple_Man.4bpp");
 
 const u32 gObjectEventPic_BigRegirockDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regirock_doll.4bpp");
 const u32 gObjectEventPic_BigRegiceDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regice_doll.4bpp");

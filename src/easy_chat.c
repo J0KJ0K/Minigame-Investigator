@@ -4995,10 +4995,10 @@ static void TryAddInterviewObjectEvents(void)
     switch (GetDisplayedPersonType())
     {
     case EASY_CHAT_PERSON_REPORTER_MALE:
-        graphicsId = OBJ_EVENT_GFX_REPORTER_M;
+        graphicsId = OBJ_EVENT_GFX_PUPPET;
         break;
     case EASY_CHAT_PERSON_REPORTER_FEMALE:
-        graphicsId = OBJ_EVENT_GFX_REPORTER_F;
+        graphicsId = OBJ_EVENT_GFX_PURPLE_MAN;
         break;
     case EASY_CHAT_PERSON_BOY:
         graphicsId = OBJ_EVENT_GFX_BOY_1;

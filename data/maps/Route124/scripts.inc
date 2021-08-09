@@ -12,6 +12,8 @@ Route124_MapScripts:: @ 81F656C
 
 Route124_OnTransition: @ 81F6572
 	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_AFTON_X, 7
+	setvar VAR_AFTON_Y, 8
 	end
 
 Route124_OnFrame:
@@ -20,46 +22,128 @@ Route124_OnFrame:
 
 Trigger::
 	setvar VAR_TEMP_0, 1
-	specialvar VAR_FACING, GetPlayerFacingDirection
-		switch VAR_FACING
-		case DIR_NORTH, GoNorth
-		case DIR_SOUTH, ThatEscalatedQuickly
-		case DIR_WEST, KanyeQuest
-		case DIR_EAST, YouCanGetThisYeast	
-		return
+	call Movement
 	end
 
 Trigger20202020::
 	setvar VAR_TEMP_0, 0
+	call Movement
+	end
+
+Movement:
 	specialvar VAR_FACING, GetPlayerFacingDirection
 		switch VAR_FACING
-		case DIR_NORTH, GoNorth
-		case DIR_SOUTH, ThatEscalatedQuickly
+		@case DIR_NORTH, GoNorth
+		@case DIR_SOUTH, ThatEscalatedQuickly
 		case DIR_WEST, KanyeQuest
 		case DIR_EAST, YouCanGetThisYeast	
 		return
 	end
 
 GoNorth:
+	compare VAR_AFTON_Y, 4
+	goto_if_eq Deletehim
 	applymovement LOCALID_PURPLE_MAN, UpYours
-	waitmovement 0
-	return
+	subvar VAR_AFTON_Y, 1
 	end
 
 ThatEscalatedQuickly:
+	compare VAR_AFTON_Y, 9
+	goto_if_eq Deletehim
 	applymovement LOCALID_PURPLE_MAN, Downstairs
-	waitmovement 0
+	addvar VAR_AFTON_Y, 1
 	end
 
 KanyeQuest:
+	compare VAR_AFTON_X, 1
+	goto_if_eq NextStage
 	applymovement LOCALID_PURPLE_MAN, Eh
-	waitmovement 0
+	subvar VAR_AFTON_X, 1
 	end
 
 YouCanGetThisYeast:
+	compare VAR_AFTON_X, 10
+	goto_if_eq NextStage
 	applymovement LOCALID_PURPLE_MAN, Yeah
-	waitmovement 0
+	addvar VAR_AFTON_X, 1
 	end
+
+NextStage:
+	addvar VAR_AFTON_STATE, 1
+	compare VAR_AFTON_STATE, 2
+	call_if_eq Reposition
+	compare VAR_AFTON_STATE, 4
+	call_if_eq Reposition2
+	compare VAR_AFTON_STATE, 6
+	call_if_eq Reposition3
+	compare VAR_AFTON_STATE, 8
+	call_if_eq SpringbonnieDeath
+	end
+
+Reposition:
+	lockall
+	applymovement LOCALID_PURPLE_MAN, Reposition_1
+	waitmovement 0
+	setvar VAR_AFTON_X, 5
+	releaseall
+	return
+	end
+
+Reposition2:
+	lockall
+	applymovement LOCALID_PURPLE_MAN, Reposition_2
+	waitmovement 0
+	setvar VAR_AFTON_X, 7
+	releaseall
+	return
+	end
+
+Reposition3:
+	lockall
+	applymovement LOCALID_PURPLE_MAN, Reposition_3
+	waitmovement 0
+	setvar VAR_AFTON_X, 4
+	releaseall
+	return
+	end
+
+Reposition_1:
+	walk_fastest_left
+	walk_fastest_up
+	walk_fastest_left
+	walk_fastest_up
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+
+
+
+Reposition_2:
+	walk_fastest_down
+	walk_fastest_right
+	walk_fastest_down
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_up
+	walk_fastest_right
+	walk_fastest_up
+	walk_fastest_right
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_right
+	step_end
+
+Reposition_3:
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
 
 UpYours:
 	walk_up
@@ -139,7 +223,7 @@ SpringbonnieDeath::
 	fadescreenspeed FADE_TO_BLACK, 1
 	setvar VAR_COSTUME, 0
 	releaseall
-	warp MAP_PETALBURG_CITY, 1, 0, 0
+	warp MAP_PETALBURG_CITY, 17, 0, 0
 	waitstate
 	releaseall
 	end

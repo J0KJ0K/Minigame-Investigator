@@ -68,8 +68,6 @@
 #define OBJ_EVENT_GFX_PROF_BIRCH                  64
 #define OBJ_EVENT_GFX_MAN_4                       65
 #define OBJ_EVENT_GFX_MAN_5                       66
-#define OBJ_EVENT_GFX_REPORTER_M                  67
-#define OBJ_EVENT_GFX_REPORTER_F                  68
 #define OBJ_EVENT_GFX_BARD                        69
 #define OBJ_EVENT_GFX_ANABEL                      70
 #define OBJ_EVENT_GFX_TUCKER                      71
@@ -247,6 +245,8 @@
 #define OBJ_EVENT_GFX_FOXY         184 //used to be OBJ_EVENT_GFX_BIG_REGIROCK_DOLL
 #define OBJ_EVENT_GFX_CHICA            185//used to be OBJ_EVENT_GFX_BIG_REGICE_DOLL
 #define OBJ_EVENT_GFX_SCRAPS         186//used to be OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL
+#define OBJ_EVENT_GFX_PUPPET                 67
+#define OBJ_EVENT_GFX_PURPLE_MAN                  68
 
 #define NUM_OBJ_EVENT_GFX                        239
 

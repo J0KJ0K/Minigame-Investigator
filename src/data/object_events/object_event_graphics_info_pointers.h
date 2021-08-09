@@ -243,9 +243,11 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bonnie;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Chica;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scraps;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scraps2;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PurpleMan;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Springbonnie_Minigames;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Miles;
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PurpleMan;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Puppet;
 
 //technically unused, but still referenced
 //repurposed
@@ -322,8 +324,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_PROF_BIRCH] =               &gObjectEventGraphicsInfo_ProfBirch,
     [OBJ_EVENT_GFX_MAN_4] =                    &gObjectEventGraphicsInfo_Man4,
     [OBJ_EVENT_GFX_MAN_5] =                    &gObjectEventGraphicsInfo_Man5,
-    [OBJ_EVENT_GFX_REPORTER_M] =               &gObjectEventGraphicsInfo_ReporterM,
-    [OBJ_EVENT_GFX_REPORTER_F] =               &gObjectEventGraphicsInfo_ReporterF,
     [OBJ_EVENT_GFX_BARD] =                     &gObjectEventGraphicsInfo_Bard,
     [OBJ_EVENT_GFX_ANABEL] =                   &gObjectEventGraphicsInfo_Anabel,
     [OBJ_EVENT_GFX_TUCKER] =                   &gObjectEventGraphicsInfo_Tucker,
@@ -500,6 +500,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SCRAPS] = &gObjectEventGraphicsInfo_Scraps,
         [OBJ_EVENT_GFX_SCRAPS_2] = &gObjectEventGraphicsInfo_Scraps2,
         [OBJ_EVENT_GFX_SPRINGBONNIE_MINIGAMES] = &gObjectEventGraphicsInfo_Springbonnie_Minigames,
+        [OBJ_EVENT_GFX_PUPPET] = &gObjectEventGraphicsInfo_Puppet,
+        [OBJ_EVENT_GFX_PURPLE_MAN] = &gObjectEventGraphicsInfo_PurpleMan,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

@@ -2278,18 +2278,6 @@ const struct SpriteFrameImage sPicTable_Scraps2[] = {
     overworld_frame(gObjectEventPic_Scraps2, 4, 4, 3),
 };
 
-const struct SpriteFrameImage sPicTable_Purple_Man[] = {
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 0),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 1),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 2),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 3),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 4),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 5),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 6),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 7),
-    overworld_frame(gObjectEventPic_Bonnie, 2, 4, 8),
-};
-
 const struct SpriteFrameImage sPicTable_Springbonnie_Mini[] = {
     overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 0),
     overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 1),
@@ -2312,4 +2300,28 @@ static const struct SpriteFrameImage sPicTable_Miles[] = {
     overworld_frame(gObjectEventPic_Miles, 2, 4, 6),
     overworld_frame(gObjectEventPic_Miles, 2, 4, 7),
     overworld_frame(gObjectEventPic_Miles, 2, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_Purple_Man[] = {
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 0),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 1),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 2),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 3),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 4),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 5),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 6),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 7),
+    overworld_frame(gObjectEventPic_PurpleMan, 2, 4, 8),
+};
+
+const struct SpriteFrameImage sPicTable_Puppet[] = {
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Springbonnie, 4, 4, 8),
 };
