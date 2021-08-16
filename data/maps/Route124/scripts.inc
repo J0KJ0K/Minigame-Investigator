@@ -14,11 +14,19 @@ Route124_OnTransition: @ 81F6572
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_AFTON_X, 7
 	setvar VAR_AFTON_Y, 8
+	setvar VAR_AFTON_STATE, 0
 	end
 
 Route124_OnFrame:
+	map_script_2 VAR_AFTON_STATE, 0, Start
 	.2byte 0
 
+Start:
+	lockall
+	msgbox GET_AWAY, MSGBOX_DEFAULT
+	addvar VAR_AFTON_STATE, 1
+	releaseall
+	end
 
 Trigger::
 	setvar VAR_TEMP_0, 1
@@ -35,19 +43,35 @@ Movement:
 		switch VAR_FACING
 		@case DIR_NORTH, GoNorth
 		@case DIR_SOUTH, ThatEscalatedQuickly
-		case DIR_WEST, KanyeQuest
-		case DIR_EAST, YeastController	
+		case DIR_WEST, KanyeController
+		case DIR_EAST, YeastController
 		return
 	end
 
 YeastController:
 	compare VAR_AFTON_STATE, 1
-	call_if_eq YouCanGetThisYeast
-	compare VAR_AFTON_STATE, 3
-	call_if_eq YouCanGetThisYeast
+	goto_if_eq YouCanGetThisYeast
 	compare VAR_AFTON_STATE, 5
-	call_if_eq YouCanGetThisYeast
+	goto_if_eq YouCanGetThisYeast
 	end
+
+KanyeController:
+	compare VAR_AFTON_STATE, 3
+	goto_if_eq KanyeQuest
+	compare VAR_AFTON_STATE, 7
+	goto_if_eq KanyeQuest
+	end
+
+@VAR_AFTON_STATE states
+@	0, just entered the room, should activate William being surprised by the ghosts
+@	1, walking; William should only walk to the right
+@	2, reposition 1, where he is cornered
+@	3, walking, William should only walk to the left
+@	4, Reposition
+@	5, walking; William should only walk to the right
+@	6, reposition
+@	7, walking, William should only walk to the left
+@	8, SpringbonnieDeath
 
 GoNorth:
 	compare VAR_AFTON_Y, 4
@@ -80,13 +104,13 @@ YouCanGetThisYeast:
 NextStage:
 	addvar VAR_AFTON_STATE, 1
 	compare VAR_AFTON_STATE, 2
-	call_if_eq Reposition
+	goto_if_eq Reposition
 	compare VAR_AFTON_STATE, 4
-	call_if_eq Reposition2
+	goto_if_eq Reposition2
 	compare VAR_AFTON_STATE, 6
-	call_if_eq Reposition3
+	goto_if_eq Reposition3
 	compare VAR_AFTON_STATE, 8
-	call_if_eq SpringbonnieDeath
+	goto_if_eq SpringbonnieDeath
 	end
 
 Reposition:
@@ -94,8 +118,8 @@ Reposition:
 	applymovement LOCALID_PURPLE_MAN, Reposition_1
 	waitmovement 0
 	setvar VAR_AFTON_X, 5
+	addvar VAR_AFTON_STATE, 1
 	releaseall
-	return
 	end
 
 Reposition2:
@@ -103,8 +127,8 @@ Reposition2:
 	applymovement LOCALID_PURPLE_MAN, Reposition_2
 	waitmovement 0
 	setvar VAR_AFTON_X, 7
+	addvar VAR_AFTON_STATE, 1
 	releaseall
-	return
 	end
 
 Reposition3:
@@ -112,8 +136,8 @@ Reposition3:
 	applymovement LOCALID_PURPLE_MAN, Reposition_3
 	waitmovement 0
 	setvar VAR_AFTON_X, 4
+	addvar VAR_AFTON_STATE, 1
 	releaseall
-	return
 	end
 
 Reposition_1:
