@@ -149,7 +149,7 @@
       "x": 6,
       "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -162,7 +162,7 @@
       "x": 1,
       "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -203,7 +203,7 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY",
-      "dest_warp_id": 2
+      "dest_warp_id": 1
     }
   ],
   "coord_events": [

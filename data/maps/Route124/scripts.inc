@@ -36,8 +36,17 @@ Movement:
 		@case DIR_NORTH, GoNorth
 		@case DIR_SOUTH, ThatEscalatedQuickly
 		case DIR_WEST, KanyeQuest
-		case DIR_EAST, YouCanGetThisYeast	
+		case DIR_EAST, YeastController	
 		return
+	end
+
+YeastController:
+	compare VAR_AFTON_STATE, 1
+	call_if_eq YouCanGetThisYeast
+	compare VAR_AFTON_STATE, 3
+	call_if_eq YouCanGetThisYeast
+	compare VAR_AFTON_STATE, 5
+	call_if_eq YouCanGetThisYeast
 	end
 
 GoNorth:

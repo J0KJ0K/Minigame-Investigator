@@ -60,6 +60,7 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "Come see me in my POKéMON LAB.\p"
 	.string "$"
 
+@OFFICIAL MINIGAME INVESTIGATOR CONTENT AHEAD
 gText_PlayerName::
 	.string "This diary belongs to...$"
 
