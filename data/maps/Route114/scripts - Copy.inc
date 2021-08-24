@@ -15,26 +15,10 @@ Route114_OnFrame: @ 81F2578
 		map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyCutscene
 	.2byte 0
 
-Route114_OnLoad: @ 81F256
-	end
-
-Route114_OnTransition:
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_ANIMATRONIC_ID, 5
-	goto_if_eq Deletehim
-	end
-
-TrueReset::
-	setvar VAR_KEEP_AT_0, 0
-	return
-	end
-
-Deletehim::
-	end
-
 ShadowFreddyCutscene:
 	compare VAR_ANIMATRONIC_ID, 5
 	goto_if_eq Reset
+	goto_if_set FLAG_LAST_IN_BATHROOMS, Reset
 	setvar VAR_KEEP_AT_0, 1
 	lockall
 	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
@@ -59,6 +43,8 @@ ContinueShadowFreddyCutscene:
 	call GototheDoor
 	fadescreenspeed FADE_TO_BLACK, 1
 	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
+	setflag FLAG_LAST_IN_BATHROOMS
+	setflag FLAG_LAST_IN_ROOM_R
 	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	releaseall
 	end
@@ -156,42 +142,6 @@ Reset::
 	setvar VAR_KEEP_AT_0, 2
 	end
 
-WelcomeToTheFazZone::
-	addobject LOCALID_SHADOW_FREDDY
-	lockall
-	msgbox Follower, MSGBOX_DEFAULT
-	releaseall
-	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingDown
-	waitmovement 0
-	removeobject LOCALID_SHADOW_FREDDY
-	return
-	end
-
-ToInfinityAndBeyond::
-	addobject LOCALID_SHADOW_FREDDY
-	lockall
-	msgbox Follower, MSGBOX_DEFAULT
-	releaseall
-	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingUp
-	waitmovement 0
-	removeobject LOCALID_SHADOW_FREDDY
-	return
-	end
-
-GoRightToThePoint::
-	addobject LOCALID_SHADOW_FREDDY
-	lockall
-	msgbox Follower, MSGBOX_DEFAULT
-	releaseall
-	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingRight
-	waitmovement 0
-	removeobject LOCALID_SHADOW_FREDDY
-	return
-	end
-
 Follower::
 	.string "FOLLOW ME$"
 
@@ -221,6 +171,21 @@ GoingRight::
 	walk_right
 	set_invisible
 	step_end
+
+Route114_OnLoad: @ 81F256
+	end
+
+Route114_OnTransition:
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
+	clearflag FLAG_LAST_IN_ROOM_R
+	end
+
+TrueReset::
+	setvar VAR_KEEP_AT_0, 0
+	return
+	end
 
 MotionTrigger::
 	lockall

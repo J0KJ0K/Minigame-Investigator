@@ -60,11 +60,10 @@ Trigger3::
 Trigger4::
 	setvar VAR_ANIMATRONIC_ID, 4
 	setvar VAR_COSTUME, 4
-	setflag FLAG_LAST_IN_ROOM_S
 	msgbox Night_4, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	special SwapPlayersCostume
-	warp MAP_ROUTE118, 0, 1, 5
+	warp MAP_ROUTE122, 1, 1, 5
 	waitstate
 	end
 

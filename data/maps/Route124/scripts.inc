@@ -23,7 +23,8 @@ Route124_OnFrame:
 
 Start:
 	lockall
-	msgbox GET_AWAY, MSGBOX_DEFAULT
+	@mugshot of Purple Man
+	msgbox WHAT, MSGBOX_DEFAULT
 	addvar VAR_AFTON_STATE, 1
 	releaseall
 	end
@@ -150,8 +151,6 @@ Reposition_1:
 	walk_fastest_left
 	step_end
 
-
-
 Reposition_2:
 	walk_fastest_down
 	walk_fastest_right
@@ -208,7 +207,9 @@ Yeah:
 
 
 
-
+WHAT:
+	.string "What?! Ghosts?!\n"
+	.string "GET OFF ME!!$"
 
 GET_AWAY:
 	.string "GET AWAY FROM ME!!$"

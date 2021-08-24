@@ -16,6 +16,11 @@ Route120_OnResume: @ 81F53FC
 Route120_OnFrame: @ 81F3E0A
 	.2byte 0
 
+Route120_OnTransition: @ 81F54CD
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_ANIMATRONIC_ID, 5
+	goto_if_eq Deletehim
+	end
 
 Route120_OnLoad: @ 81F5474
 	call_if_unset FLAG_REGI_DOORS_OPENED, Route120_EventScript_CloseAncientTomb
@@ -38,17 +43,6 @@ Route120_EventScript_SetBridgeClearMetatiles:: @ 81F54A3
 Route120_EventScript_SetBridgeKecleonMovement:: @ 81F54C8
 	setobjectmovementtype LOCALID_BRIDGE_KECLEON_SHADOW, MOVEMENT_TYPE_FACE_RIGHT
 	return
-
-Route120_OnTransition: @ 81F54CD
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_ANIMATRONIC_ID, 5
-	goto_if_eq Deletehim
-	call_if_set FLAG_LAST_IN_CORRIDOR_L, TrueReset
-	call_if_set FLAG_LAST_IN_CORRIDOR_R, TrueReset
-	clearflag FLAG_LAST_IN_CORRIDOR_L
-	clearflag FLAG_LAST_IN_CORRIDOR_R
-	setflag FLAG_LAST_IN_OFFICE
-	end
 
 Route120_EventScript_SetWeather:: @ 81F54D8
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
