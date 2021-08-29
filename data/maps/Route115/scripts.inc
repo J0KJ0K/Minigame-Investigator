@@ -15,13 +15,14 @@ Route115_OnTransition: @ 81F2947
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	compare VAR_ANIMATRONIC_ID, 5
 	goto_if_eq Deletehim
+	setvar VAR_ROOM_IN_NOW, 1
+	setvar VAR_SFREDDY_FACING, 3
 	end
 
 Route115_OnFrame: @ 81F2969
+	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyCutscene
+	map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyCutscene
 	.2byte 0
-
-
-
 
 
 Route115_EventScript_Woman:: @ 81F2973

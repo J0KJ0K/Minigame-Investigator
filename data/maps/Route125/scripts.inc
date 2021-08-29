@@ -70,15 +70,15 @@ Trigger4::
 Trigger5::
 	setvar VAR_ANIMATRONIC_ID, 5
 	setvar VAR_COSTUME, 5
-	setflag FLAG_LAST_IN_OFFICE
-	setflag FLAG_LAST_IN_BATHROOMS
-	setflag FLAG_LAST_IN_ROOM_S
-	setflag FLAG_LAST_IN_ROOM_R
-	setflag FLAG_LAST_IN_STAGE
-	setflag FLAG_LAST_IN_CORRIDOR_R
-	setflag FLAG_LAST_IN_CORRIDOR_L
-	setflag FLAG_LAST_IN_KITCHEN
-	setflag FLAG_LAST_IN_PIRATE_COVE
+	setflag FLAG_BEEN_IN_OFFICE
+	setflag FLAG_BEEN_IN_BATHROOMS
+	setflag FLAG_BEEN_IN_ROOM_S
+	setflag FLAG_BEEN_IN_ROOM_R
+	setflag FLAG_BEEN_IN_STAGE
+	setflag FLAG_BEEN_IN_CORRIDOR_R
+	setflag FLAG_BEEN_IN_CORRIDOR_L
+	setflag FLAG_BEEN_IN_KITCHEN
+	setflag FLAG_BEEN_IN_PIRATE_COVE
 	msgbox Night_5, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	special SwapPlayersCostume

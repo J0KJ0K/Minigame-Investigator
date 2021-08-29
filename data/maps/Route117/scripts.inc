@@ -1,4 +1,4 @@
-.set LOCALID_DAYCARE_MAN, 3
+.set LOCALID_DAYCARE_MAN, 20
 
 Route117_MapScripts:: @ 81F397D
 	map_script MAP_SCRIPT_ON_TRANSITION, Route117_OnTransition
@@ -35,7 +35,7 @@ Route117_EventScript_StopMoveDayCareMan:: @ 81F3999
 
 Route117_EventScript_Woman:: @ 81F399A
 	msgbox Route117_Text_ArentTheseFlowersPretty, MSGBOX_NPC
-	end
+	end 
 
 Route117_EventScript_LittleBoy:: @ 81F39A3
 	msgbox Route117_Text_AirIsTastyHere, MSGBOX_NPC

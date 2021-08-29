@@ -22,7 +22,47 @@ Route114_OnTransition:
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	compare VAR_ANIMATRONIC_ID, 5
 	goto_if_eq Deletehim
+	setvar VAR_ROOM_IN_NOW, 0
+	setvar VAR_SFREDDY_FACING, 1
+	call Reset
 	end
+
+StartRoom::
+	setvar VAR_KEEP_AT_0, 0
+
+Reset::
+	setvar VAR_KEEP_AT_0, 2
+	end
+
+Follower::
+	.string "FOLLOW ME$"
+
+GoingUp::
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	set_invisible
+	step_end
+
+GoingDown::
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	set_invisible
+	step_end
+
+GoingRight::
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	set_invisible
+	step_end
 
 TrueReset::
 	setvar VAR_KEEP_AT_0, 0
@@ -32,7 +72,8 @@ TrueReset::
 Deletehim::
 	end
 
-ShadowFreddyCutscene:
+
+ShadowFreddyCutscene::
 	compare VAR_ANIMATRONIC_ID, 5
 	goto_if_eq Reset
 	setvar VAR_KEEP_AT_0, 1
@@ -40,11 +81,47 @@ ShadowFreddyCutscene:
 	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
 	setflag	FLAG_SPAWN_INVISIBLE
 	fadescreenspeed FADE_TO_BLACK, 1
+	switch VAR_ROOM_IN_NOW
+	case 0, SF114
+	case 1, SF115
+	case 2, SF116
+	case 3, SF117
+	case 4, SF119
+	case 5, SF121
+	waitstate
+	end
+
+SF114:
 	warpsilent MAP_ROUTE114, 0xFF, 3, 5
 	waitstate
 	end
 
-ContinueShadowFreddyCutscene:
+SF115:
+	warpsilent MAP_ROUTE115, 0xFF, 8, 8
+	waitstate
+	end
+
+SF116:
+	warpsilent MAP_ROUTE116, 0xFF, 8, 8
+	waitstate
+	end
+
+SF117:
+	warpsilent MAP_ROUTE117, 0xFF, 8, 8
+	waitstate
+	end
+
+SF119:
+	warpsilent MAP_ROUTE119, 0xFF, 8, 6
+	waitstate
+	end
+
+SF121:
+	warpsilent MAP_ROUTE121, 0xFF, 3, 14
+	waitstate
+	end
+
+ContinueShadowFreddyCutscene::
 	lockall
 	setvar VAR_KEEP_AT_0, 2
 	compare VAR_ANIMATRONIC_ID, 1
@@ -59,8 +136,50 @@ ContinueShadowFreddyCutscene:
 	call GototheDoor
 	fadescreenspeed FADE_TO_BLACK, 1
 	applymovement OBJ_EVENT_ID_PLAYER, MakeVisible
-	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	switch VAR_ROOM_IN_NOW
+	case 0, WarpBack114
+	case 1, WarpBack115
+	case 2, WarpBack116
+	case 3, WarpBack117
+	case 4, WarpBack119
+	case 5, WarpBack121
 	releaseall
+	end
+
+WarpBack114:
+	setflag FLAG_BEEN_IN_BATHROOMS
+	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	waitstate
+	end
+
+WarpBack115:
+	setflag FLAG_BEEN_IN_ROOM_R
+	warpsilent MAP_ROUTE115, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	waitstate
+	end
+
+WarpBack116:
+	setflag FLAG_BEEN_IN_KITCHEN
+	warpsilent MAP_ROUTE116, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	waitstate
+	end
+
+WarpBack117:
+	setflag FLAG_BEEN_IN_ROOM_S
+	warpsilent MAP_ROUTE117, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	waitstate
+	end
+
+WarpBack119:
+	setflag FLAG_BEEN_IN_CORRIDOR_L
+	warpsilent MAP_ROUTE119, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	waitstate
+	end
+
+WarpBack121:
+	setflag FLAG_BEEN_IN_CORRIDOR_R
+	warpsilent MAP_ROUTE121, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
+	waitstate
 	end
 
 RemoveNotFreddy::
@@ -97,9 +216,36 @@ GototheDoor:
 	msgbox Follower, MSGBOX_DEFAULT
 	releaseall
 	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingDoor
+	compare VAR_SFREDDY_FACING, 0
+	call_if_eq GoUpwards
+	compare VAR_SFREDDY_FACING, 1
+	call_if_eq GoDoor
+	compare VAR_SFREDDY_FACING, 2
+	call_if_eq GoDown
+	compare VAR_SFREDDY_FACING, 3
+	call_if_eq GoRight
 	waitmovement 0
 	removeobject LOCALID_SHADOW_FREDDY
+	return
+	end
+
+GoDoor:
+	applymovement LOCALID_SHADOW_FREDDY, GoingDoor
+	return
+	end
+
+GoUpwards:
+	applymovement LOCALID_SHADOW_FREDDY, GoingUp
+	return
+	end
+
+GoDown:
+	applymovement LOCALID_SHADOW_FREDDY, GoingDown
+	return
+	end
+
+GoRight:
+	applymovement LOCALID_SHADOW_FREDDY, GoingRight
 	return
 	end
 
@@ -132,6 +278,8 @@ ItsBonnie:
 OhShit:
 	getplayerxy VAR_PLAYER_X, VAR_PLAYER_Y
 	setvar VAR_TURNED_HIMSELF_INTO_SCRAPS, 1
+	clearflag FLAG_BEEN_IN_BATHROOMS
+	setvar VAR_KEEP_AT_0, 0
 	releaseall
 	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	waitstate
@@ -150,77 +298,6 @@ TurnedHimselfIntoScraps:
 	warp MAP_PETALBURG_CITY, 17, 0, 0
 	waitstate
 	end
-
-
-Reset::
-	setvar VAR_KEEP_AT_0, 2
-	end
-
-WelcomeToTheFazZone::
-	addobject LOCALID_SHADOW_FREDDY
-	lockall
-	msgbox Follower, MSGBOX_DEFAULT
-	releaseall
-	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingDown
-	waitmovement 0
-	removeobject LOCALID_SHADOW_FREDDY
-	return
-	end
-
-ToInfinityAndBeyond::
-	addobject LOCALID_SHADOW_FREDDY
-	lockall
-	msgbox Follower, MSGBOX_DEFAULT
-	releaseall
-	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingUp
-	waitmovement 0
-	removeobject LOCALID_SHADOW_FREDDY
-	return
-	end
-
-GoRightToThePoint::
-	addobject LOCALID_SHADOW_FREDDY
-	lockall
-	msgbox Follower, MSGBOX_DEFAULT
-	releaseall
-	lockall
-	applymovement LOCALID_SHADOW_FREDDY, GoingRight
-	waitmovement 0
-	removeobject LOCALID_SHADOW_FREDDY
-	return
-	end
-
-Follower::
-	.string "FOLLOW ME$"
-
-GoingUp::
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	set_invisible
-	step_end
-
-GoingDown::
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	set_invisible
-	step_end
-
-GoingRight::
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	set_invisible
-	step_end
 
 MotionTrigger::
 	lockall
@@ -250,7 +327,7 @@ ItsFreddy:
 	end
 
 ItsChica:
-msgbox YOURE_GOING_TO_HORNY_JAIL, MSGBOX_DEFAULT
+	msgbox YOURE_GOING_TO_HORNY_JAIL, MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, ChicaWalk
 	waitmovement 0
 	msgbox RESTARTING, MSGBOX_DEFAULT

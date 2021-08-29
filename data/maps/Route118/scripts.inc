@@ -12,11 +12,6 @@ Route118_OnTransition: @ 81F3DCC
 	end
 
 Route118_OnLoad: @ 81F3DF3
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	setflag FLAG_LAST_IN_PIRATE_COVE
-	clearflag FLAG_LAST_IN_STAGE
-	clearflag FLAG_LAST_IN_CORRIDOR_L
-	clearflag FLAG_LAST_IN_ROOM_S
 	end
 
 Route118_OnFrame: @ 81F3E0A
@@ -37,10 +32,10 @@ DeleteFoxy:
 Night5:
 	call DeleteFoxy
 	clearflag FLAG_HIDE_FOXY_SCRAPS
-	setflag FLAG_LAST_IN_KITCHEN
-	setflag FLAG_LAST_IN_BATHROOMS
-	setflag FLAG_LAST_IN_ROOM_S
-	setflag FLAG_LAST_IN_ROOM_R
-	setflag FLAG_LAST_IN_OFFICE
-	setflag FLAG_LAST_IN_CORRIDOR_R
+	setflag FLAG_BEEN_IN_KITCHEN
+	setflag FLAG_BEEN_IN_BATHROOMS
+	setflag FLAG_BEEN_IN_ROOM_S
+	setflag FLAG_BEEN_IN_ROOM_R
+	setflag FLAG_BEEN_IN_OFFICE
+	setflag FLAG_BEEN_IN_CORRIDOR_R
 	end

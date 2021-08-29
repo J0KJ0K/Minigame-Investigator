@@ -41,7 +41,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_LAST_IN_PIRATE_COVE"
+      "flag": "FLAG_BEEN_IN_CORRIDOR_L"
     }
   ],
   "warp_events": [
