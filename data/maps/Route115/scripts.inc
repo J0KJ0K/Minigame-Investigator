@@ -17,6 +17,8 @@ Route115_OnTransition: @ 81F2947
 	goto_if_eq Deletehim
 	setvar VAR_ROOM_IN_NOW, 1
 	setvar VAR_SFREDDY_FACING, 3
+	compare VAR_KEEP_AT_0, 2
+	goto_if_eq CheckBeenIn115
 	end
 
 Route115_OnFrame: @ 81F2969

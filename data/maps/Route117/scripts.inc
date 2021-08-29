@@ -10,12 +10,18 @@ Route117_OnTransition: @ 81F3983
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	compare VAR_ANIMATRONIC_ID, 5
 	goto_if_eq Deletehim
+	setvar VAR_ROOM_IN_NOW, 3
+	setvar VAR_SFREDDY_FACING, 3
+	compare VAR_KEEP_AT_0, 2
+	goto_if_eq CheckBeenIn117
 	end
 
 Route117_OnLoad:
 	end
 
 Route117_OnFrame:
+	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyCutscene
+	map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyCutscene
 	.2byte 0
 
 

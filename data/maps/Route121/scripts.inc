@@ -10,10 +10,16 @@ Route121_OnTransition:
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	compare VAR_ANIMATRONIC_ID, 5
 	goto_if_eq Deletehim
+	setvar VAR_ROOM_IN_NOW, 5
+	setvar VAR_SFREDDY_FACING, 0
+	compare VAR_KEEP_AT_0, 2
+	goto_if_eq CheckBeenIn121
 	end
 
 Route121_OnFrame:
-		.2byte 0
+	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyCutscene
+	map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyCutscene
+	.2byte 0
 	
 
 

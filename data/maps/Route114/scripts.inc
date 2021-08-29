@@ -12,7 +12,7 @@
 Route114_OnFrame: @ 81F2578
 	map_script_2 VAR_TURNED_HIMSELF_INTO_SCRAPS, 1, TurnedHimselfIntoScraps
 	map_script_2 VAR_KEEP_AT_0, 0, ShadowFreddyCutscene
-		map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyCutscene
+	map_script_2 VAR_KEEP_AT_0, 1, ContinueShadowFreddyCutscene
 	.2byte 0
 
 Route114_OnLoad: @ 81F256
@@ -24,11 +24,37 @@ Route114_OnTransition:
 	goto_if_eq Deletehim
 	setvar VAR_ROOM_IN_NOW, 0
 	setvar VAR_SFREDDY_FACING, 1
-	call Reset
+	compare VAR_KEEP_AT_0, 2
+	goto_if_eq CheckBeenIn114
+	end
+
+CheckBeenIn114::
+	goto_if_unset FLAG_BEEN_IN_BATHROOMS, StartRoom
+	end
+
+CheckBeenIn115::
+	goto_if_unset FLAG_BEEN_IN_ROOM_R, StartRoom
+	end
+
+CheckBeenIn116::
+	goto_if_unset FLAG_BEEN_IN_KITCHEN, StartRoom
+	end
+
+CheckBeenIn117::
+	goto_if_unset FLAG_BEEN_IN_ROOM_S, StartRoom
+	end
+
+CheckBeenIn119::
+	goto_if_unset FLAG_BEEN_IN_CORRIDOR_L, StartRoom
+	end
+
+CheckBeenIn121::
+	goto_if_unset FLAG_BEEN_IN_CORRIDOR_R, StartRoom
 	end
 
 StartRoom::
 	setvar VAR_KEEP_AT_0, 0
+	end
 
 Reset::
 	setvar VAR_KEEP_AT_0, 2
@@ -92,31 +118,37 @@ ShadowFreddyCutscene::
 	end
 
 SF114:
+	setflag FLAG_BEEN_IN_BATHROOMS
 	warpsilent MAP_ROUTE114, 0xFF, 3, 5
 	waitstate
 	end
 
 SF115:
-	warpsilent MAP_ROUTE115, 0xFF, 8, 8
+	setflag FLAG_BEEN_IN_ROOM_R
+	warpsilent MAP_ROUTE115, 0xFF, 8, 5
 	waitstate
 	end
 
 SF116:
-	warpsilent MAP_ROUTE116, 0xFF, 8, 8
+	setflag FLAG_BEEN_IN_KITCHEN
+	warpsilent MAP_ROUTE116, 0xFF, 8, 5
 	waitstate
 	end
 
 SF117:
-	warpsilent MAP_ROUTE117, 0xFF, 8, 8
+	setflag FLAG_BEEN_IN_ROOM_S
+	warpsilent MAP_ROUTE117, 0xFF, 8, 5
 	waitstate
 	end
 
 SF119:
+	setflag FLAG_BEEN_IN_CORRIDOR_L
 	warpsilent MAP_ROUTE119, 0xFF, 8, 6
 	waitstate
 	end
 
 SF121:
+	setflag FLAG_BEEN_IN_CORRIDOR_R
 	warpsilent MAP_ROUTE121, 0xFF, 3, 14
 	waitstate
 	end
@@ -147,37 +179,31 @@ ContinueShadowFreddyCutscene::
 	end
 
 WarpBack114:
-	setflag FLAG_BEEN_IN_BATHROOMS
 	warpsilent MAP_ROUTE114, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	waitstate
 	end
 
 WarpBack115:
-	setflag FLAG_BEEN_IN_ROOM_R
 	warpsilent MAP_ROUTE115, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	waitstate
 	end
 
 WarpBack116:
-	setflag FLAG_BEEN_IN_KITCHEN
 	warpsilent MAP_ROUTE116, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	waitstate
 	end
 
 WarpBack117:
-	setflag FLAG_BEEN_IN_ROOM_S
 	warpsilent MAP_ROUTE117, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	waitstate
 	end
 
 WarpBack119:
-	setflag FLAG_BEEN_IN_CORRIDOR_L
 	warpsilent MAP_ROUTE119, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	waitstate
 	end
 
 WarpBack121:
-	setflag FLAG_BEEN_IN_CORRIDOR_R
 	warpsilent MAP_ROUTE121, 0xFF, VAR_PLAYER_X, VAR_PLAYER_Y
 	waitstate
 	end
