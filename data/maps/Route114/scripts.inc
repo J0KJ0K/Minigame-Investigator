@@ -20,7 +20,7 @@ Route114_OnLoad: @ 81F256
 
 Route114_OnTransition:
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_ANIMATRONIC_ID, 5
+	compare VAR_MINIGAME_ID, 5
 	goto_if_eq Deletehim
 	setvar VAR_ROOM_IN_NOW, 0
 	setvar VAR_SFREDDY_FACING, 1
@@ -100,7 +100,7 @@ Deletehim::
 
 
 ShadowFreddyCutscene::
-	compare VAR_ANIMATRONIC_ID, 5
+	compare VAR_MINIGAME_ID, 5
 	goto_if_eq Reset
 	setvar VAR_KEEP_AT_0, 1
 	lockall
@@ -156,13 +156,13 @@ SF121:
 ContinueShadowFreddyCutscene::
 	lockall
 	setvar VAR_KEEP_AT_0, 2
-	compare VAR_ANIMATRONIC_ID, 1
+	compare VAR_MINIGAME_ID, 1
 	call_if_eq RemoveNotFreddy
-	compare VAR_ANIMATRONIC_ID, 2
+	compare VAR_MINIGAME_ID, 2
 	call_if_eq RemoveNotBonnie
-	compare VAR_ANIMATRONIC_ID, 3
+	compare VAR_MINIGAME_ID, 3
 	call_if_eq RemoveNotChica
-	compare VAR_ANIMATRONIC_ID, 4
+	compare VAR_MINIGAME_ID, 4
 	call_if_eq RemoveNotFoxy
 	fadescreenspeed FADE_FROM_BLACK, 1
 	call GototheDoor
@@ -327,13 +327,13 @@ TurnedHimselfIntoScraps:
 
 MotionTrigger::
 	lockall
-	compare VAR_ANIMATRONIC_ID, 1
+	compare VAR_MINIGAME_ID, 1
 	goto_if_eq ItsFreddy
-	compare VAR_ANIMATRONIC_ID, 2
+	compare VAR_MINIGAME_ID, 2
 	goto_if_eq ItsBonnie
-	compare VAR_ANIMATRONIC_ID, 3
+	compare VAR_MINIGAME_ID, 3
 	goto_if_eq ItsChica
-	compare VAR_ANIMATRONIC_ID, 4
+	compare VAR_MINIGAME_ID, 4
 	goto_if_eq ItsFoxy
 	releaseall
 	end

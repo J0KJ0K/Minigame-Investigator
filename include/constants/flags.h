@@ -72,15 +72,15 @@
 #define FLAG_BEEN_IN_CORRIDOR_L    0x31 // Shadow  Freddy doesn't go to corridor L unless you get misguided
 #define FLAG_BEEN_IN_PIRATE_COVE    0x30 // Shadow Freddy doesn't go to pirate cove unless you get misguided
 #define FLAG_BEEN_IN_STAGE    0x2D // Shadow Freddy never goes to the stage
-
 #define FLAG_LAST_IN_PARTS_AND_SERVICE    0x36 // Shadow Freddy never goes to the Parts and Services room
-
 #define FLAG_LAST_IN_ROOM_L    0x2E // Shadow Freddy never goes to the party room on the left
 
+#define FLAG_HIDE_GHOSTS    0x38 // Hides Ghosts for FOXY GO! GO! GO!
+#define FLAG_HIDE_CHILDREN    0x39 // Hides Children for FOXY! GO! GO! GO!
 
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
+#define FLAG_DEVELOPER_COMMENTARY    0x3A // Tracks if it's listening to the Developer Commentary
+
+
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag

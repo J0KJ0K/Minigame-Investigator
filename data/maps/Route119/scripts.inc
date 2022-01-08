@@ -21,7 +21,7 @@ Route119_EventScript_TryRemoveKecleon:: @ 81F4439
 
 Route119_OnTransition: @ 81F444D
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_ANIMATRONIC_ID, 5
+	compare VAR_MINIGAME_ID, 5
 	goto_if_eq Deletehim
 	setvar VAR_ROOM_IN_NOW, 4
 	setvar VAR_SFREDDY_FACING, 2

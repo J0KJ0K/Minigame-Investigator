@@ -5,10 +5,16 @@ Route118_MapScripts:: @ 81F3DBC
 	.byte 0
 
 Route118_OnTransition: @ 81F3DCC
-	compare VAR_ANIMATRONIC_ID, 4
+	compare VAR_MINIGAME_ID, 4
 	call_if_eq DeleteFoxy
-	compare VAR_ANIMATRONIC_ID, 5
+	compare VAR_MINIGAME_ID, 5
 	call_if_eq Night5
+	compare VAR_MINIGAME_ID, 6
+	call_if_eq IsFoxyGoGoGo1
+	compare VAR_MINIGAME_ID, 7
+	call_if_eq IsFoxyGoGoGo1
+	compare VAR_MINIGAME_ID, 8
+	call_if_eq IsFoxyGoGoGo
 	end
 
 Route118_OnLoad: @ 81F3DF3
@@ -17,19 +23,19 @@ Route118_OnLoad: @ 81F3DF3
 Route118_OnFrame: @ 81F3E0A
 	.2byte 0
 
-
-DeleteFoxy:
-	setflag FLAG_HIDE_FOXY_2
-	clearflag FLAG_HIDE_CHICA_SCRAPS
-	setflag FLAG_HIDE_CHICA
-	clearflag FLAG_HIDE_BONNIE_SCRAPS
-	setflag FLAG_HIDE_BONNIE
-	clearflag FLAG_HIDE_FREDDY_SCRAPS
-	setflag FLAG_HIDE_FREDDY
+IsFoxyGoGoGo1:
+	clearflag FLAG_HIDE_CHILDREN
+	setflag FLAG_HIDE_GHOSTS
 	return
 	end
 
-Night5:
+IsFoxyGoGoGo:
+	clearflag FLAG_HIDE_GHOSTS
+	setflag FLAG_HIDE_CHILDREN
+	return
+	end
+
+Night5::
 	call DeleteFoxy
 	clearflag FLAG_HIDE_FOXY_SCRAPS
 	setflag FLAG_BEEN_IN_KITCHEN
@@ -38,4 +44,6 @@ Night5:
 	setflag FLAG_BEEN_IN_ROOM_R
 	setflag FLAG_BEEN_IN_OFFICE
 	setflag FLAG_BEEN_IN_CORRIDOR_R
+	setflag FLAG_HIDE_GHOSTS
+	setflag FLAG_HIDE_CHILDREN
 	end

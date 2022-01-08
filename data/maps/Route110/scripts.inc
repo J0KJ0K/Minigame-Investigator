@@ -15,7 +15,7 @@ Route110_OnResume: @ 81EF279
 
 Route110_OnTransition: @ 81EF27D
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_ANIMATRONIC_ID, 5
+	compare VAR_MINIGAME_ID, 5
 	goto_if_eq Deletehim
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
@@ -33,13 +33,13 @@ Route110_OnFrame: @ 81EF297
 	.2byte 0
 
 AnimatronicCheck::
-	compare VAR_ANIMATRONIC_ID, 1
+	compare VAR_MINIGAME_ID, 1
 	goto_if_eq Night1
-	compare VAR_ANIMATRONIC_ID, 2
+	compare VAR_MINIGAME_ID, 2
 	goto_if_eq Night2
-	compare VAR_ANIMATRONIC_ID, 3
+	compare VAR_MINIGAME_ID, 3
 	goto_if_eq Night3
-	compare VAR_ANIMATRONIC_ID, 4
+	compare VAR_MINIGAME_ID, 4
 	goto_if_eq Night4
 	end
 

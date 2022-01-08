@@ -8,7 +8,7 @@ Route121_MapScripts:: @ 81F5DFC
 
 Route121_OnTransition:
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_ANIMATRONIC_ID, 5
+	compare VAR_MINIGAME_ID, 5
 	goto_if_eq Deletehim
 	setvar VAR_ROOM_IN_NOW, 5
 	setvar VAR_SFREDDY_FACING, 0

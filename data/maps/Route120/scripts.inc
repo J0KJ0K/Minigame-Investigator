@@ -18,7 +18,7 @@ Route120_OnFrame: @ 81F3E0A
 
 Route120_OnTransition: @ 81F54CD
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare VAR_ANIMATRONIC_ID, 5
+	compare VAR_MINIGAME_ID, 5
 	goto_if_eq Deletehim
 	end
 

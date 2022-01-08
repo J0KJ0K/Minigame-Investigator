@@ -30,7 +30,7 @@ GoBackHome::
 Trigger1::
 	msgbox Night_1, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
-	setvar VAR_ANIMATRONIC_ID, 1
+	setvar VAR_MINIGAME_ID, 1
 	setvar VAR_COSTUME, 1
 	special SwapPlayersCostume
 	warp MAP_ROUTE110, 0, 0, 0
@@ -40,7 +40,7 @@ Trigger1::
 Trigger2::
 	msgbox Night_2, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
-	setvar VAR_ANIMATRONIC_ID, 2
+	setvar VAR_MINIGAME_ID, 2
 	setvar VAR_COSTUME, 2
 	special SwapPlayersCostume
 	warp MAP_ROUTE110, 1, 0, 0
@@ -50,7 +50,7 @@ Trigger2::
 Trigger3::
 	msgbox Night_3, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
-	setvar VAR_ANIMATRONIC_ID, 3
+	setvar VAR_MINIGAME_ID, 3
 	setvar VAR_COSTUME, 3
 	special SwapPlayersCostume
 	warp MAP_ROUTE110, 2, 0, 0
@@ -58,7 +58,7 @@ Trigger3::
 	end
 
 Trigger4::
-	setvar VAR_ANIMATRONIC_ID, 4
+	setvar VAR_MINIGAME_ID, 4
 	setvar VAR_COSTUME, 4
 	msgbox Night_4, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
@@ -68,7 +68,7 @@ Trigger4::
 	end
 
 Trigger5::
-	setvar VAR_ANIMATRONIC_ID, 5
+	setvar VAR_MINIGAME_ID, 5
 	setvar VAR_COSTUME, 5
 	setflag FLAG_BEEN_IN_OFFICE
 	setflag FLAG_BEEN_IN_BATHROOMS

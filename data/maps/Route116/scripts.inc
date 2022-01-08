@@ -6,7 +6,7 @@ Route116_MapScripts:: @ 81F2C0C
 
 Route116_OnTransition: @ 81F2C1C
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	compare	VAR_ANIMATRONIC_ID, 5
+	compare	VAR_MINIGAME_ID, 5
 	goto_if_eq Deletehim
 	setvar VAR_ROOM_IN_NOW, 2
 	setvar VAR_SFREDDY_FACING, 0

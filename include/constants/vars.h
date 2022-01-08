@@ -247,7 +247,19 @@
 #define VAR_ROOM_IN_NOW               0x406B // Unused Var
 #define VAR_SFREDDY_FACING                   0x406C // Unused Var
 
-#define VAR_ROUTE114_STATE                   0x406D // Unused Var
+#define VAR_MINIGAME_ID                  0x406D
+/*0. Normal Gameplay
+1. FNaF 3 End Of Night 1
+2. FNaF 3 End Of Night 2
+3. FNaF 3 End Of Night 3
+4. FNaF 3 End Of Night 4
+5. FNaF 3 End Of Night 5
+6. Foxy Go! Go! Go! - 1
+7. Foxy Go! Go! Go! - 2
+8. Foxy Go! Go! Go! - 3
+*/
+
+
 #define VAR_ROUTE115_STATE                   0x406E // Unused Var
 #define VAR_ROUTE117_STATE                   0x4070 // Unused Var
 #define VAR_ROUTE120_STATE                   0x4073 // Unused Var
