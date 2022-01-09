@@ -400,7 +400,7 @@ $(MID_SUBDIR)/mus_rg_vermillion.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G172 -V090
 
 $(MID_SUBDIR)/mus_rg_route1.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G150 -V079
+	$(MID) $< $@ -E -R$(STD_REVERB) -G002 -V079
 
 $(MID_SUBDIR)/mus_rg_route3.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G152 -V083
