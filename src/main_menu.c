@@ -255,7 +255,7 @@ static const u16 sBirchSpeechBgPals[][16] = {
 };
 
 static const u32 sHurricaneBackground[] = INCBIN_U32("graphics/birch_speech/welcum.bin.lz");
-static const u32 sBirchSpeechHurricaneGfx[] = INCBIN_U32("graphics/birch_speech/welcum.4bpp.lz");
+static const u32 sBirchSpeechHurricaneGfx[] = INCBIN_U32("graphics/birch_speech/welcum.4bpp");
 static const u16 sHurricanePal[] = INCBIN_U16("graphics/birch_speech/welcome_to_hurricane.gbapal");
 
 static const u32 sBirchSpeechShadowGfx[] = INCBIN_U32("graphics/birch_speech/shadow.4bpp.lz");
@@ -1279,7 +1279,7 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     SetGpuReg(REG_OFFSET_BLDALPHA, 0);
     SetGpuReg(REG_OFFSET_BLDY, 0);
 
-    LZ77UnCompVram(sBirchSpeechHurricaneGfx, (void*)VRAM);
+    CpuCopy32(sBirchSpeechHurricaneGfx, (void*)VRAM, sizeof(sBirchSpeechHurricaneGfx));
     LZ77UnCompVram(sHurricaneBackground, (void*)(BG_SCREEN_ADDR(7)));
     LoadPalette(sHurricanePal, 0, sizeof(sHurricanePal));
     
