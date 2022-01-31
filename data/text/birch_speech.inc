@@ -62,14 +62,17 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 
 @OFFICIAL MINIGAME INVESTIGATOR CONTENT AHEAD
 gText_PlayerName::
-	.string "This diary belongs to...$"
+	.string "This diary belongs to..."
+	.string "$"
 
 gText_PlayerConfirmed::
-	.string "This diary belongs to {PLAYER}.$"
+	.string "This diary belongs to {PLAYER}."
+	.string "$"
 
 gText_DearDiary::
 	.string "Dear diary,\p"
-	.string "I'm back in Hurricane, Utah.$"
+	.string "I'm back in Hurricane, Utah."
+	.string "$"
 
 gText_WhoWould::
 	.string "Who would have thought\n"
@@ -86,4 +89,7 @@ gText_Everyone::
 	.string "This is supposedly a town\n"
 	.string "where everyone seems to \l"
 	.string "come back to, but the population\l"
-	.string "rarely grows.\p"
+	.string "rarely grows.$"
+
+gText_ChooseAppearence::
+	.string "Choose your appearence.$"
