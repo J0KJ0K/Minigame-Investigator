@@ -31,10 +31,6 @@ gText_Birch_MainSpeech:: @ 82C8A1F
 gText_Birch_AndYouAre:: @ 82C8BD0
 	.string "And you are?$"
 
-gText_Birch_BoyOrGirl:: @ 82C8BDD
-	.string "Are you a boy?\n"
-	.string "Or are you a girl?$"
-
 gText_Birch_WhatsYourName:: @ 82C8BFF
 	.string "All right.\n"
 	.string "What's your name?$"
@@ -60,9 +56,14 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "Come see me in my POKéMON LAB.\p"
 	.string "$"
 
+
 @OFFICIAL MINIGAME INVESTIGATOR CONTENT AHEAD
 gText_PlayerName::
 	.string "This diary belongs to..."
+	.string "$"
+
+gText_Birch_BoyOrGirl:: @ 82C8BDD
+	.string "Choose your appearence.\n"
 	.string "$"
 
 gText_PlayerConfirmed::

@@ -54,10 +54,19 @@ ALIGNED(4) const u8 gText_NextBack[] = _("{A_BUTTON}NEXT {B_BUTTON}BACK"); // Un
 ALIGNED(4) const u8 gText_PickNextCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}NEXT {B_BUTTON}CANCEL");
 ALIGNED(4) const u8 gText_PickCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}{B_BUTTON}CANCEL");
 ALIGNED(4) const u8 gText_AButtonExit[] = _("{A_BUTTON}EXIT");
-const u8 gText_BirchBoy[] = _("BOY");
-const u8 gText_BirchGirl[] = _("GIRL");
-const u8 gText_DefaultNameStu[] = _("STU");
-const u8 gText_DefaultNameMilton[] = _("MILTON");
+
+//New Game
+const u8 gText_BirchBoy[] = _("MALE");
+const u8 gText_BirchGirl[] = _("FEMALE");
+
+//male names
+const u8 gText_DefaultNameStu[] = _("SCOTT");
+const u8 gText_DefaultNameMilton[] = _("ALEX");
+const u8 gText_DefaultNameStanley[] = _("STANLEY");
+const u8 gText_DefaultNameQuincy[] = _("GORDON");
+const u8 gText_DefaultNameCollin[] = _("FREEMAN");
+
+//default male names
 const u8 gText_DefaultNameTom[] = _("TOM");
 const u8 gText_DefaultNameKenny[] = _("KENNY");
 const u8 gText_DefaultNameReid[] = _("REID");
@@ -73,9 +82,17 @@ const u8 gText_DefaultNameTerry[] = _("TERRY");
 const u8 gText_DefaultNameCasey[] = _("CASEY");
 const u8 gText_DefaultNameDarren[] = _("DARREN");
 const u8 gText_DefaultNameLandon[] = _("LANDON");
-const u8 gText_DefaultNameCollin[] = _("COLLIN");
-const u8 gText_DefaultNameStanley[] = _("STANLEY");
-const u8 gText_DefaultNameQuincy[] = _("QUINCY");
+
+const u8 gText_CawthonEasterEggs[] = _("CAWTHON");
+const u8 gText_CawthonEasterEggs2[] = _("Cawthon");
+const u8 gText_DawkoEasterEggs[] = _("DAWKO");
+const u8 gText_DawkoEasterEggs2[] = _("Dawko");
+
+
+//female names
+const u8 gText_DefaultNameHalie[] = _("ALYX");
+
+//default female names
 const u8 gText_DefaultNameKimmy[] = _("KIMMY");
 const u8 gText_DefaultNameTiara[] = _("TIARA");
 const u8 gText_DefaultNameBella[] = _("BELLA");
@@ -95,7 +112,9 @@ const u8 gText_DefaultNameNicola[] = _("NICOLA");
 const u8 gText_DefaultNameLillie[] = _("LILLIE");
 const u8 gText_DefaultNameTerra[] = _("TERRA");
 const u8 gText_DefaultNameLucy[] = _("LUCY");
-const u8 gText_DefaultNameHalie[] = _("HALIE");
+
+
+
 const u8 gText_ThisIsAPokemon[] = _("This is what we call a “POKéMON.”{PAUSE 96}\p");
 const u8 gText_5MarksPokemon[] = _("????? POKéMON");
 const u8 gText_UnkHeight[] = _("{CLEAR_TO 0x0C}??'??”");
