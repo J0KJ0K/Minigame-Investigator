@@ -114,6 +114,7 @@
  * Task_NewGameBirchSpeech_ThisIsAPokemon
  *  - When the text is done printing, spawns Task_NewGameBirchSpeechSub_InitPokeball
  * Task_NewGameBirchSpeech_MainSpeech
+ * Task_NewGameBirchSpeech_MainSpeech
  * Task_NewGameBirchSpeech_AndYouAre
  * Task_NewGameBirchSpeech_StartBirchLotadPlatformFade
  * Task_NewGameBirchSpeech_StartBirchLotadPlatformFade
@@ -235,6 +236,11 @@ static void Task_NewGameBirchSpeech_WhatsYourName(u8);
 static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8);
 static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8);
 
+static void IFuckingHateMyLife(u8);
+static void WaitForHatingMyLife(u8);
+static void FirstDiaryAppearence(u8);
+static void YourNameIsScott(u8);
+
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8);
 static void Task_NewGameBirchSpeech_StartNamingScreen(u8);
@@ -264,6 +270,15 @@ static const u16 sBirchSpeechBgPals[][16] = {
 static const u32 sHurricaneBackground[] = INCBIN_U32("graphics/birch_speech/welcum.bin.lz");
 static const u32 sBirchSpeechHurricaneGfx[] = INCBIN_U32("graphics/birch_speech/welcum.4bpp");
 static const u16 sHurricanePal[] = INCBIN_U16("graphics/birch_speech/welcome_to_hurricane.gbapal");
+
+static const u32 sClosedDiaryBackground[] = INCBIN_U32("graphics/birch_speech/close.bin.lz");
+static const u32 sClosedDiaryGFX[] = INCBIN_U32("graphics/birch_speech/close.4bpp.lz");
+
+static const u32 sOpen1DiaryBackground[] = INCBIN_U32("graphics/birch_speech/turnpage1.bin.lz");
+static const u32 sOpen1DiaryGFX[] = INCBIN_U32("graphics/birch_speech/turnpage1.4bpp");
+
+static const u32 sOpen2DiaryBackground[] = INCBIN_U32("graphics/birch_speech/turnpage2.bin.lz");
+static const u32 sOpen2DiaryGFX[] = INCBIN_U32("graphics/birch_speech/turnpage2.4bpp");
 
 static const u32 sBirchSpeechShadowGfx[] = INCBIN_U32("graphics/birch_speech/shadow.4bpp.lz");
 static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/map.bin.lz");
@@ -1289,6 +1304,10 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     SetGpuReg(REG_OFFSET_BLDALPHA, 0);
     SetGpuReg(REG_OFFSET_BLDY, 0);
 
+    /*LZ77UnCompVram(sBirchSpeechShadowGfx, (void*)VRAM); //will load the Hurricane gfx
+    LZ77UnCompVram(sBirchSpeechBgMap, (void*)(BG_SCREEN_ADDR(7))); //will load the Hurricane displacement
+    LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette*/
+
     CpuCopy32(sBirchSpeechHurricaneGfx, (void*)VRAM, sizeof(sBirchSpeechHurricaneGfx)); //will load the Hurricane gfx
     LZ77UnCompVram(sHurricaneBackground, (void*)(BG_SCREEN_ADDR(7))); //will load the Hurricane displacement
     LoadPalette(sHurricanePal, 0, sizeof(sHurricanePal)); //will load the Hurricane colour palette
@@ -1305,7 +1324,7 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     gTasks[taskId].func = Task_NewGameBirchSpeech_StartPlayerFadeIn;
     gTasks[taskId].tPlayerSpriteId = SPRITE_NONE;
     gTasks[taskId].data[3] = 0xFF;
-    gTasks[taskId].tTimer = 0;
+    gTasks[taskId].tTimer = 10;
 
     ShowBg(0);
     ShowBg(1);
@@ -1448,21 +1467,6 @@ static void Task_NewGameBirchSpeech_StartBirchLotadPlatformFade(u8 taskId)//get 
     }
 }
 
-static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)//get rekt
-
-{
-    if (gTasks[taskId].tBG1HOFS != -60)
-    {
-        gTasks[taskId].tBG1HOFS -= 2;
-        SetGpuReg(REG_OFFSET_BG1HOFS, gTasks[taskId].tBG1HOFS);
-    }
-    else
-    {
-        gTasks[taskId].tBG1HOFS = -60;
-        gTasks[taskId].func = Task_NewGameBirchSpeech_StartPlayerFadeIn;
-    }
-}
-
 static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8 taskId)
 {
     //if (gTasks[taskId].tIsDoneFadingSprites)
@@ -1533,13 +1537,16 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
             PlaySE(SE_SELECT);
             gSaveBlock2Ptr->playerGender = gender;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen;
+
             break;
         case FEMALE:
             PlaySE(SE_SELECT);
             gSaveBlock2Ptr->playerGender = gender;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = FirstDiaryAppearence;
             break;
     }
     gender2 = Menu_GetCursorPos();
@@ -1550,6 +1557,66 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SlideOutOldGenderSprite;
     }
+}
+
+static void FirstDiaryAppearence(u8 taskId) {
+    if (!gPaletteFade.active)
+    {
+        FreeAllWindowBuffers();//I can come here if I write Ctrl+Z
+
+        ResetBgsAndClearDma3BusyFlags(0);
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+        InitBgsFromTemplates(0, sMainMenuBgTemplates, ARRAY_COUNT(sMainMenuBgTemplates));
+        InitBgFromTemplate(&sBirchBgTemplate);
+        SetVBlankCallback(NULL);
+        SetGpuReg(REG_OFFSET_BG2CNT, 0);
+        SetGpuReg(REG_OFFSET_BG1CNT, 0);
+        SetGpuReg(REG_OFFSET_BG0CNT, 0);
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+        DmaFill16(3, 0, VRAM, VRAM_SIZE);
+        DmaFill32(3, 0, OAM, OAM_SIZE);
+        DmaFill16(3, 0, PLTT, PLTT_SIZE);
+        ResetPaletteFade();
+
+
+        LZ77UnCompVram(sClosedDiaryGFX, (u8*)VRAM);
+        LZ77UnCompVram(sClosedDiaryBackground, (u8*)(BG_SCREEN_ADDR(7)));
+
+
+        LoadPalette(sBirchSpeechBgPals, 0, 64);
+        LoadPalette(&sBirchSpeechBgGradientPal[1], 1, 16);
+        
+        ShowBg(0);
+        ShowBg(1);
+
+        gTasks[taskId].tTimer = 5;
+
+        gTasks[taskId].tBG1HOFS = 0;
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+        SetGpuReg(REG_OFFSET_WIN0H, 0);
+        SetGpuReg(REG_OFFSET_WIN0V, 0);
+        SetGpuReg(REG_OFFSET_WININ, 0);
+        SetGpuReg(REG_OFFSET_WINOUT, 0);
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+
+        gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
+    }
+}
+
+static void YourNameIsScott(u8 taskId) {
+    NewGameBirchSpeech_ClearWindow(0);
+    StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
 }
 
 static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
@@ -1642,7 +1709,7 @@ static void Task_NewGameBirchSpeech_CreateNameYesNo(u8 taskId)
 {
     if (!RunTextPrintersAndIsPrinter0Active())
     {
-        CreateYesNoMenuParameterized(2, 1, 0xF3, 0xDF, 2, 15);
+        CreateYesNoMenuParameterized(2, 8, 0xF3, 0xDF, 2, 15);
         gTasks[taskId].func = Task_NewGameBirchSpeech_ProcessNameYesNoMenu;
     }
 }
@@ -1656,12 +1723,12 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway2;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway;
             break;
         case -1:
         case 1:
             PlaySE(SE_SELECT);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen ;
     }
 }
 
@@ -1836,8 +1903,8 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     ResetPaletteFade();
 
 
-    LZ77UnCompVram(sBirchSpeechShadowGfx, (u8*)VRAM);
-    LZ77UnCompVram(sBirchSpeechBgMap, (u8*)(BG_SCREEN_ADDR(7)));
+    LZ77UnCompVram(sClosedDiaryGFX, (u8*)VRAM);
+    LZ77UnCompVram(sClosedDiaryBackground, (u8*)(BG_SCREEN_ADDR(7)));
     
     
     LoadPalette(sBirchSpeechBgPals, 0, 64);
@@ -1845,26 +1912,15 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     ResetTasks();
     taskId = CreateTask(Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox, 0);
     gTasks[taskId].tTimer = 5;
+
     gTasks[taskId].tBG1HOFS = 0;
+
     ScanlineEffect_Stop();
     ResetSpriteData();
     FreeAllSpritePalettes();
     ResetAllPicSprites();
     AddObjects(taskId);
-    if (gSaveBlock2Ptr->playerGender != MALE)
-    {
-        gTasks[taskId].tPlayerGender = FEMALE;
-        spriteId = gTasks[taskId].tMaySpriteId;
-    }
-    else
-    {
-        gTasks[taskId].tPlayerGender = MALE;
-        spriteId = gTasks[taskId].tBrendanSpriteId;
-    }
-    gSprites[spriteId].pos1.x = 120;
-    gSprites[spriteId].pos1.y = 80;
-    gSprites[spriteId].invisible = FALSE;
-    gTasks[taskId].tPlayerSpriteId = spriteId;
+
     SetGpuReg(REG_OFFSET_BG1HOFS, 0);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
     SetGpuReg(REG_OFFSET_WIN0H, 0);
@@ -1887,6 +1943,83 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     LoadMessageBoxGfx(0, 0xFC, 0xF0);
     PutWindowTilemap(0);
     CopyWindowToVram(0, 3);
+}
+
+static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)//IMPORTANT; THIS WILL SLIDE THE DIARY TO THE RIGHT BEFORE OPENING IT
+{
+    if (gTasks[taskId].tBG1HOFS != -60)//task background 1 horizontal offset (t BG 1 HZ OFS)
+    {
+        gTasks[taskId].tBG1HOFS -= 2;
+        SetGpuReg(REG_OFFSET_BG1HOFS, gTasks[taskId].tBG1HOFS);
+    }
+    else
+    {
+        gTasks[taskId].tBG1HOFS = -60;
+        gTasks[taskId].tTimer = 100;
+        gTasks[taskId].func = WaitForHatingMyLife;
+    }
+}
+
+static void WaitForHatingMyLife(u8 taskId) {
+
+    if (gTasks[taskId].tTimer)
+    {
+        gTasks[taskId].tTimer--;
+    }
+    else
+    {
+        gTasks[taskId].tTimer = 50;
+        FreeAllWindowBuffers();
+
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+
+        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette
+
+        CpuCopy32(sOpen1DiaryGFX, (void*)VRAM, sizeof(sOpen1DiaryGFX)); //will load the Hurricane gfx
+        LZ77UnCompVram(sOpen1DiaryBackground, (void*)(BG_SCREEN_ADDR(7))); //will load the Hurricane displacement
+        ResetTasks();
+        ShowBg(0);
+        ShowBg(1);
+
+        gTasks[taskId].func = IFuckingHateMyLife;
+    }
+}
+
+static void IFuckingHateMyLife(u8 taskId)
+{
+    gTasks[taskId].tBG1HOFS = 0;
+
+    if (gTasks[taskId].tTimer)
+    {
+        gTasks[taskId].tTimer--;
+    }
+    else {
+        gTasks[taskId].tTimer = 100;
+        FreeAllWindowBuffers();
+
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+
+        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette
+
+        CpuCopy32(sOpen2DiaryGFX, (void*)VRAM, sizeof(sOpen2DiaryGFX)); //will load the Hurricane gfx
+        LZ77UnCompVram(sOpen2DiaryBackground, (void*)(BG_SCREEN_ADDR(7))); //will load the Hurricane displacement
+        ResetTasks();
+        ShowBg(0);
+        ShowBg(1);
+        gTasks[taskId].func = Task_NewGameBirchSpeech_ReshowBirchLotad;
+    }
 }
 
 static void SpriteCB_Null(struct Sprite *sprite)

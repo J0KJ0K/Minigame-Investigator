@@ -57,6 +57,9 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "$"
 
 
+
+
+
 @OFFICIAL MINIGAME INVESTIGATOR CONTENT AHEAD
 gText_PlayerName::
 	.string "This diary belongs to..."
