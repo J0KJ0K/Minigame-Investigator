@@ -1615,7 +1615,7 @@ static void FirstDiaryAppearence(u8 taskId) {
 static void YourNameIsScott(u8 taskId) {
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
-    AddTextPrinterForMessage(1);
+    AddTextPrinterForMessage(1); //it's not actually cleaning
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
 }
 
