@@ -61,7 +61,7 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 
 
 @OFFICIAL MINIGAME INVESTIGATOR CONTENT AHEAD
-gText_PlayerName::
+gText_PlayerNameIs::
 	.string "This diary belongs to..."
 	.string "$"
 
@@ -95,5 +95,11 @@ gText_Everyone::
 	.string "come back to, but the population\l"
 	.string "rarely grows.$"
 
-gText_ChooseAppearence::
-	.string "Choose your appearence.$"
+gText_Creepy::
+	.string "Whether that's creepy, or just\n"
+	.string "self-fulfilling prophecy,\l"
+	.string "I cannot tell.$"
+
+gText_BackHome::
+	.string "Anyway,\n"
+	.string "I'm back home.$"

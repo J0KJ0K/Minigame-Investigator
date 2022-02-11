@@ -204,6 +204,7 @@ static void Task_NewGameBirchSpeech_Init(u8);
 static void AddObjects(u8);
 
 static void Task_NewGame_ChooseYourAppearence(u8);
+static void PlayerName(u8);
 
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
@@ -1562,7 +1563,7 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 static void FirstDiaryAppearence(u8 taskId) {
     if (!gPaletteFade.active)
     {
-        FreeAllWindowBuffers();//I can come here if I write Ctrl+Z
+        u16 savedIme;
 
         ResetBgsAndClearDma3BusyFlags(0);
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
@@ -1591,13 +1592,18 @@ static void FirstDiaryAppearence(u8 taskId) {
 
         LoadPalette(sBirchSpeechBgPals, 0, 64);
         LoadPalette(&sBirchSpeechBgGradientPal[1], 1, 16);
-        
-        ShowBg(0);
-        ShowBg(1);
-
+        ResetTasks();
+        taskId = CreateTask(PlayerName, 0);
         gTasks[taskId].tTimer = 5;
 
         gTasks[taskId].tBG1HOFS = 0;
+
+        ScanlineEffect_Stop();
+        ResetSpriteData();
+        FreeAllSpritePalettes();
+        ResetAllPicSprites();
+        AddObjects(taskId);
+
         SetGpuReg(REG_OFFSET_BG1HOFS, 0);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
         SetGpuReg(REG_OFFSET_WIN0H, 0);
@@ -1607,10 +1613,29 @@ static void FirstDiaryAppearence(u8 taskId) {
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 0);
-
-        gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
+        ShowBg(0);
+        ShowBg(1);
+        savedIme = REG_IME;
+        REG_IME = 0;
+        REG_IE |= 1;
+        REG_IME = savedIme;
+        SetVBlankCallback(VBlankCB_MainMenu);
+        SetMainCallback2(CB2_MainMenu);
+        InitWindows(gNewGameBirchSpeechTextWindows);
+        LoadMainMenuWindowFrameTiles(0, 0xF3);
+        LoadMessageBoxGfx(0, 0xFC, 0xF0);
+        PutWindowTilemap(0);
+        CopyWindowToVram(0, 3);
     }
 }
+
+static void PlayerName(u8 taskId){
+NewGameBirchSpeech_ClearWindow(0);
+StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
+AddTextPrinterForMessage(1);
+gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
+}
+
 
 static void YourNameIsScott(u8 taskId) {
     NewGameBirchSpeech_ClearWindow(0);
