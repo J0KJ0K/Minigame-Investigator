@@ -1621,18 +1621,27 @@ static void FirstDiaryAppearence(u8 taskId) {
         REG_IME = savedIme;
         SetVBlankCallback(VBlankCB_MainMenu);
         SetMainCallback2(CB2_MainMenu);
-        InitWindows(gNewGameBirchSpeechTextWindows);
+        /*InitWindows(gNewGameBirchSpeechTextWindows);
         LoadMainMenuWindowFrameTiles(0, 0xF3);
         LoadMessageBoxGfx(0, 0xFC, 0xF0);
         PutWindowTilemap(0);
-        CopyWindowToVram(0, 3);
+        CopyWindowToVram(0, 3);*/
     }
 }
 
-static void PlayerName(u8 taskId){
-NewGameBirchSpeech_ClearWindow(0);
-StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
-AddTextPrinterForMessage(1);
+static void PlayerName(u8 taskId) {
+    InitWindows(gNewGameBirchSpeechTextWindows);
+    LoadMainMenuWindowFrameTiles(0, 0xF3);
+    LoadMessageBoxGfx(0, 0xFC, 0xF0);
+    NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, 3);
+    NewGameBirchSpeech_ClearWindow(0);
+
+
+
+    StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
+    AddTextPrinterForMessage(1);
 gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
 }
 

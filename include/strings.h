@@ -352,13 +352,13 @@ extern const u8 gText_Birch_SoItsPlayer[];
 extern const u8 gText_Birch_YourePlayer[];
 extern const u8 gText_Birch_AreYouReady[];
 
-extern const u8 gText_PlayerNameIs;
-extern const u8 gText_DearDiary;
-extern const u8 gText_WhoWould;
-extern const u8 gText_TheyWould;
-extern const u8 gText_Everyone;
-extern const u8 gText_Creepy;
-extern const u8 gText_BackHome;
+extern const u8 gText_PlayerNameIs[];
+extern const u8 gText_DearDiary[];
+extern const u8 gText_WhoWould[];
+extern const u8 gText_TheyWould[];
+extern const u8 gText_Everyone[];
+extern const u8 gText_Creepy[];
+extern const u8 gText_BackHome[];
 
 extern const u8 gText_ContinueMenuPlayer[];
 extern const u8 gText_ContinueMenuTime[];
