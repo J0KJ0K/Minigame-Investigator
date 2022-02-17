@@ -241,6 +241,7 @@ static void IFuckingHateMyLife(u8);
 static void WaitForHatingMyLife(u8);
 static void FirstDiaryAppearence(u8);
 static void YourNameIsScott(u8);
+static void GetFucked(u8);
 
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8);
@@ -1636,10 +1637,14 @@ static void PlayerName(u8 taskId) {
     NewGameBirchSpeech_ShowDialogueWindow(0, 1);
     PutWindowTilemap(0);
     CopyWindowToVram(0, 3);
+    //NewGameBirchSpeech_ClearWindow(0);
+    //StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
+    //AddTextPrinterForMessage(1);
+    gTasks[taskId].func = GetFucked;
+}
+
+static void GetFucked(u8 taskId){
     NewGameBirchSpeech_ClearWindow(0);
-
-
-
     StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
     AddTextPrinterForMessage(1);
 gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
@@ -1712,10 +1717,13 @@ static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8 taskId)
 
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8 taskId)
 {
-    if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON)))
-    {
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen;
+    if (!IsTextPrinterActive(7)) {
+        RunTextPrinters();
+        if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON)))
+        {
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen;
+        }
     }
 }
 
