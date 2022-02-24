@@ -1540,7 +1540,7 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
             gSaveBlock2Ptr->playerGender = gender;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen;
+            gTasks[taskId].func = FirstDiaryAppearence;
 
             break;
         case FEMALE:
@@ -1762,6 +1762,7 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
         case 0:
+            NewGameBirchSpeech_ClearWindow(0);
             PlaySE(SE_SELECT);
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
@@ -1998,7 +1999,7 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)//IMPORTANT; THI
     else
     {
         gTasks[taskId].tBG1HOFS = -60;
-        gTasks[taskId].tTimer = 100;
+        gTasks[taskId].tTimer = 60;
         gTasks[taskId].func = WaitForHatingMyLife;
     }
 }
@@ -2043,7 +2044,7 @@ static void IFuckingHateMyLife(u8 taskId)
         gTasks[taskId].tTimer--;
     }
     else {
-        gTasks[taskId].tTimer = 100;
+        gTasks[taskId].tTimer = 50;
         FreeAllWindowBuffers();
 
         SetGpuReg(REG_OFFSET_BG2HOFS, 0);
