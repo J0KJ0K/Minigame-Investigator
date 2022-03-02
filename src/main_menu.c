@@ -205,6 +205,7 @@ static void AddObjects(u8);
 
 static void Task_NewGame_ChooseYourAppearence(u8);
 static void PlayerName(u8);
+static void TimeForTheSecondPage(u8);
 
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
@@ -1762,7 +1763,12 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
         case 0:
-            NewGameBirchSpeech_ClearWindow(0);
+            //RunTextPrinters();
+            //NewGameBirchSpeech_ClearWindow(0);
+
+            //ClearWindowTilemap(7);
+            ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[4]);
+
             PlaySE(SE_SELECT);
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
@@ -1999,7 +2005,7 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)//IMPORTANT; THI
     else
     {
         gTasks[taskId].tBG1HOFS = -60;
-        gTasks[taskId].tTimer = 60;
+        gTasks[taskId].tTimer = 30;
         gTasks[taskId].func = WaitForHatingMyLife;
     }
 }
@@ -2012,7 +2018,6 @@ static void WaitForHatingMyLife(u8 taskId) {
     }
     else
     {
-        gTasks[taskId].tTimer = 50;
         FreeAllWindowBuffers();
 
         SetGpuReg(REG_OFFSET_BG2HOFS, 0);
@@ -2031,8 +2036,15 @@ static void WaitForHatingMyLife(u8 taskId) {
         ShowBg(0);
         ShowBg(1);
 
-        gTasks[taskId].func = IFuckingHateMyLife;
+        //gTasks[taskId].func = TimeForTheSecondPage;
+        taskId = CreateTask(TimeForTheSecondPage, 0);
     }
+}
+
+static void TimeForTheSecondPage(u8 taskId)
+{
+    gTasks[taskId].tTimer = 40;
+    gTasks[taskId].func = IFuckingHateMyLife;
 }
 
 static void IFuckingHateMyLife(u8 taskId)
@@ -2044,7 +2056,6 @@ static void IFuckingHateMyLife(u8 taskId)
         gTasks[taskId].tTimer--;
     }
     else {
-        gTasks[taskId].tTimer = 50;
         FreeAllWindowBuffers();
 
         SetGpuReg(REG_OFFSET_BG2HOFS, 0);
