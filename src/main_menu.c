@@ -1764,10 +1764,10 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     {
         case 0:
             //RunTextPrinters();
-            //NewGameBirchSpeech_ClearWindow(0);
-
-            //ClearWindowTilemap(7);
-            ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[4]);
+            NewGameBirchSpeech_ClearWindow(0);
+            ClearDialogWindowAndFrame(0, 1);
+            //ClearWindowTilemap(0);
+            //ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[4]);
 
             PlaySE(SE_SELECT);
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
