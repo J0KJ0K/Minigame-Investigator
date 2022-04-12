@@ -243,6 +243,10 @@ static void WaitForHatingMyLife(u8);
 static void FirstDiaryAppearence(u8);
 static void YourNameIsScott(u8);
 static void GetFucked(u8);
+static void ImFucked(u8);
+static void FuckYourself(u8);
+
+static void PageTracking(u8);
 
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8);
@@ -284,7 +288,7 @@ static const u32 sOpen2DiaryBackground[] = INCBIN_U32("graphics/birch_speech/tur
 static const u32 sOpen2DiaryGFX[] = INCBIN_U32("graphics/birch_speech/turnpage2.4bpp");
 
 static const u32 sBirchSpeechShadowGfx[] = INCBIN_U32("graphics/birch_speech/shadow.4bpp.lz");
-static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/map.bin.lz");
+static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/shadow.bin.lz");
 
 
 static const u16 sBirchSpeechBgGradientPal[] = INCBIN_U16("graphics/birch_speech/bg2.gbapal");
@@ -1293,6 +1297,7 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tLotadSpriteId data[9]
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
+#define PageTracker data[16]
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
@@ -1595,10 +1600,7 @@ static void FirstDiaryAppearence(u8 taskId) {
         LoadPalette(sBirchSpeechBgPals, 0, 64);
         LoadPalette(&sBirchSpeechBgGradientPal[1], 1, 16);
         ResetTasks();
-        taskId = CreateTask(PlayerName, 0);
-        gTasks[taskId].tTimer = 5;
 
-        gTasks[taskId].tBG1HOFS = 0;
 
         ScanlineEffect_Stop();
         ResetSpriteData();
@@ -1628,20 +1630,32 @@ static void FirstDiaryAppearence(u8 taskId) {
         LoadMessageBoxGfx(0, 0xFC, 0xF0);
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);*/
+
+        taskId = CreateTask(PlayerName, 0);
+        gTasks[taskId].tTimer = 25;
+        gTasks[taskId].tBG1HOFS = 0;        
+
     }
 }
 
 static void PlayerName(u8 taskId) {
-    InitWindows(gNewGameBirchSpeechTextWindows);
-    LoadMainMenuWindowFrameTiles(0, 0xF3);
-    LoadMessageBoxGfx(0, 0xFC, 0xF0);
-    NewGameBirchSpeech_ShowDialogueWindow(0, 1);
-    PutWindowTilemap(0);
-    CopyWindowToVram(0, 3);
-    //NewGameBirchSpeech_ClearWindow(0);
-    //StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
-    //AddTextPrinterForMessage(1);
-    gTasks[taskId].func = GetFucked;
+
+    if (gTasks[taskId].tTimer != 0) {
+        gTasks[taskId].tTimer--;
+        return;
+    }
+        InitWindows(gNewGameBirchSpeechTextWindows);
+        CopyWindowToVram(0, 3);
+        LoadMainMenuWindowFrameTiles(0, 0xF3);
+        LoadMessageBoxGfx(0, 0xFC, 0xF0);
+        NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+        PutWindowTilemap(0);
+
+        NewGameBirchSpeech_ClearWindow(0);
+        StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
+        AddTextPrinterForMessage(1);
+        gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
+
 }
 
 static void GetFucked(u8 taskId){
@@ -1763,11 +1777,8 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
         case 0:
-            //RunTextPrinters();
             NewGameBirchSpeech_ClearWindow(0);
             ClearDialogWindowAndFrame(0, 1);
-            //ClearWindowTilemap(0);
-            //ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[4]);
 
             PlaySE(SE_SELECT);
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
@@ -2026,6 +2037,7 @@ static void WaitForHatingMyLife(u8 taskId) {
         SetGpuReg(REG_OFFSET_BG1VOFS, 0);
         SetGpuReg(REG_OFFSET_BG0HOFS, 0);
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
 
         LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette
@@ -2066,14 +2078,73 @@ static void IFuckingHateMyLife(u8 taskId)
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
 
-        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette
+        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal));
 
-        CpuCopy32(sOpen2DiaryGFX, (void*)VRAM, sizeof(sOpen2DiaryGFX)); //will load the Hurricane gfx
-        LZ77UnCompVram(sOpen2DiaryBackground, (void*)(BG_SCREEN_ADDR(7))); //will load the Hurricane displacement
+        CpuCopy32(sOpen2DiaryGFX, (void*)VRAM, sizeof(sOpen2DiaryGFX));
+        LZ77UnCompVram(sOpen2DiaryBackground, (void*)(BG_SCREEN_ADDR(7)));
         ResetTasks();
         ShowBg(0);
         ShowBg(1);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_ReshowBirchLotad;
+        
+        taskId = CreateTask(ImFucked, 0);
+    }
+}
+static void ImFucked(u8 taskId)
+{
+    gTasks[taskId].tTimer = 40;
+    gTasks[taskId].func = FuckYourself;
+}
+
+static void FuckYourself(u8 taskId) {
+    if (gTasks[taskId].tTimer)
+    {
+        gTasks[taskId].tTimer--;
+    }
+    else
+    {
+        FreeAllWindowBuffers();
+
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+
+        LZ77UnCompVram(sBirchSpeechShadowGfx, (void*)VRAM);
+        LZ77UnCompVram(sBirchSpeechBgMap, (void*)(BG_SCREEN_ADDR(7)));
+        LoadPalette(sBirchSpeechBgPals, 0, 64);
+        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal));
+
+        ResetTasks();
+        ShowBg(0);
+        ShowBg(1);
+
+        gTasks[taskId].PageTracker = 0; //how do I make PageTracker store a value that doesn't get reset? When I tried in earlier functions, the value didn't stay until PageTracking
+        gTasks[taskId].PageTracker++; //this is for testing if PageTracking is working
+        //gTasks[taskId].func = PageTracking;
+        taskId = CreateTask(PageTracking, 0);
+    }
+}
+
+static void PageTracking(u8 taskId) { //for testing if PageTracker is working
+    int PageState;
+    PageState = gTasks[taskId].PageTracker;
+
+    if (PageState == 0) {
+        NewGameBirchSpeech_ClearWindow(0);
+        StringExpandPlaceholders(gStringVar4, gText_DearDiary);
+        AddTextPrinterForMessage(1);
+    }
+    if (PageState == 1) {
+        taskId = CreateTask(FirstDiaryAppearence, 0);
+    }
+    if (PageState == 2) {
+        NewGameBirchSpeech_ClearWindow(0);
+        StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
+        AddTextPrinterForMessage(1);
     }
 }
 
@@ -2298,6 +2369,68 @@ static void NewGameBirchSpeech_StartFadePlatformOut(u8 taskId, u8 delay)
     gTasks[taskId2].tDelayTimer = delay;
 }
 
+/* Optimize writing?
+
+Task1{      //first frame of opening page
+if (gTasks[taskId].tTimer)
+    {
+        gTasks[taskId].tTimer--;
+    }
+    else
+    {
+        FreeAllWindowBuffers();
+
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+
+        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal));
+
+        CpuCopy32(sOpen1DiaryGFX, (void*)VRAM, sizeof(sOpen1DiaryGFX));
+        LZ77UnCompVram(sOpen1DiaryBackground, (void*)(BG_SCREEN_ADDR(7)));
+        ResetTasks();
+        ShowBg(0);
+        ShowBg(1);
+}
+Task2{ //will show second frame of animation
+gTasks[taskId].tBG1HOFS = 0;
+
+    if (gTasks[taskId].tTimer)
+    {
+        gTasks[taskId].tTimer--;
+    }
+    else {
+        FreeAllWindowBuffers();
+
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+
+        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal));
+
+        CpuCopy32(sOpen2DiaryGFX, (void*)VRAM, sizeof(sOpen2DiaryGFX));
+        LZ77UnCompVram(sOpen2DiaryBackground, (void*)(BG_SCREEN_ADDR(7)));
+        //ResetTasks();
+        ShowBg(0);
+        ShowBg(1);
+}
+Task3{
+
+}
+Task4{
+
+}
+*/
+
 #undef tMainTask
 #undef tPalIndex
 #undef tDelayBefore
@@ -2519,3 +2652,4 @@ static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
 }
 
 #undef tTimer
+#undef PageTracker
