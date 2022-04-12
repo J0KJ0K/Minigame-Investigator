@@ -38,6 +38,7 @@ SECTIONS {
         /* COMMON starts at 0x30022A8 */
         INCLUDE "sym_common.ld"
         *libc.a:sbrkr.o(COMMON);
+src/main_menu.o(COMMON);
         end = .;
         . = 0x8000;
     }
@@ -450,6 +451,7 @@ SECTIONS {
         src/link_rfu_2.o(.rodata.str1.4);
         src/union_room.o(.rodata);
         src/mystery_gift.o(.rodata);
+        src/main_menu.o(.data);
         src/union_room_player_avatar.o(.rodata);
         src/wireless_communication_status_screen.o(.rodata);
         src/union_room_battle.o(.rodata);

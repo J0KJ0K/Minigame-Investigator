@@ -274,6 +274,8 @@ static const u16 sBirchSpeechBgPals[][16] = {
     INCBIN_U16("graphics/birch_speech/bg1.gbapal")
 };
 
+int PageState;
+
 static const u32 sHurricaneBackground[] = INCBIN_U32("graphics/birch_speech/welcum.bin.lz");
 static const u32 sBirchSpeechHurricaneGfx[] = INCBIN_U32("graphics/birch_speech/welcum.4bpp");
 static const u16 sHurricanePal[] = INCBIN_U16("graphics/birch_speech/welcome_to_hurricane.gbapal");
@@ -1633,8 +1635,7 @@ static void FirstDiaryAppearence(u8 taskId) {
 
         taskId = CreateTask(PlayerName, 0);
         gTasks[taskId].tTimer = 25;
-        gTasks[taskId].tBG1HOFS = 0;        
-
+        gTasks[taskId].tBG1HOFS = 0;
     }
 }
 
@@ -2122,16 +2123,13 @@ static void OpenPages(u8 taskId) {
         ShowBg(0);
         ShowBg(1);
 
-        gTasks[taskId].PageTracker = 0; //how do I make PageTracker store a value that doesn't get reset? When I tried in earlier functions, the value didn't stay until PageTracking
-        gTasks[taskId].PageTracker++; //this is for testing if PageTracking is working
-        //gTasks[taskId].func = PageTracking;
+        PageState++;
+
         taskId = CreateTask(PageTracking, 0);
     }
 }
 
 static void PageTracking(u8 taskId) { //for testing if PageTracker is working
-    int PageState;
-    PageState = gTasks[taskId].PageTracker;
 
     if (PageState == 0) {
         NewGameBirchSpeech_ClearWindow(0);
