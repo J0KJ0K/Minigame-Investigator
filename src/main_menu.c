@@ -238,14 +238,14 @@ static void Task_NewGameBirchSpeech_WhatsYourName(u8);
 static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8);
 static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8);
 
-static void IFuckingHateMyLife(u8);
-static void WaitForHatingMyLife(u8);
 static void FirstDiaryAppearence(u8);
 static void YourNameIsScott(u8);
-static void GetFucked(u8);
-static void ImFucked(u8);
-static void FuckYourself(u8);
 
+static void WaitForHatingMyLife(u8);
+static void TimeForTheSecondPage(u8);
+static void Page2(u8);
+static void TimerToStable(u8);
+static void OpenPages(u8);
 static void PageTracking(u8);
 
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
@@ -2056,10 +2056,10 @@ static void WaitForHatingMyLife(u8 taskId) {
 static void TimeForTheSecondPage(u8 taskId)
 {
     gTasks[taskId].tTimer = 40;
-    gTasks[taskId].func = IFuckingHateMyLife;
+    gTasks[taskId].func = Page2;
 }
 
-static void IFuckingHateMyLife(u8 taskId)
+static void Page2(u8 taskId)
 {
     gTasks[taskId].tBG1HOFS = 0;
 
@@ -2086,16 +2086,16 @@ static void IFuckingHateMyLife(u8 taskId)
         ShowBg(0);
         ShowBg(1);
         
-        taskId = CreateTask(ImFucked, 0);
+        taskId = CreateTask(TimerToStable, 0);
     }
 }
-static void ImFucked(u8 taskId)
+static void TimerToStable(u8 taskId)
 {
     gTasks[taskId].tTimer = 40;
-    gTasks[taskId].func = FuckYourself;
+    gTasks[taskId].func = OpenPages;
 }
 
-static void FuckYourself(u8 taskId) {
+static void OpenPages(u8 taskId) {
     if (gTasks[taskId].tTimer)
     {
         gTasks[taskId].tTimer--;
