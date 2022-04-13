@@ -239,14 +239,16 @@ static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8);
 static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8);
 
 static void FirstDiaryAppearence(u8);
-static void YourNameIsScott(u8);
-
 static void WaitForHatingMyLife(u8);
 static void TimeForTheSecondPage(u8);
 static void Page2(u8);
 static void TimerToStable(u8);
 static void OpenPages(u8);
 static void PageTracking(u8);
+
+static void DearDiary(u8);
+static void WhoWould(u8);
+//static void PageTracking(u8);
 
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8);
@@ -1659,21 +1661,6 @@ static void PlayerName(u8 taskId) {
 
 }
 
-static void GetFucked(u8 taskId){
-    NewGameBirchSpeech_ClearWindow(0);
-    StringExpandPlaceholders(gStringVar4, gText_PlayerNameIs);
-    AddTextPrinterForMessage(1);
-gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
-}
-
-
-static void YourNameIsScott(u8 taskId) {
-    NewGameBirchSpeech_ClearWindow(0);
-    StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
-    AddTextPrinterForMessage(1); //it's not actually cleaning
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressBeforeNameChoice;
-}
-
 static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
 {
     u8 spriteId = gTasks[taskId].tPlayerSpriteId;
@@ -2039,7 +2026,7 @@ static void WaitForHatingMyLife(u8 taskId) {
         SetGpuReg(REG_OFFSET_BG0HOFS, 0);
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
 
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+        //BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
 
         LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette
 
@@ -2056,7 +2043,7 @@ static void WaitForHatingMyLife(u8 taskId) {
 
 static void TimeForTheSecondPage(u8 taskId)
 {
-    gTasks[taskId].tTimer = 40;
+    gTasks[taskId].tTimer = 20;
     gTasks[taskId].func = Page2;
 }
 
@@ -2077,7 +2064,7 @@ static void Page2(u8 taskId)
         SetGpuReg(REG_OFFSET_BG1VOFS, 0);
         SetGpuReg(REG_OFFSET_BG0HOFS, 0);
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+        //BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
 
         LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal));
 
@@ -2092,7 +2079,7 @@ static void Page2(u8 taskId)
 }
 static void TimerToStable(u8 taskId)
 {
-    gTasks[taskId].tTimer = 40;
+    gTasks[taskId].tTimer = 20;
     gTasks[taskId].func = OpenPages;
 }
 
@@ -2112,7 +2099,7 @@ static void OpenPages(u8 taskId) {
         SetGpuReg(REG_OFFSET_BG0HOFS, 0);
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
 
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+        //BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
 
         LZ77UnCompVram(sBirchSpeechShadowGfx, (void*)VRAM);
         LZ77UnCompVram(sBirchSpeechBgMap, (void*)(BG_SCREEN_ADDR(7)));
@@ -2122,28 +2109,43 @@ static void OpenPages(u8 taskId) {
         ResetTasks();
         ShowBg(0);
         ShowBg(1);
-
-        PageState++;
-
         taskId = CreateTask(PageTracking, 0);
     }
 }
 
 static void PageTracking(u8 taskId) { //for testing if PageTracker is working
-
-    if (PageState == 0) {
-        NewGameBirchSpeech_ClearWindow(0);
-        StringExpandPlaceholders(gStringVar4, gText_DearDiary);
-        AddTextPrinterForMessage(1);
+    //gTasks[taskId].func = DearDiary;
+    ResetTasks();
+    taskId = CreateTask(DearDiary, 0);
+                                      
+    /*if (PageState == 0) {
+        gTasks[taskId].func = DearDiary;
     }
     if (PageState == 1) {
-        taskId = CreateTask(FirstDiaryAppearence, 0);
+        gTasks[taskId].func = WhoWould;
     }
     if (PageState == 2) {
-        NewGameBirchSpeech_ClearWindow(0);
-        StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
-        AddTextPrinterForMessage(1);
-    }
+        taskId = CreateTask(FirstDiaryAppearence, 0);
+    }*/
+    //PageState++;
+}
+
+static void DearDiary (u8 taskId){
+    InitWindows(gNewGameBirchSpeechTextWindows);
+    CopyWindowToVram(0, 3);
+    LoadMainMenuWindowFrameTiles(0, 0xF3);
+    LoadMessageBoxGfx(0, 0xFC, 0xF0);
+    NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+    PutWindowTilemap(0);
+    NewGameBirchSpeech_ClearWindow(0);
+    StringExpandPlaceholders(gStringVar4, gText_DearDiary);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
+}
+static void WhoWould(u8 taskId) {
+    NewGameBirchSpeech_ClearWindow(0);
+    StringExpandPlaceholders(gStringVar4, gText_WhoWould);
+    AddTextPrinterForMessage(1);
 }
 
 static void SpriteCB_Null(struct Sprite *sprite)
@@ -2366,69 +2368,6 @@ static void NewGameBirchSpeech_StartFadePlatformOut(u8 taskId, u8 delay)
     gTasks[taskId2].tDelay = delay;
     gTasks[taskId2].tDelayTimer = delay;
 }
-
-/* Optimize writing?
-
-Task1{      //first frame of opening page
-if (gTasks[taskId].tTimer)
-    {
-        gTasks[taskId].tTimer--;
-    }
-    else
-    {
-        FreeAllWindowBuffers();
-
-        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
-
-        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal));
-
-        CpuCopy32(sOpen1DiaryGFX, (void*)VRAM, sizeof(sOpen1DiaryGFX));
-        LZ77UnCompVram(sOpen1DiaryBackground, (void*)(BG_SCREEN_ADDR(7)));
-        ResetTasks();
-        ShowBg(0);
-        ShowBg(1);
-}
-Task2{ //will show second frame of animation
-gTasks[taskId].tBG1HOFS = 0;
-
-    if (gTasks[taskId].tTimer)
-    {
-        gTasks[taskId].tTimer--;
-    }
-    else {
-        FreeAllWindowBuffers();
-
-        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
-
-        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal));
-
-        CpuCopy32(sOpen2DiaryGFX, (void*)VRAM, sizeof(sOpen2DiaryGFX));
-        LZ77UnCompVram(sOpen2DiaryBackground, (void*)(BG_SCREEN_ADDR(7)));
-        //ResetTasks();
-        ShowBg(0);
-        ShowBg(1);
-}
-Task3{
-
-}
-Task4{
-
-}
-*/
-
 #undef tMainTask
 #undef tPalIndex
 #undef tDelayBefore

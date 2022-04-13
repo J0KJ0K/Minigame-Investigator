@@ -81,7 +81,8 @@ gText_DearDiary::
 gText_WhoWould::
 	.string "Who would have thought\n"
 	.string "that, after so many years,\l"
-	.string "I'd come back here?$"
+	.string "I'd come back here?"
+	.string "$"
 
 gText_TheyWould::
 	.string "...well, my parents\p"
