@@ -2113,19 +2113,13 @@ static void OpenPages(u8 taskId) {
     }
 }
 
-static void PageTracking(u8 taskId) { //for testing if PageTracker is working
-    //gTasks[taskId].func = DearDiary;
-    //ResetTasks();
+static void PageTracking(u8 taskId) {
     InitWindows(gNewGameBirchSpeechTextWindows);
     LoadMainMenuWindowFrameTiles(0, 0xF3);
     LoadMessageBoxGfx(0, 0xFC, 0xF0);
     NewGameBirchSpeech_ShowDialogueWindow(0, 1);
     PutWindowTilemap(0);
     CopyWindowToVram(0, 2);
-    /* on line 2118 of src/main_menu.c:
-ResetTasks() is somehow destroying parts of the textbox - I do not understand why - but the textbox functions correctly otherwise
-
-*/
     //taskId = CreateTask(DearDiary, 0);
     gTasks[taskId].func = DearDiary;
                                       
@@ -2143,7 +2137,7 @@ ResetTasks() is somehow destroying parts of the textbox - I do not understand wh
 
 static void DearDiary (u8 taskId){
         NewGameBirchSpeech_ClearWindow(0);
-        StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
+        StringExpandPlaceholders(gStringVar4, gText_DearDiary);
         AddTextPrinterForMessage(1);
         gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
    }

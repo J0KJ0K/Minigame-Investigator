@@ -75,7 +75,7 @@ gText_PlayerConfirmed::
 
 gText_DearDiary::
 	.string "Dear diary,\p"
-	.string "I'm back in Hurricane, Utah."
+	.string "I'm back in Hurricane, Utah.\p"
 	.string "$"
 
 gText_WhoWould::
