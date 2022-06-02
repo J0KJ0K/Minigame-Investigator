@@ -2141,7 +2141,7 @@ static void DearDiary (u8 taskId){
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_DearDiary);
     AddTextPrinterForMessage(1);
-    //gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
    }
 
 static void WhoWould(u8 taskId) {
