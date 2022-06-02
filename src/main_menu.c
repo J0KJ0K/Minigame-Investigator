@@ -2114,15 +2114,17 @@ static void OpenPages(u8 taskId) {
 }
 
 static void PageTracking(u8 taskId) {
+
     InitWindows(gNewGameBirchSpeechTextWindows);
     LoadMainMenuWindowFrameTiles(0, 0xF3);
     LoadMessageBoxGfx(0, 0xFC, 0xF0);
     NewGameBirchSpeech_ShowDialogueWindow(0, 1);
     PutWindowTilemap(0);
     CopyWindowToVram(0, 2);
-    //taskId = CreateTask(DearDiary, 0);
+    //ResetTasks();                 //this will stop everything on the first frame of the textbox being created, I think?
     gTasks[taskId].func = DearDiary;
-                                      
+
+
     /*if (PageState == 0) {
         gTasks[taskId].func = DearDiary;
     }
@@ -2135,12 +2137,13 @@ static void PageTracking(u8 taskId) {
     //PageState++;
 }
 
-static void DearDiary (u8 taskId){
-        NewGameBirchSpeech_ClearWindow(0);
-        StringExpandPlaceholders(gStringVar4, gText_DearDiary);
-        AddTextPrinterForMessage(1);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
+static void DearDiary (u8 taskId){    
+    NewGameBirchSpeech_ClearWindow(0);
+    StringExpandPlaceholders(gStringVar4, gText_DearDiary);
+    AddTextPrinterForMessage(1);
+    //gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
    }
+
 static void WhoWould(u8 taskId) {
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_WhoWould);
