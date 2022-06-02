@@ -1,3 +1,5 @@
+#include "mgba_printf/mini_printf.h"
+#include "mgba_printf/mgba.h"
 #include "global.h"
 #include "crt0.h"
 #include "malloc.h"
@@ -109,6 +111,7 @@ void AgbMain()
     ClearDma3Requests();
     ResetBgs();
     SetDefaultFontsPointer();
+    MgbaOpen();
     InitHeap(gHeap, HEAP_SIZE);
 
     gSoftResetDisabled = FALSE;
