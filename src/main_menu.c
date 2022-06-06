@@ -213,7 +213,10 @@ static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void NewGameBirchSpeech_StartFadePlatformOut(u8, u8);
 static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8);
 static void NewGameBirchSpeech_ShowDialogueWindow(u8, u8);
+
 static void NewGameBirchSpeech_ClearWindow(u8);
+static void NewGameBirchSpeech_ClearWindowHelp(u8);
+
 static void Task_NewGameBirchSpeech_ThisIsAPokemon(u8);
 static void Task_NewGameBirchSpeech_MainSpeech(u8);
 static void NewGameBirchSpeech_ShowPokeBallPrinterCallback(struct TextPrinterTemplate* printer, u16 a);
@@ -1630,11 +1633,11 @@ static void FirstDiaryAppearence(u8 taskId) {
         REG_IME = savedIme;
         SetVBlankCallback(VBlankCB_MainMenu);
         SetMainCallback2(CB2_MainMenu);
-        /*InitWindows(gNewGameBirchSpeechTextWindows);
+        InitWindows(gNewGameBirchSpeechTextWindows);
         LoadMainMenuWindowFrameTiles(0, 0xF3);
         LoadMessageBoxGfx(0, 0xFC, 0xF0);
         PutWindowTilemap(0);
-        CopyWindowToVram(0, 3);*/
+        CopyWindowToVram(0, 3);
 
         taskId = CreateTask(PlayerName, 0);
         gTasks[taskId].tTimer = 25;
@@ -2110,57 +2113,41 @@ static void OpenPages(u8 taskId) {
         ResetTasks();
         ShowBg(0);
         ShowBg(1);
+
+        SetVBlankCallback(VBlankCB_MainMenu);
+        SetMainCallback2(CB2_MainMenu);
+        //InitWindows(gNewGameBirchSpeechTextWindows);       //THIS FUCKER WAS WHAT DID IT; I FUCKING HATE YOU SO FUCKING MUCH
+        LoadMainMenuWindowFrameTiles(0, 0xF3);
+        LoadMessageBoxGfx(0, 0xFC, 0xF0);
+        
+        PutWindowTilemap(0);
+        CopyWindowToVram(0, 2);
+        NewGameBirchSpeech_ShowDialogueWindow(0, 1);        //never have this OUTSIDE OF THIS AREA, it will break the textbox area
+
         taskId = CreateTask(PageTracking, 0);
     }
 }
 
 static void PageTracking(u8 taskId) {
+
     InitWindows(gNewGameBirchSpeechTextWindows);
-    LoadMainMenuWindowFrameTiles(0, 0xF3);
-    LoadMessageBoxGfx(0, 0xFC, 0xF0);
-    LoadMainMenuWindowFrameTiles(0, 0xF3);
-
-    NewGameBirchSpeech_ShowDialogueWindow(0, 1);
-
-    PutWindowTilemap(0);
-    CopyWindowToVram(0, 2); //this does absolutely fucking nothing???? WHY DOES THIS EXIST FOR THE OTHER TEXBOX LOADERS THOUGH???
-    gTasks[taskId].func = DearDiaryText;
-    
-    /*u8 PageState;
-    if (PageState == 0) {
-        gTasks[taskId].func = DearDiary;
-    }
-    if (PageState == 1) {
-        gTasks[taskId].func = WhoWould;
-    }
-    if (PageState == 2) {
-        taskId = CreateTask(FirstDiaryAppearence, 0);
-    }*/
-    //PageState++;
+    NewGameBirchSpeech_ClearWindowHelp(0);
+    gTasks[taskId].func = DearDiary;
 }
 
 static void DearDiary(u8 taskId) {
-    //NewGameBirchSpeech_ClearWindow(0); //for some reason, there were some glitchy tiles in the textbox. This should ensure they disappear the next frame, but I'd much rather not have them appear at all. Adding this in the same function as the one that  loads the graphics erases half of the textbox for some reason?
     StringExpandPlaceholders(gStringVar4, gText_DearDiary);
     AddTextPrinterForMessage(1);
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
 }
 
-static void DearDiaryText(u8 taskId){ //exists for testing purposes
-    u8 i;
-    NewGameBirchSpeech_ClearWindow(0);
-    for (i = 0; i < 60; ++i) {
-    }
-    //PutWindowTilemap(0);
-    //CopyWindowToVram(0, 2);
-    gTasks[taskId].func = DearDiary;
-}
 
-static void WhoWould(u8 taskId) {
-    NewGameBirchSpeech_ClearWindow(0);
-    StringExpandPlaceholders(gStringVar4, gText_WhoWould);
-    AddTextPrinterForMessage(1);
-}
+
+
+
+
+
+
 
 static void SpriteCB_Null(struct Sprite *sprite)
 {
@@ -2550,6 +2537,17 @@ static void NewGameBirchSpeech_ClearWindow(u8 windowId)
     CopyWindowToVram(windowId, 2);
 }
 
+static void NewGameBirchSpeech_ClearWindowHelp(u8 windowId)
+{
+    u8 bgColor = GetFontAttribute(1, FONTATTR_COLOR_BACKGROUND);
+    u8 maxCharWidth = GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH);
+    u8 maxCharHeight = GetFontAttribute(1, FONTATTR_MAX_LETTER_HEIGHT);
+    u8 winWidth = GetWindowAttribute(windowId, WINDOW_WIDTH);
+    u8 winHeight = GetWindowAttribute(windowId, WINDOW_HEIGHT);
+
+    FillWindowPixelRect(windowId, bgColor, 0, 0, 162 * 2, maxCharHeight * winHeight);
+    CopyWindowToVram(windowId, 2);
+}
 static void NewGameBirchSpeech_ShowPokeBallPrinterCallback(struct TextPrinterTemplate *printer, u16 a)
 {
     if (*(printer->currentChar - 2) == 8 && gUnknown_02022D04 == 0)
