@@ -36,6 +36,7 @@
 #include "title_screen.h"
 #include "window.h"
 #include "mystery_gift.h"
+#include "mgba_printf/mgba.h"
 
 /*
  * Main menu state machine
@@ -247,8 +248,8 @@ static void OpenPages(u8);
 static void PageTracking(u8);
 
 static void DearDiary(u8);
+static void DearDiaryText(u8);
 static void WhoWould(u8);
-//static void PageTracking(u8);
 
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8);
@@ -2114,17 +2115,17 @@ static void OpenPages(u8 taskId) {
 }
 
 static void PageTracking(u8 taskId) {
-
     InitWindows(gNewGameBirchSpeechTextWindows);
     LoadMainMenuWindowFrameTiles(0, 0xF3);
     LoadMessageBoxGfx(0, 0xFC, 0xF0);
+    LoadMainMenuWindowFrameTiles(0, 0xF3);
+
     NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+
     PutWindowTilemap(0);
-    CopyWindowToVram(0, 2);
-    //ResetTasks();                 //this will stop everything on the first frame of the textbox being created, I think?
-    gTasks[taskId].func = DearDiary;
-
-
+    CopyWindowToVram(0, 2); //this does absolutely fucking nothing???? WHY DOES THIS EXIST FOR THE OTHER TEXBOX LOADERS THOUGH???
+    //gTasks[taskId].func = DearDiary;
+    
     /*if (PageState == 0) {
         gTasks[taskId].func = DearDiary;
     }
@@ -2137,12 +2138,25 @@ static void PageTracking(u8 taskId) {
     //PageState++;
 }
 
-static void DearDiary (u8 taskId){    
-    NewGameBirchSpeech_ClearWindow(0);
+static void DearDiary(u8 taskId) {
+    NewGameBirchSpeech_ClearWindow(0); //for some reason, there were some glitchy tiles in the textbox. This should ensure they disappear the next frame, but I'd much rather not have them appear at all. Adding this in the same function as the one that  loads the graphics erases half of the textbox for some reason?
     StringExpandPlaceholders(gStringVar4, gText_DearDiary);
     AddTextPrinterForMessage(1);
-    //gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
-   }
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
+}
+
+static void DearDiaryText(u8 taskId){ //exists for testing purposes
+    u8 i;
+    NewGameBirchSpeech_ClearWindow(0);
+    for (i = 0; i < 60; ++i) {
+        LoadMainMenuWindowFrameTiles(0, 0xF3);
+        LoadMessageBoxGfx(0, 0xFC, 0xF0);
+        LoadMainMenuWindowFrameTiles(0, 0xF3);
+    }
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, 2);
+    gTasks[taskId].func = DearDiary;
+}
 
 static void WhoWould(u8 taskId) {
     NewGameBirchSpeech_ClearWindow(0);
