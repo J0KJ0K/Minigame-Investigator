@@ -2124,9 +2124,10 @@ static void PageTracking(u8 taskId) {
 
     PutWindowTilemap(0);
     CopyWindowToVram(0, 2); //this does absolutely fucking nothing???? WHY DOES THIS EXIST FOR THE OTHER TEXBOX LOADERS THOUGH???
-    //gTasks[taskId].func = DearDiary;
+    gTasks[taskId].func = DearDiaryText;
     
-    /*if (PageState == 0) {
+    /*u8 PageState;
+    if (PageState == 0) {
         gTasks[taskId].func = DearDiary;
     }
     if (PageState == 1) {
@@ -2139,7 +2140,7 @@ static void PageTracking(u8 taskId) {
 }
 
 static void DearDiary(u8 taskId) {
-    NewGameBirchSpeech_ClearWindow(0); //for some reason, there were some glitchy tiles in the textbox. This should ensure they disappear the next frame, but I'd much rather not have them appear at all. Adding this in the same function as the one that  loads the graphics erases half of the textbox for some reason?
+    //NewGameBirchSpeech_ClearWindow(0); //for some reason, there were some glitchy tiles in the textbox. This should ensure they disappear the next frame, but I'd much rather not have them appear at all. Adding this in the same function as the one that  loads the graphics erases half of the textbox for some reason?
     StringExpandPlaceholders(gStringVar4, gText_DearDiary);
     AddTextPrinterForMessage(1);
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
@@ -2149,12 +2150,9 @@ static void DearDiaryText(u8 taskId){ //exists for testing purposes
     u8 i;
     NewGameBirchSpeech_ClearWindow(0);
     for (i = 0; i < 60; ++i) {
-        LoadMainMenuWindowFrameTiles(0, 0xF3);
-        LoadMessageBoxGfx(0, 0xFC, 0xF0);
-        LoadMainMenuWindowFrameTiles(0, 0xF3);
     }
-    PutWindowTilemap(0);
-    CopyWindowToVram(0, 2);
+    //PutWindowTilemap(0);
+    //CopyWindowToVram(0, 2);
     gTasks[taskId].func = DearDiary;
 }
 
