@@ -249,10 +249,18 @@ static void Page2(u8);
 static void TimerToStable(u8);
 static void OpenPages(u8);
 static void PageTracking(u8);
+static void IsTextDoneforPages(u8);
 
 static void DearDiary(u8);
 static void DearDiaryText(u8);
 static void WhoWould(u8);
+static void TheyWould(u8);
+static void Everyone(u8);
+static void Creepy(u8);
+static void BackHome(u8);
+
+static void Transcendance(u8);
+
 
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8);
@@ -281,7 +289,6 @@ static const u16 sBirchSpeechBgPals[][16] = {
 };
 
 int PageState;
-
 static const u32 sHurricaneBackground[] = INCBIN_U32("graphics/birch_speech/welcum.bin.lz");
 static const u32 sBirchSpeechHurricaneGfx[] = INCBIN_U32("graphics/birch_speech/welcum.4bpp");
 static const u16 sHurricanePal[] = INCBIN_U16("graphics/birch_speech/welcome_to_hurricane.gbapal");
@@ -2014,35 +2021,34 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)//IMPORTANT; THI
 }
 
 static void WaitForHatingMyLife(u8 taskId) {
+        if (gTasks[taskId].tTimer)
+        {
+            gTasks[taskId].tTimer--;
+        }
+        else
+        {
+            FreeAllWindowBuffers();
 
-    if (gTasks[taskId].tTimer)
-    {
-        gTasks[taskId].tTimer--;
-    }
-    else
-    {
-        FreeAllWindowBuffers();
+            SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+            SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+            SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+            SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+            SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+            SetGpuReg(REG_OFFSET_BG0VOFS, 0);
 
-        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+            //BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
 
-        //BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+            LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette
 
-        LoadPalette(sBirchSpeechBgGradientPal, 0, sizeof(sBirchSpeechBgGradientPal)); //will load the Hurricane colour palette
+            CpuCopy32(sOpen1DiaryGFX, (void*)VRAM, sizeof(sOpen1DiaryGFX)); //will load the Hurricane gfx
+            LZ77UnCompVram(sOpen1DiaryBackground, (void*)(BG_SCREEN_ADDR(7))); //will load the Hurricane displacement
+            ResetTasks();
+            ShowBg(0);
+            ShowBg(1);
 
-        CpuCopy32(sOpen1DiaryGFX, (void*)VRAM, sizeof(sOpen1DiaryGFX)); //will load the Hurricane gfx
-        LZ77UnCompVram(sOpen1DiaryBackground, (void*)(BG_SCREEN_ADDR(7))); //will load the Hurricane displacement
-        ResetTasks();
-        ShowBg(0);
-        ShowBg(1);
-
-        //gTasks[taskId].func = TimeForTheSecondPage;
-        taskId = CreateTask(TimeForTheSecondPage, 0);
-    }
+            //gTasks[taskId].func = TimeForTheSecondPage;
+            taskId = CreateTask(TimeForTheSecondPage, 0);
+        }
 }
 
 static void TimeForTheSecondPage(u8 taskId)
@@ -2129,25 +2135,88 @@ static void OpenPages(u8 taskId) {
 }
 
 static void PageTracking(u8 taskId) {
-
     InitWindows(gNewGameBirchSpeechTextWindows);
     NewGameBirchSpeech_ClearWindowHelp(0);
     gTasks[taskId].func = DearDiary;
+    MgbaPrintf(MGBA_LOG_INFO, "%d", PageState);
+    //u8 PageState;
+    PageState++;
+    if (PageState == 1) {
+        gTasks[taskId].func = DearDiary;
+    }
+    if (PageState == 2) {
+        gTasks[taskId].func = WhoWould;
+    }
+    if (PageState == 3) {
+        gTasks[taskId].func = TheyWould;
+    }
+    if (PageState == 4) {
+        gTasks[taskId].func = Everyone;
+    }
+    if (PageState == 5) {
+        gTasks[taskId].func = Creepy;
+    }
+    if (PageState == 6) {
+        gTasks[taskId].func = BackHome;
+    }
+    /*if (PageState == 5) {
+        ResetTasks();
+        taskId = CreateTask(FirstDiaryAppearence, 0);
+    }*/
+}
+
+static void BackHome(u8 taskId) {
+    StringExpandPlaceholders(gStringVar4, gText_BackHome);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = Transcendance;
+}
+
+static void Transcendance(u8 taskId) {
+    RunTextPrinters();
+    if (!RunTextPrintersAndIsPrinter0Active() && (JOY_NEW(A_BUTTON))) {
+        //blend in sprite of house in sepia
+        //blend in background of house in colour
+        //do the same thing the game does when it has a background of certain areas and spawns you in them
+    }
+}
+
+
+static void Creepy(u8 taskId) {
+    StringExpandPlaceholders(gStringVar4, gText_Creepy);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = IsTextDoneforPages;
+}
+
+static void Everyone(u8 taskId) {
+    StringExpandPlaceholders(gStringVar4, gText_Everyone);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = IsTextDoneforPages;
+}
+
+static void TheyWould(u8 taskId) {
+    StringExpandPlaceholders(gStringVar4, gText_TheyWould);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = IsTextDoneforPages;
+}
+
+static void WhoWould(u8 taskId) {
+    StringExpandPlaceholders(gStringVar4, gText_WhoWould);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = IsTextDoneforPages;
 }
 
 static void DearDiary(u8 taskId) {
     StringExpandPlaceholders(gStringVar4, gText_DearDiary);
     AddTextPrinterForMessage(1);
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
+    gTasks[taskId].func = IsTextDoneforPages;
 }
 
-
-
-
-
-
-
-
+static void IsTextDoneforPages(u8 taskId) {
+    RunTextPrinters();
+    if (!RunTextPrintersAndIsPrinter0Active() && (JOY_NEW(A_BUTTON))) {
+        gTasks[taskId].func = WaitForHatingMyLife;
+    }
+}
 
 static void SpriteCB_Null(struct Sprite *sprite)
 {
