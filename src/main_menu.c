@@ -2171,16 +2171,6 @@ static void BackHome(u8 taskId) {
     gTasks[taskId].func = Transcendance;
 }
 
-static void Transcendance(u8 taskId) {
-    RunTextPrinters();
-    if (!RunTextPrintersAndIsPrinter0Active() && (JOY_NEW(A_BUTTON))) {
-        //blend in sprite of house in sepia
-        //blend in background of house in colour
-        //do the same thing the game does when it has a background of certain areas and spawns you in them
-    }
-}
-
-
 static void Creepy(u8 taskId) {
     StringExpandPlaceholders(gStringVar4, gText_Creepy);
     AddTextPrinterForMessage(1);
@@ -2215,6 +2205,18 @@ static void IsTextDoneforPages(u8 taskId) {
     RunTextPrinters();
     if (!RunTextPrintersAndIsPrinter0Active() && (JOY_NEW(A_BUTTON))) {
         gTasks[taskId].func = WaitForHatingMyLife;
+    }
+}
+
+static void Transcendance(u8 taskId) {
+    RunTextPrinters();
+    if (!RunTextPrintersAndIsPrinter0Active() && (JOY_NEW(A_BUTTON))) {
+        FreeAllWindowBuffers();
+        FadeOutBGM(4);
+        gTasks[taskId].func = Task_NewGameBirchSpeech_Cleanup;
+        //blend in sprite of house in sepia
+        //blend in background of house in colour
+        //do the same thing the game does when it has a background of certain areas and spawns you in them
     }
 }
 

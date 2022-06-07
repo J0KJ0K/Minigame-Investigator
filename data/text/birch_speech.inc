@@ -85,8 +85,8 @@ gText_WhoWould::
 	.string "$"
 
 gText_TheyWould::
-	.string "...well, my parents\p"
-	.string "certainly did."
+	.string "...well, my parents\n"
+	.string "certainly did.\p"
 	.string"$"
 
 gText_Everyone::
@@ -95,16 +95,16 @@ gText_Everyone::
 	.string "This is supposedly a town\n"
 	.string "where everyone seems to \l"
 	.string "come back to, but the population\l"
-	.string "rarely grows."
+	.string "rarely grows.\p"
 	.string"$"
 
 gText_Creepy::
 	.string "Whether that's creepy, or just\n"
 	.string "self-fulfilling prophecy,\l"
-	.string "I cannot tell."
+	.string "I cannot tell.\p"
 	.string"$"
 
 gText_BackHome::
 	.string "Anyway,\n"
-	.string "I'm back home."
+	.string "I'm back home.\p"
 	.string"$"
