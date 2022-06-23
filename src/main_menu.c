@@ -2204,6 +2204,8 @@ static void DearDiary(u8 taskId) {
 static void IsTextDoneforPages(u8 taskId) {
     RunTextPrinters();
     if (!RunTextPrintersAndIsPrinter0Active() && (JOY_NEW(A_BUTTON))) {
+        NewGameBirchSpeech_ClearWindow(0);
+        ClearDialogWindowAndFrame(0, 1);
         gTasks[taskId].func = WaitForHatingMyLife;
     }
 }
@@ -2211,6 +2213,8 @@ static void IsTextDoneforPages(u8 taskId) {
 static void Transcendance(u8 taskId) {
     RunTextPrinters();
     if (!RunTextPrintersAndIsPrinter0Active() && (JOY_NEW(A_BUTTON))) {
+        NewGameBirchSpeech_ClearWindow(0);
+        ClearDialogWindowAndFrame(0, 1);
         FreeAllWindowBuffers();
         FadeOutBGM(4);
         gTasks[taskId].func = Task_NewGameBirchSpeech_Cleanup;

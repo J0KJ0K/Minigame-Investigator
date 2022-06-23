@@ -276,6 +276,7 @@ Miles_Intro1::
 	applymovement LOCALID_MILES, WalkupToPlayer1
 	waitmovement 0
 	msgbox Miles_Intro, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition1
 	waitmovement 0
 	applymovement LOCALID_MILES, Resetpositionpart2
@@ -292,6 +293,7 @@ Miles_Intro2::
 	applymovement LOCALID_MILES, WalkupToPlayer2
 	waitmovement 0
 	msgbox Miles_Intro, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition2
 	waitmovement 0
 	applymovement LOCALID_MILES, Resetpositionpart2
@@ -310,6 +312,7 @@ Miles_Intro3::
 	applymovement LOCALID_MILES, WalkupToPlayer3
 	waitmovement 0
 	msgbox Miles_Intro, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition3
 	waitmovement 0
 	applymovement LOCALID_MILES, Resetpositionpart2
@@ -328,6 +331,7 @@ Miles_Intro4::
 	applymovement LOCALID_MILES, WalkupToPlayer4
 	waitmovement 0
 	msgbox Miles_Intro, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition4
 	waitmovement 0
 	applymovement LOCALID_MILES, Resetpositionpart2
@@ -393,14 +397,18 @@ Miles_Out:
 
 Miles_Intro_Normal:
 	msgbox Miles_View, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MILES, ToBackMiles
 	applymovement OBJ_EVENT_ID_PLAYER, ToBacktrack
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, ToBack
 	waitmovement 0
 	msgbox Miles_Back, MSGBOX_DEFAULT
+	closemessage
 	msgbox ThisUpdate, MSGBOX_DEFAULT
+	closemessage
 	msgbox IfYouNeedMe, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MILES, Miles_Out
 	waitmovement 0
 	removeobject LOCALID_MILES
