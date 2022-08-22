@@ -64,7 +64,7 @@ Night3:
 
 Night4:
 	call Night3
-	setflag FLAG_HIDE_FOXY_2
+	setflag FLAG_HIDE_FOXY
 	clearflag FLAG_HIDE_CHICA_SCRAPS
 	end
 
