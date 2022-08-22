@@ -6,12 +6,6 @@ LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
 	.byte 0
 
 LittlerootTown_BrendansHouse_2F_OnTransition: @ 81F83EE
-	compare VAR_LITTLEROOT_RIVAL_STATE, 2
-	call_if_lt LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan
-	compare VAR_LITTLEROOT_RIVAL_STATE, 3
-	call_if_ge LittlerootTown_BrendansHouse_2F_EventScript_CheckShouldUpdateBrendanPos
-	compare VAR_LITTLEROOT_INTRO_STATE, 4
-	call_if_eq PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
 	call SecretBase_EventScript_SetDecorationFlags
 	setvar VAR_SECRET_BASE_INITIALIZED, 0
 	end
@@ -53,43 +47,6 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckInitDecor:: @ 81F8474
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SecretBase_EventScript_InitDecorations
-	end
-
-LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall:: @ 81F8481
-	lockall
-	compare VAR_LITTLEROOT_RIVAL_STATE, 2
-	goto_if_eq LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan
-	msgbox RivalsHouse_2F_Text_ItsRivalsPokeBall, MSGBOX_DEFAULT
-	releaseall
-	end
-
-LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan:: @ 81F8497
-	delay 10
-	addobject LOCALID_RIVAL
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanEnters
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	delay 10
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth
-	compare VAR_FACING, DIR_SOUTH
-	call_if_eq LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanSouth
-	compare VAR_FACING, DIR_WEST
-	call_if_eq LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanWest
-	compare VAR_FACING, DIR_EAST
-	call_if_eq LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanEast
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
-	setvar VAR_LITTLEROOT_TOWN_STATE, 1
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	releaseall
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth:: @ 81F8507

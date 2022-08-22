@@ -37,6 +37,8 @@ IsFoxyGoGoGo:
 
 Night5::
 	call DeleteFoxy
+	setflag FLAG_HIDE_GHOSTS
+	setflag FLAG_HIDE_CHILDREN
 	clearflag FLAG_HIDE_FOXY_SCRAPS
 	setflag FLAG_BEEN_IN_KITCHEN
 	setflag FLAG_BEEN_IN_BATHROOMS
