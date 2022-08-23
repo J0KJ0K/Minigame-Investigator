@@ -94,7 +94,7 @@ DistantPast:
 Past:
 	.string "Well, last time you were here,\n"
 	.string "I was wandering in my lab, so...\l"
-	.string "Yeah, today is my first day with you.$"
+	.string "Yeah, today is my first day with you!$"
 
 
 NextUpdate:

@@ -1,5 +1,9 @@
-# Instructions
+#Disclaimer
 
+Note: these were copied from Pokeemerald's  INSTALL.md
+The instructions are basically the same for Minigame Investigator, but please clone pokeemerald before attempting to clone Minigame Investigator.
+
+## Instructions
 These instructions explain how to set up the tools required to build **pokeemerald**, which assembles the source files into a ROM.
 
 These instructions come with notes which can be expanded by clicking the "<i>Note...</i>" text.
