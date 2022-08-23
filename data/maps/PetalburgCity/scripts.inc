@@ -16,7 +16,8 @@ PetalburgCity_OnFrame: @ 81DC31C
 Miles_Normal::
 	lockall
 	faceplayer
-	msgbox Wassup, MSGBOX_DEFAULT
+	msgbox Wassup, MSGBOX_NPC
+	closemessage
 	multichoicegrid 0, 1, MULTI_MILES_MENU, 1, FALSE
 	switch VAR_RESULT
 	case 0, Miles_Story
@@ -30,16 +31,39 @@ Miles_Normal::
 	end
 
 Remember:
-	compare VAR_GAME_VERSION, 1
-	goto_if_lt DistantPast
+	compare VAR_GAME_VERSION, 2
+	goto_if 0 DistantPast
+	goto_if 1 PizzeriaUpdate
 	goto_if_eq Present
 	goto_if_gt Future
+	releaseall
 	end
+
+PizzeriaUpdate:
+	lockall
+	msgbox Pizzaaa, MSGBOX_NPC
+	closemessage
+	releaseall
+	end
+
+Pizzaaa:
+	.string "Oh, hey!\n"
+	.string "Back from the\l"
+	.string "Pizzeria Update, right?\p"
+	.string "Well, what do you think?\p"
+	.string "We improved a few things\n"
+	.string "regarding contrast and\l"
+	.string "saturation, but there's\l"
+	.string "still a long way to go!\p"
+	.string "I wonder what the next\n"
+	.string "update will bring?$"
 
 Future:
 	lockall
-	msgbox Futa, MSGBOX_DEFAULT
+	msgbox Futa, MSGBOX_NPC
+	closemessage
 	releaseall
+	end
 
 Futa:
 	.string "Hey, future boy,\n"
@@ -51,8 +75,10 @@ Futa:
 
 Present:
 	lockall
-	msgbox Gift, MSGBOX_DEFAULT
+	msgbox Gift, MSGBOX_NPC
+	closemessage
 	releaseall
+	end
 
 Gift:
 	.string "Nope, I met you today.\n"
@@ -60,8 +86,10 @@ Gift:
 	
 DistantPast:
 	lockall
-	msgbox Past, MSGBOX_DEFAULT
+	msgbox Past, MSGBOX_NPC
+	closemessage
 	releaseall
+	end
 
 Past:
 	.string "Well, last time you were here,\n"
@@ -71,7 +99,8 @@ Past:
 
 NextUpdate:
 	lockall
-	msgbox NextUpdate_Miles, MSGBOX_DEFAULT
+	msgbox NextUpdate_Miles, MSGBOX_NPC
+	closemessage
 	releaseall
 	end
 
@@ -93,7 +122,8 @@ Goodnight:
 
 WeSuck:
 	lockall
-	msgbox Succ, MSGBOX_DEFAULT
+	msgbox Succ, MSGBOX_NPC
+	closemessage
 	releaseall
 	end
 
@@ -104,7 +134,8 @@ Succ:
 
 ThisUpdate_Description:
 	lockall
-	msgbox ThisUpdate, MSGBOX_DEFAULT
+	msgbox ThisUpdate, MSGBOX_NPC
+	closemessage
 	releaseall
 	end
 
@@ -124,32 +155,37 @@ Miles_Story:
 
 NoStoriesForYouNoo:
 	lockall
-	msgbox NoStoriesForYou, MSGBOX_DEFAULT
+	msgbox NoStoriesForYou, MSGBOX_NPC
 	setvar VAR_STORIES_TO_TELL, 5
+	closemessage
 	releaseall
 	end
 
 Story1Noo:
 	lockall
-	msgbox Story1, MSGBOX_DEFAULT
+	msgbox Story1, MSGBOX_NPC
+	closemessage
 	releaseall
 	end
 
 Story2Noo:
 	lockall
-	msgbox Story2, MSGBOX_DEFAULT
+	msgbox Story2, MSGBOX_NPC
+	closemessage
 	releaseall
 	end
 
 Story3Noo:
 	lockall
-	msgbox Story3, MSGBOX_DEFAULT
+	msgbox Story3, MSGBOX_NPC
+	closemessage
 	releaseall
 	end
 
 Story4Noo:
 	lockall
-	msgbox Story4, MSGBOX_DEFAULT
+	msgbox Story4, MSGBOX_NPC
+	closemessage
 	releaseall
 	end
 
@@ -275,7 +311,7 @@ Miles_Intro1::
 	setvar VAR_MILES_STATE, 1
 	applymovement LOCALID_MILES, WalkupToPlayer1
 	waitmovement 0
-	msgbox Miles_Intro, MSGBOX_DEFAULT
+	msgbox Miles_Intro, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition1
 	waitmovement 0
@@ -292,7 +328,7 @@ Miles_Intro2::
 	setvar VAR_MILES_STATE, 1
 	applymovement LOCALID_MILES, WalkupToPlayer2
 	waitmovement 0
-	msgbox Miles_Intro, MSGBOX_DEFAULT
+	msgbox Miles_Intro, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition2
 	waitmovement 0
@@ -311,7 +347,7 @@ Miles_Intro3::
 	setvar VAR_MILES_STATE, 1
 	applymovement LOCALID_MILES, WalkupToPlayer3
 	waitmovement 0
-	msgbox Miles_Intro, MSGBOX_DEFAULT
+	msgbox Miles_Intro, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition3
 	waitmovement 0
@@ -330,7 +366,7 @@ Miles_Intro4::
 	setvar VAR_MILES_STATE, 10
 	applymovement LOCALID_MILES, WalkupToPlayer4
 	waitmovement 0
-	msgbox Miles_Intro, MSGBOX_DEFAULT
+	msgbox Miles_Intro, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MILES, Miles_Resetposition4
 	waitmovement 0
@@ -396,18 +432,18 @@ Miles_Out:
 	step_end
 
 Miles_Intro_Normal:
-	msgbox Miles_View, MSGBOX_DEFAULT
+	msgbox Miles_View, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MILES, ToBackMiles
 	applymovement OBJ_EVENT_ID_PLAYER, ToBacktrack
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, ToBack
 	waitmovement 0
-	msgbox Miles_Back, MSGBOX_DEFAULT
+	msgbox Miles_Back, MSGBOX_NPC
 	closemessage
-	msgbox ThisUpdate, MSGBOX_DEFAULT
+	msgbox ThisUpdate, MSGBOX_NPC
 	closemessage
-	msgbox IfYouNeedMe, MSGBOX_DEFAULT
+	msgbox IfYouNeedMe, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MILES, Miles_Out
 	waitmovement 0
@@ -415,17 +451,17 @@ Miles_Intro_Normal:
 	setflag FLAG_HIDE_MILES_2
 	clearflag FLAG_HIDE_MILES
 	return
-	releaseall
+	end
 
 Miles_Introduction:
 	lockall
 	addobject LOCALID_MILES
-	msgbox Miles_Tired, MSGBOX_DEFAULT
+	msgbox Miles_Tired, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MILES, MilesMoveForward
 	applymovement OBJ_EVENT_ID_PLAYER, LookatMiles1
 	waitmovement 0
-	msgbox Miles_Notice, MSGBOX_DEFAULT
+	msgbox Miles_Notice, MSGBOX_NPC
 	closemessage
 	return
 	end
@@ -508,7 +544,7 @@ WalkupToPlayer4:
 
 Door_FNaF1::
 	lockall
-	msgbox FNaF1, MSGBOX_DEFAULT
+	msgbox FNaF1, MSGBOX_NPC
 	fadescreen FADE_TO_BLACK
 	setvar VAR_COSTUME, 1
 	special SwapPlayersCostume
@@ -518,43 +554,43 @@ Door_FNaF1::
 
 Door_FNaF2::
 	lockall
-	msgbox FNaF2, MSGBOX_DEFAULT
+	msgbox FNaF2, MSGBOX_NPC
 	release
 	end
 
 Door_FNaF4::
 	lockall
-	msgbox FNaF4, MSGBOX_DEFAULT
+	msgbox FNaF4, MSGBOX_NPC
 	release
 	end
 
 Door_FNaF6::
 	lockall
-	msgbox FNaF6, MSGBOX_DEFAULT
+	msgbox FNaF6, MSGBOX_NPC
 	release
 	end
 
 Door_GoBack::
 	lockall
-	msgbox GoBack, MSGBOX_DEFAULT
+	msgbox GoBack, MSGBOX_NPC
 	release
 	end
 
 Door_PhoneDude::
 	lockall
-	msgbox Phone_Dude, MSGBOX_DEFAULT
+	msgbox Phone_Dude, MSGBOX_NPC
 	release
 	end
 
 Door_Arson::
 	lockall
-	msgbox Prision, MSGBOX_DEFAULT
+	msgbox Prision, MSGBOX_NPC
 	release
 	end
 
 Door_City::
 	lockall
-	msgbox City, MSGBOX_DEFAULT
+	msgbox City, MSGBOX_NPC
 	release
 	end
 
@@ -568,7 +604,7 @@ FNaF4:
 FNaF6:
 	.string "NEW Freddy Fazbear's$"
 GoBack:
-	.string "PETALBURG TOWN$"
+	.string "PLAYER'S ROOM$"
 City:
 	.string "Hurricane, Utah$"
 Prision:
