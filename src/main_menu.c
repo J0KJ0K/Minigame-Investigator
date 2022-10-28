@@ -288,6 +288,11 @@ static const u16 sBirchSpeechBgPals[][16] = {
 };
 
 int PageState;
+
+static const u32 sSepiaHouse[] = INCBIN_U32("graphics/birch_speech/sepette.bin.lz");
+static const u32 sSepiaHouseGfx[] = INCBIN_U32("graphics/birch_speech/sepette.4bpp");
+static const u16 sSepiaHousePal[] = INCBIN_U16("graphics/birch_speech/house_sepia.gbapal");
+
 static const u32 sHurricaneBackground[] = INCBIN_U32("graphics/birch_speech/welcum.bin.lz");
 static const u32 sBirchSpeechHurricaneGfx[] = INCBIN_U32("graphics/birch_speech/welcum.4bpp");
 static const u16 sHurricanePal[] = INCBIN_U16("graphics/birch_speech/welcome_to_hurricane.gbapal");

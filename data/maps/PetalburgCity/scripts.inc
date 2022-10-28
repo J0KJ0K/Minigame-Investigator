@@ -433,15 +433,14 @@ Miles_Out:
 
 Miles_Intro_Normal:
 	msgbox Miles_View, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MILES, ToBackMiles
 	applymovement OBJ_EVENT_ID_PLAYER, ToBacktrack
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, ToBack
 	waitmovement 0
 	msgbox Miles_Back, MSGBOX_DEFAULT
-	closemessage
 	msgbox ThisUpdate, MSGBOX_DEFAULT
-	closemessage
 	msgbox IfYouNeedMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MILES, Miles_Out

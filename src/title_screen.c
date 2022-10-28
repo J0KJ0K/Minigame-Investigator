@@ -729,45 +729,52 @@ static void Task_TitleScreenPhase2(u8 taskId)
 // Show Rayquaza silhouette and process main title screen input
 static void Task_TitleScreenPhase3(u8 taskId)
 {
-    if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON)))
+    if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON)))     //stays unchanged - if you press A or START, the screen will fade to white and progress to the menu
     {
         FadeOutBGM(4);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_WHITEALPHA);
         SetMainCallback2(CB2_GoToMainMenu);
     }
-    else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)
+    else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)  //you can clear your save with this - neat little secret
     {
         SetMainCallback2(CB2_GoToClearSaveDataScreen);
     }
     else if (JOY_HELD(RESET_RTC_BUTTON_COMBO) == RESET_RTC_BUTTON_COMBO
-      && CanResetRTC() == TRUE)
+      && CanResetRTC() == TRUE) //no idea what rtc is, but this will jump to that screen; unchanged from vanilla
     {
         FadeOutBGM(4);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
         SetMainCallback2(CB2_GoToResetRtcScreen);
     }
-    else if (JOY_HELD(BERRY_UPDATE_BUTTON_COMBO) == BERRY_UPDATE_BUTTON_COMBO)
+    else if (JOY_HELD(BERRY_UPDATE_BUTTON_COMBO) == BERRY_UPDATE_BUTTON_COMBO)     //I have no idea what the Berry Fix does, but let's not worry about it yet
     {
         FadeOutBGM(4);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
         SetMainCallback2(CB2_GoToBerryFixScreen);
     }   
-    else
+    else    //if nothing out of the ordinary, it will start going through tasks to make the various elements be in their place
     {
-        SetGpuReg(REG_OFFSET_BG2Y_L, 0);
+        SetGpuReg(REG_OFFSET_BG2Y_L, 0);    //bg 2's offsets will both be set to 0
         SetGpuReg(REG_OFFSET_BG2Y_H, 0);
-        gTasks[taskId].tCounter++;
-        if (gTasks[taskId].tCounter & 1)
+
+        gTasks[taskId].tCounter++;          //increases the currently run task counter
+
+        if (gTasks[taskId].tCounter & 1)    //task counter regulates the colour of rayquaza's marks and the clouds' vertical position 
         {
             gTasks[taskId].data[4]++;
             gBattle_BG1_Y = gTasks[taskId].data[4] / 2;
             gBattle_BG1_X = 0;
         }
-        UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);
-        if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
+
+        UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);   //update Rayquaza's golden mark palette offset, based on the counter
+
+
+        if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)  //if gMPlayInfo_BGM's "status" object has no "1" bits
+        //if(gMPlayInfo_BGM.status == 0) doesn't work because gMPlayInfo_BGM.status might be  represented as 1111 0000 0000 0000 0000 or anything else
+        //or maybe something else? I don't know, and I'm too busy to check
         {
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_WHITEALPHA);
-            SetMainCallback2(CB2_GoToCopyrightScreen);
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_WHITEALPHA); //fades to white
+            SetMainCallback2(CB2_GoToCopyrightScreen);  //restarts as if the game was reloaded
         }
     }
 }
