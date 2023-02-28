@@ -1,0 +1,41 @@
+index - description - stock RGB values - notes
+
+Transparency - unchanged
+	>index 0
+
+Shirt
+	>index 1 - "yevey" - 205 205 222 - will always have index 2's value until SHIRT_INDEX is 87
+	>index 2 - base colour - 98 98 115 - will be possible to change until SHIRT_INDEX is 87
+	>index 3 - dark shading - 41 57 65 - base colour but darker
+
+Outlines - unchanged
+	>index 4 - skin outline
+	>index 5 - black outline
+
+Pants
+	>index 6 - highlight - 62 105 185
+	>index 7 - dark/main - 7 1 133
+
+Skin colour
+	>index 8 - main skin tone - 255 221 204
+	>index 9 - darker skin tone - 255 208 194
+
+Hair colour
+	>index 10 - hair highlight - female: 255 240 15- male: 41 58 66
+	>index 11 - hair dark - female: 255 186 10 - male: 41 58 66
+
+Glasses - unchanged(?) - but what if it did change?
+	>index 12 - lenses - 255 85 77
+	>index 13 - frames - 255 255 255
+
+Others
+	>index 14 - eye colour - 0 17 163
+	>index 15 - pouch colour - 255 186 10
+
+Player's choice:
+	>shirt colour (dark is automatic)
+	>skin tone (dark is automatic)
+	>pants (dark is automatic)
+	>hair (dark is automatic?)
+	>eyes
+	>pouch

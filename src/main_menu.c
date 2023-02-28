@@ -249,6 +249,7 @@ static void TimerToStable(u8);
 static void OpenPages(u8);
 static void PageTracking(u8);
 static void IsTextDoneforPages(u8);
+static void FadeOutMusic(u8);
 
 static void DearDiary(u8);
 static void DearDiaryText(u8);
@@ -1353,6 +1354,7 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     gTasks[taskId].data[3] = 0xFF;
     gTasks[taskId].tTimer = 10;
 
+    PlayBGM(MUS_DRUM_TEST);
     ShowBg(0);
     ShowBg(1);
 }
@@ -1490,7 +1492,7 @@ static void Task_NewGameBirchSpeech_StartBirchLotadPlatformFade(u8 taskId)//get 
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
         gTasks[taskId].tTimer = 64;
-        gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway;
+        gTasks[taskId].func = FadeOutMusic;
     }
 }
 
@@ -1506,7 +1508,7 @@ static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8 taskId)
     }
     else
     {
-        u8 spriteId = gTasks[taskId].tBrendanSpriteId;
+        u8 spriteId = gTasks[taskId].tBrendanSpriteId;  //WE FINALLY GOT MAIN CHARACTER
 
         gSprites[spriteId].pos1.x = 120;
         gSprites[spriteId].pos1.y = 80;
@@ -1787,7 +1789,9 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
         gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway;
+        FadeOutBGM(1);
+        gTasks[taskId].tTimer = 61;
+        gTasks[taskId].func = FadeOutMusic;
         break;
     case -1:
     case 1:
@@ -2009,8 +2013,21 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     CopyWindowToVram(0, 3);
 }
 
+static void FadeOutMusic(u8 taskId) {
+    if (gTasks[taskId].tTimer)
+    {
+        gTasks[taskId].tTimer--;
+    }
+    else
+    {
+        gTasks[taskId].tTimer = 30;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway;
+        PlayBGM(MUS_FLAMING_DANCE);
+}
+}
+
 static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)//IMPORTANT; THIS WILL SLIDE THE DIARY TO THE RIGHT BEFORE OPENING IT
-{
+{  
     if (gTasks[taskId].tBG1HOFS != -60)//task background 1 horizontal offset (t BG 1 HZ OFS)
     {
         gTasks[taskId].tBG1HOFS -= 2;

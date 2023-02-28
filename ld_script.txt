@@ -1228,6 +1228,9 @@ src/main_menu.o(COMMON);
         sound/songs/midi/ph_nurse_blend.o(.rodata);
         sound/songs/midi/ph_nurse_held.o(.rodata);
         sound/songs/midi/ph_nurse_solo.o(.rodata);
+
+        sound/songs/midi/mus_flaming_dance.o(.rodata);
+	sound/songs/midi/mus_drum_test.o(.rodata);
     } =0
 
     lib_rodata :

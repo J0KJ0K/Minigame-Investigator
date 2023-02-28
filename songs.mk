@@ -630,6 +630,12 @@ $(MID_SUBDIR)/mus_vs_mew.s: %.s: %.mid
 $(MID_SUBDIR)/mus_vs_rayquaza.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G114 -V080 -P1
 
+$(MID_SUBDIR)/mus_flaming_dance.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G192 -V078
+
+$(MID_SUBDIR)/mus_drum_test.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G193 -V076
+
 $(MID_SUBDIR)/mus_encounter_hiker.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G097 -V076
 

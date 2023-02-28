@@ -612,6 +612,9 @@ gSongTable:: @ 86B49F0
 	song ph_nurse_held, 2, 2
 	song ph_nurse_solo, 2, 2
 
+	song mus_flaming_dance, 0, 0
+	song mus_drum_test, 0, 0
+
 	.align 2
 dummy_song_header: @ 86B5D00
 	.byte 0, 0, 0, 0

@@ -1,0 +1,63 @@
+Mandatory{
+	Sprites
+	>walking male sprites
+	>trainer card male sprite
+	>trainer card female sprite
+
+	Other
+	>title screen
+}
+
+Bugs / oversights{
+	FNaF 1 - if you get to the room that would lead to the kitchen without crossing the top section, two shadow freddies will appear
+		>>make shadow freddy run farther
+}
+
+Non-mandatory{
+	Sprites
+	>Family intro sprite
+	>Everyone intro sprite
+	>Car intro sprite
+	>Intro sprite printer
+
+	Maps
+	>FNaF 1 - remake with smaller maps
+	>FNaF 1 - better tiles (add stars, posters, closets, arcades and stage)
+	>Make house/bedroom
+}
+
+Leave for later updates{
+	Music
+	>intro music
+	>title music
+	>bedroom/house music
+	>Miles music
+}
+
+What I really want to work on{
+	>mugshots
+	>FNaF 6 pizzeria
+	>SAVETHEM
+	>Achievements
+	>Title Screen intro
+	>Character moments
+	>Mike
+}
+
+Complete{
+	Music
+
+	Sprites
+	>House intro sprite
+	>concept male sprite
+	>concept female sprite
+	>walking female sprites
+
+	Maps
+
+	Other
+	>Gender select screen
+	>Diary page graphics
+	>Diary turn
+	>Diary dialogue
+}
