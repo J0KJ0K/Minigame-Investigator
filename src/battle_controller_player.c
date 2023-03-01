@@ -186,12 +186,12 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 
 static const u8 sCostumeBackPics[COSTUME_COUNT][GENDER_COUNT] =
 {
-    [DEFAULT_COSTUME] = {TRAINER_BACK_PIC_BRENDAN, TRAINER_BACK_PIC_MAY},
-    [COSTUME_FREDDY] = {TRAINER_BACK_PIC_BRENDAN, TRAINER_BACK_PIC_MAY},
-    [COSTUME_BONNIE] = {TRAINER_BACK_PIC_BRENDAN, TRAINER_BACK_PIC_MAY},
-    [COSTUME_CHICA] = {TRAINER_BACK_PIC_BRENDAN, TRAINER_BACK_PIC_MAY},
-    [COSTUME_FOXY] = {TRAINER_BACK_PIC_BRENDAN, TRAINER_BACK_PIC_MAY},
-    [COSTUME_GHOST] = {TRAINER_BACK_PIC_BRENDAN, TRAINER_BACK_PIC_MAY},
+    [DEFAULT_COSTUME] = {TRAINER_BACK_PIC_SCOTT, TRAINER_BACK_PIC_YEVA},
+    [COSTUME_FREDDY] = {TRAINER_BACK_PIC_SCOTT, TRAINER_BACK_PIC_YEVA},
+    [COSTUME_BONNIE] = {TRAINER_BACK_PIC_SCOTT, TRAINER_BACK_PIC_YEVA},
+    [COSTUME_CHICA] = {TRAINER_BACK_PIC_SCOTT, TRAINER_BACK_PIC_YEVA},
+    [COSTUME_FOXY] = {TRAINER_BACK_PIC_SCOTT, TRAINER_BACK_PIC_YEVA},
+    [COSTUME_GHOST] = {TRAINER_BACK_PIC_SCOTT, TRAINER_BACK_PIC_YEVA},
 };
 
 static const u8 sTargetIdentities[MAX_BATTLERS_COUNT] = {B_POSITION_PLAYER_LEFT, B_POSITION_PLAYER_RIGHT, B_POSITION_OPPONENT_RIGHT, B_POSITION_OPPONENT_LEFT};
@@ -2297,7 +2297,7 @@ static void PlayerHandleDrawTrainerPic(void)
         }
         else
         {
-            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_BRENDAN;
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_SCOTT;
         }
     }
     else
@@ -2380,12 +2380,12 @@ static void PlayerHandleTrainerSlide(void)
         }
         else
         {
-            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_BRENDAN;
+            trainerPicId = gLinkPlayers[GetMultiplayerId()].gender + TRAINER_BACK_PIC_SCOTT;
         }
     }
     else
     {
-        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_BACK_PIC_BRENDAN;
+        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_BACK_PIC_SCOTT;
     }
 
     DecompressTrainerBackPic(trainerPicId, gActiveBattler);

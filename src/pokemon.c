@@ -1954,7 +1954,7 @@ const struct SpriteTemplate gBattlerSpriteTemplates[MAX_BATTLERS_COUNT] =
 
 static const struct SpriteTemplate sTrainerBackSpriteTemplates[] =
 {
-    [TRAINER_BACK_PIC_BRENDAN] = {
+    [TRAINER_BACK_PIC_SCOTT] = {
         .tileTag = 0xFFFF,
         .paletteTag = 0,
         .oam = &gOamData_BattleSpritePlayerSide,
@@ -1963,7 +1963,7 @@ static const struct SpriteTemplate sTrainerBackSpriteTemplates[] =
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
         .callback = SpriteCB_BattleSpriteStartSlideLeft,
     },
-    [TRAINER_BACK_PIC_MAY] = {
+    [TRAINER_BACK_PIC_YEVA] = {
         .tileTag = 0xFFFF,
         .paletteTag = 0,
         .oam = &gOamData_BattleSpritePlayerSide,
@@ -6767,7 +6767,7 @@ u16 GetTrainerFrontSpriteBasedOnPlayerCostumeAndGender(u8 costumeId, u8 playerGe
         switch (costumeId)
         {
         case DEFAULT_COSTUME:
-            trainerPic = TRAINER_PIC_MAY;
+            trainerPic = TRAINER_PIC_YEVA;
             break;
         case COSTUME_FREDDY:
             trainerPic = TRAINER_PIC_RS_MAY;
@@ -6782,7 +6782,7 @@ u16 GetTrainerFrontSpriteBasedOnPlayerCostumeAndGender(u8 costumeId, u8 playerGe
         switch (costumeId)
         {
         case DEFAULT_COSTUME:
-            trainerPic = TRAINER_PIC_BRENDAN;
+            trainerPic = TRAINER_PIC_SCOTT;
             break;
         case COSTUME_FREDDY:
             trainerPic = TRAINER_PIC_RS_BRENDAN;

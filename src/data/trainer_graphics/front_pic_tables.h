@@ -71,8 +71,8 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_SAILOR] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_MAGMA_ADMIN] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_WALLY] = {.size = 8, .y_offset = 1},
-    [TRAINER_PIC_BRENDAN] = {.size = 8, .y_offset = 1},
-    [TRAINER_PIC_MAY] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_SCOTT] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_YEVA] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_BUG_CATCHER] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_POKEMON_RANGER_M] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_POKEMON_RANGER_F] = {.size = 8, .y_offset = 1},
@@ -170,8 +170,10 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(SAILOR, gTrainerFrontPic_Sailor, 0x800),
     TRAINER_SPRITE(MAGMA_ADMIN, gTrainerFrontPic_MagmaAdmin, 0x800),
     TRAINER_SPRITE(WALLY, gTrainerFrontPic_Wally, 0x800),
-    TRAINER_SPRITE(BRENDAN, gTrainerFrontPic_Brendan, 0x800),
-    TRAINER_SPRITE(MAY, gTrainerFrontPic_May, 0x800),
+    /*Player Sprites*/
+    TRAINER_SPRITE(SCOTT, gTrainerFrontPic_Scott, 0x800),
+    TRAINER_SPRITE(YEVA, gTrainerFrontPic_Yeva, 0x800),
+    //
     TRAINER_SPRITE(BUG_CATCHER, gTrainerFrontPic_BugCatcher, 0x800),
     TRAINER_SPRITE(POKEMON_RANGER_M, gTrainerFrontPic_PokemonRangerM, 0x800),
     TRAINER_SPRITE(POKEMON_RANGER_F, gTrainerFrontPic_PokemonRangerF, 0x800),
@@ -269,8 +271,10 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(SAILOR, gTrainerPalette_Sailor),
     TRAINER_PAL(MAGMA_ADMIN, gTrainerPalette_MagmaAdmin),
     TRAINER_PAL(WALLY, gTrainerPalette_Wally),
-    TRAINER_PAL(BRENDAN, gTrainerPalette_Brendan),
-    TRAINER_PAL(MAY, gTrainerPalette_May),
+    /* Player */
+    TRAINER_PAL(SCOTT, gTrainerPalette_Scott),
+    TRAINER_PAL(YEVA, gTrainerPalette_Yeva),
+    //
     TRAINER_PAL(BUG_CATCHER, gTrainerPalette_BugCatcher),
     TRAINER_PAL(POKEMON_RANGER_M, gTrainerPalette_PokemonRangerM),
     TRAINER_PAL(POKEMON_RANGER_F, gTrainerPalette_PokemonRangerF),

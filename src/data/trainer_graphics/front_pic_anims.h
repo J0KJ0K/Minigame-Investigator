@@ -282,11 +282,11 @@ static const union AnimCmd *const sAnims_Wally[] ={
     sAnim_GeneralFrame0,
 };
 
-static const union AnimCmd *const sAnims_Brendan[] ={
+static const union AnimCmd *const sAnims_Scott[] ={
     sAnim_GeneralFrame0,
 };
 
-static const union AnimCmd *const sAnims_May[] ={
+static const union AnimCmd *const sAnims_Yeva[] ={
     sAnim_GeneralFrame0,
 };
 
@@ -443,8 +443,8 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_SAILOR] = sAnims_Sailor,
     [TRAINER_PIC_MAGMA_ADMIN] = sAnims_MagmaAdmin,
     [TRAINER_PIC_WALLY] = sAnims_Wally,
-    [TRAINER_PIC_BRENDAN] = sAnims_Brendan,
-    [TRAINER_PIC_MAY] = sAnims_May,
+    [TRAINER_PIC_SCOTT] = sAnims_Scott,
+    [TRAINER_PIC_YEVA] = sAnims_Yeva,
     [TRAINER_PIC_BUG_CATCHER] = sAnims_BugCatcher,
     [TRAINER_PIC_POKEMON_RANGER_M] = sAnims_PokemonRangerM,
     [TRAINER_PIC_POKEMON_RANGER_F] = sAnims_PokemonRangerF,

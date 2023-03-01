@@ -118,8 +118,8 @@ static const union AnimCmd *const sBackAnims_Steven[] =
 
 const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
 {
-    [TRAINER_BACK_PIC_BRENDAN] = sBackAnims_Brendan,
-    [TRAINER_BACK_PIC_MAY] = sBackAnims_May,
+    [TRAINER_BACK_PIC_SCOTT] = sBackAnims_Brendan,
+    [TRAINER_BACK_PIC_YEVA] = sBackAnims_May,
     [TRAINER_BACK_PIC_RED] = sBackAnims_Red,
     [TRAINER_BACK_PIC_LEAF] = sBackAnims_Leaf,
     [TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN] = sBackAnims_RubySapphireBrendan,

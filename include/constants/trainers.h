@@ -87,8 +87,11 @@
 #define TRAINER_PIC_SAILOR                68
 #define TRAINER_PIC_MAGMA_ADMIN           69
 #define TRAINER_PIC_WALLY                 70
-#define TRAINER_PIC_BRENDAN               71
-#define TRAINER_PIC_MAY                   72
+
+/*Player*/
+#define TRAINER_PIC_SCOTT                 71
+#define TRAINER_PIC_YEVA                   72
+
 #define TRAINER_PIC_BUG_CATCHER           73
 #define TRAINER_PIC_POKEMON_RANGER_M      74
 #define TRAINER_PIC_POKEMON_RANGER_F      75
@@ -110,8 +113,8 @@
 #define TRAINER_PIC_RS_BRENDAN            91
 #define TRAINER_PIC_RS_MAY                92
 
-#define TRAINER_BACK_PIC_BRENDAN                0
-#define TRAINER_BACK_PIC_MAY                    1
+#define TRAINER_BACK_PIC_SCOTT                0
+#define TRAINER_BACK_PIC_YEVA                    1
 #define TRAINER_BACK_PIC_RED                    2
 #define TRAINER_BACK_PIC_LEAF                   3
 #define TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN  4

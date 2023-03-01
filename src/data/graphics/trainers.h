@@ -211,11 +211,10 @@ const u32 gTrainerPalette_MagmaAdmin[] = INCBIN_U32("graphics/trainers/palettes/
 const u32 gTrainerFrontPic_Wally[] = INCBIN_U32("graphics/trainers/front_pics/wally_front_pic.4bpp.lz");
 const u32 gTrainerPalette_Wally[] = INCBIN_U32("graphics/trainers/palettes/wally.gbapal.lz");
 
-const u32 gTrainerFrontPic_Brendan[] = INCBIN_U32("graphics/trainers/front_pics/brendan_front_pic.4bpp.lz");
-const u32 gTrainerPalette_Brendan[] = INCBIN_U32("graphics/trainers/palettes/brendan.gbapal.lz");
-
-const u32 gTrainerFrontPic_May[] = INCBIN_U32("graphics/trainers/front_pics/may_front_pic.4bpp.lz");
-const u32 gTrainerPalette_May[] = INCBIN_U32("graphics/trainers/palettes/may.gbapal.lz");
+const u32 gTrainerFrontPic_Scott[] = INCBIN_U32("graphics/trainers/front_pics/playermale_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Yeva[] = INCBIN_U32("graphics/trainers/front_pics/playerfemale_front_pic.4bpp.lz");
+const u32 gTrainerPalette_Scott[] = INCBIN_U32("graphics/trainers/palettes/playermale.gbapal.lz");
+const u32 gTrainerPalette_Yeva[] = INCBIN_U32("graphics/trainers/palettes/playerfemale.gbapal.lz");
 
 const u32 gTrainerFrontPic_BugCatcher[] = INCBIN_U32("graphics/trainers/front_pics/bug_catcher_front_pic.4bpp.lz");
 const u32 gTrainerPalette_BugCatcher[] = INCBIN_U32("graphics/trainers/palettes/bug_catcher.gbapal.lz");

@@ -62,8 +62,54 @@ enum
 
 #define ENTRIES_PER_PAGE 5
 
+/*
 static const u8 sCreditsText_EmptyString[]                    = _("");
-static const u8 sCreditsText_PkmnEmeraldVersion[]             = _("POKéMON EMERALD VERSION");
+static const u8 sCreditsText_GameName[]                       = _("FNaF: The Minigame Investigator");
+static const u8 sCreditsText_EliteGames[]                     = _("Elite Games");
+static const u8 sCreditsText_Credits[]                        = _("Credits");
+
+static const u8 sCreditsText_ScottGames[]                     = _("Characters and universe by");
+static const u8 sCreditsText_ScottGames[]                     = _("Scott Games");
+
+static const u8 sCreditsText_Engine[]                         = _("Using the engine of");
+static const u8 sCreditsText_Nintendo[]                       = _("Nintendo");
+static const u8 sCreditsText_PKMEV[]                          = _("Pokemon Emerald Version");
+static const u8 sCreditsText_Decomp[]                         = _("Decompiled by");
+static const u8 sCreditsText_pret[]                           = _("the amazing people at pret");
+
+static const u8 sCreditsText_learntoRomHack[]                 = _("Learn to rom hack with pret!");
+static const u8 sCreditsText_pretDiscordlink[]                = _("https://github.com/pret/pokeemerald");
+static const u8 sCreditsText_pretlink[]                       = _("https://discord.gg/tSNsKBP5te");
+
+static const u8 sCreditsText_OriginalMusic[]                  = _("Original Music");
+
+static const u8 sCreditsText_Remixed_Music[]                  = _("Remixed Music");
+static const u8 sCreditsText_Schubert[]                       = _("Schubert");
+static const u8 sCreditsText_Serenade[]                       = _("Serenade");
+static const u8 sCreditsText_SerenadeArranged[]               = _("based on the arrangement by madalynmusic (Musescore)");
+static const u8 sCreditsText_Riskin[]                         = _("Leon Riskin");
+static const u8 sCreditsText_TurtleCrusher[]                  = _("Turtle Crusher");
+static const u8 sCreditsText_TurtleCrusherArranged[]          = _("based on the arrangement by Anklejbiter (Musescore)");
+static const u8 sCreditsText_CrumblingDreams[]                = _("Turtle Crusher");
+static const u8 sCreditsText_CrumblingArranged[]              = _("based on the arrangement by Nathan DIJOUX (Musescore)");
+
+static const u8 sCreditsText_Programmers[]                    = _("Programmers");
+static const u8 sCreditsText_Cutscenes[]                      = _("Cutscenes");
+static const u8 sCreditsText_ArtDirection[]                   = _("Art Direction");
+static const u8 sCreditsText_Programmers[]                    = _("Programmers");
+
+
+static const u8 sCreditsText_SpecialThanksTo[]                = _("Special Thanks to");
+
+static const u8 sCreditsText_GraphicDesigners[]               = _("Graphic Designers");
+static const u8 sCreditsText_PkmnDesigners[]                  = _("POKéMON Designers");
+static const u8 sCreditsText_MusicComposition[]               = _("Music Composition");
+static const u8 sCreditsText_SoundEffectsAndPkmnVoices[]      = _("Sound Effects & POKéMON Voices");
+*/
+
+
+static const u8 sCreditsText_EmptyString[]                    = _("");
+static const u8 sCreditsText_GameName[]                       = _("FNaF: The Minigame Investigator");
 static const u8 sCreditsText_Credits[]                        = _("Credits");
 static const u8 sCreditsText_ExecutiveDirector[]              = _("Executive Director");
 static const u8 sCreditsText_Director[]                       = _("Director");
@@ -222,7 +268,7 @@ static const u8 sCreditsText_NicolaPrattBarlow[]              = _("Nicola Pratt-
 static const u8 sCreditsText_ShellieDow[]                     = _("Shellie Dow");
 static const u8 sCreditsText_ErikJohnson[]                    = _("Erik Johnson");
 static const struct CreditsEntry sCreditsEntry_EmptyString[]                    = { 0, FALSE, sCreditsText_EmptyString};
-static const struct CreditsEntry sCreditsEntry_PkmnEmeraldVersion[]             = { 7,  TRUE, sCreditsText_PkmnEmeraldVersion};
+static const struct CreditsEntry sCreditsEntry_GameName[]                       = { 7,  TRUE, sCreditsText_GameName};
 static const struct CreditsEntry sCreditsEntry_Credits[]                        = {11,  TRUE, sCreditsText_Credits};
 static const struct CreditsEntry sCreditsEntry_ExecutiveDirector[]              = { 8,  TRUE, sCreditsText_ExecutiveDirector};
 static const struct CreditsEntry sCreditsEntry_Director[]                       = {12,  TRUE, sCreditsText_Director};
@@ -386,7 +432,7 @@ static const struct CreditsEntry *const sCreditsEntryPointerTable[PAGE_COUNT][EN
 {
     [PAGE_TITLE] = {
         _,
-        sCreditsEntry_PkmnEmeraldVersion,
+        sCreditsEntry_GameName,
         sCreditsEntry_Credits,
         _,
         _
