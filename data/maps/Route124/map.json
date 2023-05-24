@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "dive",
+      "map": "MAP_UNDERWATER_ROUTE124",
       "offset": 0,
-      "map": "MAP_UNDERWATER_ROUTE124"
+      "direction": "dive"
     }
   ],
   "object_events": [
@@ -105,7 +105,7 @@
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_ROUTE114",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

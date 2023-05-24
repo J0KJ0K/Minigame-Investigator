@@ -142,39 +142,39 @@ Reposition3:
 	end
 
 Reposition_1:
-	walk_fastest_left
-	walk_fastest_up
-	walk_fastest_left
-	walk_fastest_up
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
+	walk_faster_left
+	walk_faster_up
+	walk_faster_left
+	walk_faster_up
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
 	step_end
 
 Reposition_2:
-	walk_fastest_down
-	walk_fastest_right
-	walk_fastest_down
-	walk_fastest_right
-	walk_fastest_right
-	walk_fastest_up
-	walk_fastest_right
-	walk_fastest_up
-	walk_fastest_right
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_right
+	walk_faster_down
+	walk_faster_right
+	walk_faster_down
+	walk_faster_right
+	walk_faster_right
+	walk_faster_up
+	walk_faster_right
+	walk_faster_up
+	walk_faster_right
+	walk_faster_up
+	walk_faster_up
+	walk_faster_right
 	step_end
 
 Reposition_3:
-	walk_fastest_down
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_down
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
+	walk_faster_down
+	walk_faster_left
+	walk_faster_left
+	walk_faster_down
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
 	step_end
 
 UpYours:

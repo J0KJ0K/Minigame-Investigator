@@ -352,7 +352,7 @@ Route110_EventScript_Alyssa:: @ 81EF64A
 
 Route110_EventScript_CyclingChallengeEnd:: @ 81EF661
 	lockall
-	applymovement LOCALID_SHADOWFREDDY, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_SHADOWFREDDY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	call Route110_EventScript_CyclingChallengeResults
 	releaseall
@@ -428,7 +428,7 @@ Route110_EventScript_RivalScene:: @ 81EF76E
 	call_if_eq Route110_EventScript_PlayMayMusic
 	compare VAR_RESULT, FEMALE
 	call_if_eq Route110_EventScript_PlayBrendanMusic
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFastestDown
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -592,7 +592,7 @@ Route110_EventScript_MoveRival3:: @ 81EF9A0
 Route110_Movement_RivalApproachPlayer1: @ 81EF9A8
 	walk_down
 	walk_left
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 Route110_Movement_RivalApproachPlayer2: @ 81EF9AC
@@ -602,7 +602,7 @@ Route110_Movement_RivalApproachPlayer2: @ 81EF9AC
 Route110_Movement_RivalApproachPlayer3: @ 81EF9AE
 	walk_down
 	walk_right
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 Route110_Movement_RivalExit1: @ 81EF9B2
@@ -676,13 +676,13 @@ Route110_EventScript_BirchScene:: @ 81EF9F7
 	msgbox Route110_Text_ImagineSeeingYouHere, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestLeft
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	delay 10
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 20
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestDown
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 30
 	msgbox Route110_Text_HeardYouInstallMatchCall, MSGBOX_DEFAULT

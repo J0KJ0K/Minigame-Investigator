@@ -28,4 +28,4 @@ If you want to commit any changes, please make your own pull request.
 ## Contacts
 
 You can find JK (lead developer) on [Twitter](https://twitter.com/JK0JK_) and Discord (JK0JK#7151). If you have any doubts, questions, ideas or concerns, reach me out and we'll talk!
-You can also find the people working on the Pokemon Emerald Decomp on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://kiwiirc.com/client/irc.freenode.net/?#pret).
+You can also find the people working on the Pokemon Emerald Decomp on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://web.libera.chat/?#pret).

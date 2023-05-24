@@ -75,7 +75,6 @@
 #define OBJ_EVENT_GFX_SPENSER                     73
 #define OBJ_EVENT_GFX_NOLAND                      74
 #define OBJ_EVENT_GFX_LUCY                        75
-
 #define OBJ_EVENT_GFX_CUTTABLE_TREE               82
 #define OBJ_EVENT_GFX_MART_EMPLOYEE               83
 #define OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN          84
@@ -226,7 +225,16 @@
 #define OBJ_EVENT_GFX_LINK_RS_BRENDAN            235
 #define OBJ_EVENT_GFX_LINK_RS_MAY                236
 #define OBJ_EVENT_GFX_LUGIA                      237
-#define OBJ_EVENT_GFX_HOOH                       238
+
+// NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
+//
+// Object event graphics ids are 1 byte in size (max value of 255), and the dynamic
+// graphics ids that start after NUM_OBJ_EVENT_GFX reach this limit. No graphics id
+// uses the value 239 itself, so removing the "+ 1" in OBJ_EVENT_GFX_VARS would
+// allow increasing NUM_OBJ_EVENT_GFX to 240. There are also a handful of unused
+// object graphics that can be removed. If more graphics are needed, anything that
+// stores graphics ids will need to be increased in size. See wiki entry below:
+// https://github.com/pret/pokeemerald/wiki/Feature-Branches#overworld-expansion
 
 //used, but replaced; custom
 #define OBJ_EVENT_GFX_FREDBEAR					  76  //custom
@@ -237,7 +245,6 @@
 #define OBJ_EVENT_GFX_BONNIE        81  //custom
 #define OBJ_EVENT_GFX_SPRINGBONNIE_MINIGAMES                     188
 
-//#define OBJ_EVENT_GFX_PURPLE_MAN                     187 (we still need someone for this)
 #define OBJ_EVENT_GFX_SCRAPS_2						   187
 #define OBJ_EVENT_GFX_MILES                            115 //originally OBJ_EVENT_GFX_SCIENTIST_2
 
@@ -247,6 +254,7 @@
 #define OBJ_EVENT_GFX_SCRAPS         186//used to be OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL
 #define OBJ_EVENT_GFX_PUPPET                 67
 #define OBJ_EVENT_GFX_PURPLE_MAN                  68
+#define OBJ_EVENT_GFX_CIRNO                       238
 
 #define NUM_OBJ_EVENT_GFX                        239
 
@@ -286,7 +294,41 @@
 
 #define FIRST_DECORATION_SPRITE_GFX OBJ_EVENT_GFX_PICHU_DOLL
 
+#define OBJ_KIND_NORMAL 0
+#define OBJ_KIND_CLONE  255 // Exclusive to FRLG
+
+// Special object event local ids
 #define OBJ_EVENT_ID_PLAYER 0xFF
 #define OBJ_EVENT_ID_CAMERA 0x7F
+
+// Object event local ids referenced in C files
+#define LOCALID_ROUTE111_PLAYER_FALLING 45
+#define LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK 1
+#define LOCALID_FARAWAY_ISLAND_MEW 1
+#define LOCALID_UNION_ROOM_PLAYER_4 2
+#define LOCALID_UNION_ROOM_PLAYER_8 3
+#define LOCALID_UNION_ROOM_PLAYER_7 4
+#define LOCALID_UNION_ROOM_PLAYER_6 5
+#define LOCALID_UNION_ROOM_PLAYER_5 6
+#define LOCALID_UNION_ROOM_PLAYER_3 7
+#define LOCALID_UNION_ROOM_PLAYER_2 8
+#define LOCALID_UNION_ROOM_PLAYER_1 9
+#define LOCALID_BATTLE_TOWER_LOBBY_REPORTER 5
+#define LOCALID_TRUCK_BOX_TOP 1
+#define LOCALID_TRUCK_BOX_BOTTOM_L 2
+#define LOCALID_TRUCK_BOX_BOTTOM_R 3
+#define LOCALID_OLDALE_MART_CLERK 1
+#define LOCALID_LAVARIDGE_MART_CLERK 1
+#define LOCALID_FALLARBOR_MART_CLERK 1
+#define LOCALID_VERDANTURF_MART_CLERK 1
+#define LOCALID_PETALBURG_MART_CLERK 1
+#define LOCALID_SLATEPORT_MART_CLERK 1
+#define LOCALID_MAUVILLE_MART_CLERK 1
+#define LOCALID_RUSTBORO_MART_CLERK 1
+#define LOCALID_FORTREE_MART_CLERK 1
+#define LOCALID_MOSSDEEP_MART_CLERK 1
+#define LOCALID_SOOTOPOLIS_MART_CLERK 1
+#define LOCALID_BATTLE_FRONTIER_MART_CLERK 1
+#define LOCALID_SLATEPORT_ENERGY_GURU 25
 
 #endif  // GUARD_CONSTANTS_EVENT_OBJECTS_H

@@ -230,7 +230,6 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Brandon = {0xFFFF,
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireBrendan = { 0xFFFF, OBJ_EVENT_PAL_TAG_RS_BRENDAN, OBJ_EVENT_PAL_TAG_NONE, 512, 16, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_16x32, sOamTables_16x32, sAnimTable_Standard, sPicTable_RubySapphireBrendan, gDummySpriteAffineAnimTable };
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireMay = { 0xFFFF, OBJ_EVENT_PAL_TAG_RS_MAY, OBJ_EVENT_PAL_TAG_NONE, 512, 16, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_16x32, sOamTables_16x32, sAnimTable_Standard, sPicTable_RubySapphireMay, gDummySpriteAffineAnimTable };
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lugia = {0xFFFF, OBJ_EVENT_PAL_TAG_LUGIA, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, sPicTable_Lugia, gDummySpriteAffineAnimTable};
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh = {0xFFFF, OBJ_EVENT_PAL_TAG_HO_OH, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_HoOh, sPicTable_HoOh, gDummySpriteAffineAnimTable};
 
 //custom
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Plushie = { 0xFFFF, OBJ_EVENT_PAL_FREDBEAR, OBJ_EVENT_PAL_TAG_NONE, 128, 16, 16, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_16x16, sOamTables_16x16, sAnimTable_Standard, sPicTable_Plushie, gDummySpriteAffineAnimTable};
@@ -250,6 +249,24 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PurpleMan = { 0xFF
 //next update
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Puppet = { 0xFFFF, OBJ_EVENT_PAL_PURPLE, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, sPicTable_Puppet, gDummySpriteAffineAnimTable };
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cirno = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_CIRNO,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 16,
+    .height = 32,
+    .paletteSlot = 0,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_Cirno,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
 
 //unused, had their GFX objects used later
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist2 = { 0xFFFF, OBJ_EVENT_PAL_TAG_NPC_1, OBJ_EVENT_PAL_TAG_NONE, 256, 16, 32, 2, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_16x32, sOamTables_16x32, sAnimTable_Standard, sPicTable_Scientist2, gDummySpriteAffineAnimTable };
@@ -264,3 +281,4 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedPorygon2Doll
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigRegirockDoll = { 0xFFFF, OBJ_EVENT_PAL_TAG_NPC_1, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 2, SHADOW_SIZE_M, TRUE, FALSE, TRACKS_NONE, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Inanimate, sPicTable_BigRegirockDoll, gDummySpriteAffineAnimTable };
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigRegiceDoll = { 0xFFFF, OBJ_EVENT_PAL_TAG_NPC_3, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 4, SHADOW_SIZE_M, TRUE, FALSE, TRACKS_NONE, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Inanimate, sPicTable_BigRegiceDoll, gDummySpriteAffineAnimTable };
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigRegisteelDoll = { 0xFFFF, OBJ_EVENT_PAL_TAG_NPC_4, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 5, SHADOW_SIZE_M, TRUE, FALSE, TRACKS_NONE, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Inanimate, sPicTable_BigRegisteelDoll, gDummySpriteAffineAnimTable };
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh = {0xFFFF, OBJ_EVENT_PAL_TAG_HO_OH, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_HoOh, sPicTable_HoOh, gDummySpriteAffineAnimTable};

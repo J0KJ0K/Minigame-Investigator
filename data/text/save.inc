@@ -6,11 +6,11 @@ gText_AlreadySavedFile:: @ 82C87D5
 	.string "Is it okay to overwrite the\n"
 	.string "last save?$"
 
-gText_SavingDontTurnOff:: @ 82C8810
+gText_SavingDontTurnOff::
 	.string "SAVING…\n"
 	.string "DON'T TURN OFF THE POWER.$"
 
-gText_PlayerSavedGame:: @ 82C8832
+gText_PlayerSavedGame::
 	.string "{PLAYER} saved the game.$"
 
 gText_DifferentSaveFile:: @ 82C8845
@@ -23,11 +23,11 @@ gText_DifferentSaveFile:: @ 82C8845
 	.string "Are you sure you want to save now\n"
 	.string "and overwrite the other save file?$"
 
-gText_SaveError:: @ 82C892A
+gText_SaveError::
 	.string "Save error.\p"
 	.string "Use your emulator's\n"
 	.string "save state instead.$"
 
-gText_SavingDontTurnOffPower:: @ 82C8959
+gText_SavingDontTurnOffPower::
 	.string "SAVING…\n"
 	.string "DON'T TURN OFF THE POWER.$"

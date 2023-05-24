@@ -631,7 +631,7 @@ $(MID_SUBDIR)/mus_vs_rayquaza.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G114 -V080 -P1
 
 $(MID_SUBDIR)/mus_flaming_dance.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G192 -V078
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V078
 
 $(MID_SUBDIR)/mus_drum_test.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G000 -V076

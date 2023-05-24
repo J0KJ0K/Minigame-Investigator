@@ -14,29 +14,29 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_ROUTE115",
       "offset": 0,
-      "map": "MAP_ROUTE115"
+      "direction": "up"
     },
     {
-      "direction": "right",
+      "map": "MAP_ROUTE114",
       "offset": -11,
-      "map": "MAP_ROUTE114"
+      "direction": "right"
     },
     {
-      "direction": "up",
+      "map": "MAP_ROUTE110",
       "offset": -15,
-      "map": "MAP_ROUTE110"
+      "direction": "up"
     },
     {
-      "direction": "left",
+      "map": "MAP_ROUTE117",
       "offset": 0,
-      "map": "MAP_ROUTE117"
+      "direction": "left"
     },
     {
-      "direction": "down",
+      "map": "MAP_ROUTE121",
       "offset": 0,
-      "map": "MAP_ROUTE121"
+      "direction": "down"
     }
   ],
   "object_events": [
@@ -107,8 +107,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SHADOW_FREDDY",
-      "x": 8,
-      "y": -3,
+      "x": 9,
+      "y": -4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
