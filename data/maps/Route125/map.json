@@ -39,7 +39,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Trigger1"
+      "script": "F3N1M"
     },
     {
       "type": "trigger",
@@ -48,7 +48,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Trigger2"
+      "script": "F3N2M"
     },
     {
       "type": "trigger",
@@ -57,7 +57,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Trigger3"
+      "script": "F3N3M"
     },
     {
       "type": "trigger",
@@ -66,7 +66,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Trigger4"
+      "script": "F3N4M"
     },
     {
       "type": "trigger",
@@ -75,7 +75,16 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Trigger5"
+      "script": "F3N5M"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 1,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BeginFGGGM"
     }
   ],
   "bg_events": [

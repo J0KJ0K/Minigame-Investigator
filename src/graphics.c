@@ -1516,7 +1516,7 @@ const u16 gTitleScreenEmeraldVersionPal[]  = INCBIN_U16("graphics/title_screen/e
 const u32 gTitleScreenCloudsTilemap[]      = INCBIN_U32("graphics/title_screen/clouds.bin.lz");
 const u32 gTitleScreenEmeraldVersionGfx[]  = INCBIN_U32("graphics/title_screen/emerald_version.8bpp.lz");
 const u16 gTitleScreenPressStartPal[]      = INCBIN_U16("graphics/title_screen/press_start.gbapal");
-const u32 gTitleScreenPressStartGfx[]      = INCBIN_U32("graphics/title_screen/press_start.4bpp.lz");
+const u32 gTitleScreenPressStartGfx[]      = INCBIN_U32("graphics/title_screen/press_start_2.4bpp.lz");
 
 const u16 gFrontierPassBg_Pal[][16]                      = INCBIN_U16("graphics/frontier_pass/bg.gbapal");
 const u32 gFrontierPassBg_Gfx[]                          = INCBIN_U32("graphics/frontier_pass/bg.4bpp.lz");

@@ -220,6 +220,8 @@
 
 //unused - customizable
 #define VAR_COSTUME				             0x404E // Tracks the CostumeID
+    /**/
+
 #define VAR_ANIMATRONIC_ID              0x4052 // Tracks the AnimatronicID
 #define VAR_COMPLETIONIST_COSTUME           0x4055 // Might track the costume set by the player, after Story Mode is completed
 

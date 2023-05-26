@@ -9,6 +9,12 @@
 #define MAP_PETALBURG_CITY (0 | (0 << 8))
 #define MAP_ROUTE123       (1 | (0 << 8))
 #define MAP_ROUTE125       (2 | (0 << 8))
+#define MAP_ROUTE104       (3 | (0 << 8))
+#define MAP_ROUTE105       (4 | (0 << 8))
+#define MAP_ROUTE106       (5 | (0 << 8))
+#define MAP_ROUTE107       (6 | (0 << 8))
+#define MAP_ROUTE108       (7 | (0 << 8))
+#define MAP_ROUTE109       (8 | (0 << 8))
 
 // gMapGroup_FNaF1
 #define MAP_ROUTE110 (0 | (1 << 8))
@@ -48,12 +54,6 @@
 #define MAP_ROUTE103 (1 | (6 << 8))
 
 // gMapGroup_Hurricane
-#define MAP_ROUTE104 (0 | (7 << 8))
-#define MAP_ROUTE105 (1 | (7 << 8))
-#define MAP_ROUTE106 (2 | (7 << 8))
-#define MAP_ROUTE107 (3 | (7 << 8))
-#define MAP_ROUTE108 (4 | (7 << 8))
-#define MAP_ROUTE109 (5 | (7 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_SLATEPORT_CITY      (0 | (8 << 8))

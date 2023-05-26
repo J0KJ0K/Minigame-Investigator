@@ -48,7 +48,13 @@
   "gMapGroup_MilesRoom": [
     "PetalburgCity",
     "Route123",
-    "Route125"
+    "Route125",
+    "Route104",
+    "Route105",
+    "Route106",
+    "Route107",
+    "Route108",
+    "Route109"
   ],
   "gMapGroup_FNaF1": [
     "Route110",
@@ -90,12 +96,7 @@
     "Route103"
   ],
   "gMapGroup_Hurricane": [
-    "Route104",
-    "Route105",
-    "Route106",
-    "Route107",
-    "Route108",
-    "Route109"
+
   ],
   "gMapGroup_TownsAndRoutes": [
     "SlateportCity",

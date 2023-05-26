@@ -1,24 +1,29 @@
 TODO
-	Make posters 		for the fnaf 1 location
 	Make game cabinets 	for the fnaf 1 location
 	Make first aids cabinet for the fnaf 1 location
 	Make pool of blood	for the fnaf 2 location (and the afton fight)
 	Make dead child	body	for the fnaf 2 location
 	Make rain optional 	for foxy go! go! go!
+	Make minigame logic 	for foxy go! go! go!
 
 	Make "Hurricane"	for the dear diary section
 	Make "family"		for the dear diary section
 	Put "house"		in the dear diary section
 	Fix the palette of femc	in the dear diary section
 
-	Make			the all purpose voicegroup
+	Make voicegroup		for drumset
+	Make voicegroup		for general purposes
 	Update Miles' dialogue	for the appropriate version
-	H
+	
 DONE
 	Merge with main
 	Implement dynamic palettes
 	Make Cirno		as an object event
 	Implement mugshots
+	Implement mugshot	of Cirno
 	Put male MC		as an object event
 	Make the music		for the title screen
 	Make the title screen 	in the title screen
+	Update the copyright	in the title screen
+	Update the copyright	in the copyright screen
+	Make posters 		for the fnaf 1 location

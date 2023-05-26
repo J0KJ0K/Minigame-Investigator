@@ -9,14 +9,6 @@ Route118_OnTransition: @ 81F3DCC
 	call_if_eq DeleteFoxy
 	compare VAR_MINIGAME_ID, 5
 	call_if_eq Night5
-	compare VAR_MINIGAME_ID, 6
-	goto_if_eq IsFoxyGoGoGo1
-	compare VAR_MINIGAME_ID, 7
-	goto_if_eq IsFoxyGoGoGo1
-	compare VAR_MINIGAME_ID, 8
-	goto_if_eq IsFoxyGoGoGo
-	setflag FLAG_HIDE_GHOSTS
-	setflag FLAG_HIDE_CHILDREN
 	end
 
 Route118_OnLoad: @ 81F3DF3
@@ -25,14 +17,47 @@ Route118_OnLoad: @ 81F3DF3
 Route118_OnFrame: @ 81F3E0A
 	.2byte 0
 
-IsFoxyGoGoGo1:
-	clearflag FLAG_HIDE_CHILDREN
-	setflag FLAG_HIDE_GHOSTS
+RestartFGGGM::
+	compare VAR_MINIGAME_ID, 6
+	goto_if_eq RestartMinigame
+	compare VAR_MINIGAME_ID, 7
+	goto_if_eq RestartMinigame2
+	compare VAR_MINIGAME_ID, 8
+	goto_if_eq ReturnToEntrance
 	end
 
-IsFoxyGoGoGo:
-	clearflag FLAG_HIDE_GHOSTS
-	setflag FLAG_HIDE_CHILDREN
+RestartMinigame:
+	lockall
+	setvar VAR_MINIGAME_ID, 7
+	setvar VAR_COSTUME, 4
+	fadescreen FADE_TO_BLACK
+	msgbox FGGG, MSGBOX_DEFAULT
+	special SwapPlayersCostume
+	warp MAP_ROUTE122, 1, 1, 5
+	waitstate
+	releaseall
+	end
+
+RestartMinigame2:
+	lockall
+	setvar VAR_MINIGAME_ID, 8
+	setvar VAR_COSTUME, 4
+	fadescreen FADE_TO_BLACK
+	msgbox FGGG, MSGBOX_DEFAULT
+	special SwapPlayersCostume
+	warp MAP_ROUTE122, 1, 1, 5
+	waitstate
+	releaseall
+	end
+
+ReturnToEntrance:
+	lockall
+	fadescreenspeed FADE_TO_BLACK, 1
+	setvar VAR_COSTUME, 0
+	releaseall
+	warp MAP_PETALBURG_CITY, 17, 0, 0
+	waitstate
+	releaseall
 	end
 
 Night5::

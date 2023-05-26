@@ -27,7 +27,7 @@ GoBackHome::
 	warp MAP_PETALBURG_CITY, 17, 0, 0
 	end
 
-Trigger1::
+F3N1M::
 	msgbox Night_1, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	setvar VAR_MINIGAME_ID, 1
@@ -37,7 +37,7 @@ Trigger1::
 	waitstate
 	end
 
-Trigger2::
+F3N2M::
 	msgbox Night_2, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	setvar VAR_MINIGAME_ID, 2
@@ -47,7 +47,7 @@ Trigger2::
 	waitstate
 	end
 
-Trigger3::
+F3N3M::
 	msgbox Night_3, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	setvar VAR_MINIGAME_ID, 3
@@ -57,7 +57,7 @@ Trigger3::
 	waitstate
 	end
 
-Trigger4::
+F3N4M::
 	setvar VAR_MINIGAME_ID, 4
 	setvar VAR_COSTUME, 4
 	msgbox Night_4, MSGBOX_DEFAULT
@@ -67,7 +67,7 @@ Trigger4::
 	waitstate
 	end
 
-Trigger5::
+F3N5M::
 	setvar VAR_MINIGAME_ID, 5
 	setvar VAR_COSTUME, 5
 	setflag FLAG_BEEN_IN_OFFICE
@@ -85,6 +85,20 @@ Trigger5::
 	warp MAP_ROUTE118, 0, 1, 5
 	waitstate
 	end
+
+BeginFGGGM::
+	setvar VAR_MINIGAME_ID, 6
+	setvar VAR_COSTUME, 4
+	fadescreen FADE_TO_BLACK
+	msgbox FGGG, MSGBOX_DEFAULT
+	special SwapPlayersCostume
+	warp MAP_ROUTE122, 1, 1, 5
+	waitstate
+	end
+
+FGGG::
+	.string "Foxy!\n"
+	.string "GO! GO! GO!$"
 
 Night_1:
 	.string "Night 1$"

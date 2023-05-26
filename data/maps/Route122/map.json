@@ -26,6 +26,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_HIDE_FOXY_2"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PURPLE_MAN",
+      "x": 1,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_GHOSTS"
     }
   ],
   "warp_events": [
@@ -48,6 +61,13 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "FoxySign"
+    }
   ]
 }
