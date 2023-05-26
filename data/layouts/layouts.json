@@ -384,7 +384,7 @@
     {
       "id": "LAYOUT_ROUTE123",
       "name": "Route123_Layout",
-      "width": 10,
+      "width": 15,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Lab",

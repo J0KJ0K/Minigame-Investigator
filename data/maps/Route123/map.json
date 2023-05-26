@@ -29,8 +29,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FREDDY",
-      "x": 2,
-      "y": 6,
+      "x": 8,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -42,7 +42,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLUSHIE",
-      "x": 0,
+      "x": 5,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -55,8 +55,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FREDBEAR",
-      "x": 0,
-      "y": 9,
+      "x": 13,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -68,8 +68,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SHADOW_FREDDY",
-      "x": 2,
-      "y": 9,
+      "x": 14,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -81,8 +81,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CHICA",
-      "x": 6,
-      "y": 6,
+      "x": 12,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -94,8 +94,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FOXY",
-      "x": 4,
-      "y": 9,
+      "x": 9,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -107,8 +107,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BONNIE",
-      "x": 6,
-      "y": 9,
+      "x": 11,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -120,8 +120,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCRAPS_2",
-      "x": 8,
-      "y": 9,
+      "x": 1,
+      "y": 7,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -133,8 +133,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCRAPS_2",
-      "x": 8,
-      "y": 6,
+      "x": 1,
+      "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -146,8 +146,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCRAPS",
-      "x": 6,
-      "y": 3,
+      "x": 1,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -160,7 +160,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SCRAPS",
       "x": 1,
-      "y": 3,
+      "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -172,7 +172,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPRINGBONNIE_MINIGAMES",
-      "x": 8,
+      "x": 10,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -185,9 +185,48 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PURPLE_MAN",
-      "x": 9,
-      "y": 2,
+      "x": 14,
+      "y": 5,
       "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CIRNO",
+      "x": 13,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
+      "x": 12,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
+      "x": 11,
+      "y": 5,
+      "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -203,7 +242,7 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [
