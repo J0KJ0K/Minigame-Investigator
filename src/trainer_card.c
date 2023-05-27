@@ -32,6 +32,7 @@
 #include "constants/rgb.h"
 #include "constants/trainers.h"
 #include "constants/union_room.h"
+#include "data.h"
 
 enum {
     WIN_MSG,
@@ -1899,7 +1900,7 @@ static void CreateTrainerCardTrainerPic(void)
     }
     else
     {
-        CreateTrainerCardTrainerPicSprite(sCostumeFrontPics[gSaveBlock2Ptr->costumeId][sData->trainerCard.gender],
+        CreateTrainerCardTrainerPicSprite(gCostumeFrontPics[gSaveBlock2Ptr->playerCostume][sData->trainerCard.gender],
                     TRUE,
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],

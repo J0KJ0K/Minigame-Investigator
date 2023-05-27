@@ -6867,38 +6867,32 @@ u16 PlayerGenderToFrontTrainerPicId(u8 playerGender)
         return FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN);
 }
 
-u16 GetTrainerFrontSpriteBasedOnPlayerCostumeAndGender(u8 costumeId, u8 playerGender)
+u16 GetTrainerFrontSpriteBasedOnPlayerCostumeAndGender(u8 playerCostume, u8 playerGender)
 {
     u16 trainerPic;
 
     if (playerGender != MALE)
     {
-        switch (costumeId)
+        switch (playerCostume)
         {
-        case DEFAULT_COSTUME:
-            trainerPic = TRAINER_PIC_YEVA;
-            break;
-        case COSTUME_FREDDY:
-            trainerPic = TRAINER_PIC_RS_MAY;
-            break;
-        case COSTUME_GHOST:
-            trainerPic = TRAINER_PIC_RS_BRENDAN;
-            break;
+            default:
+                trainerPic = TRAINER_PIC_YEVA;
+                break;
+            case GLASSES:
+                trainerPic = TRAINER_PIC_YEVA;
+                break;
         }
     }
     else
     {
-        switch (costumeId)
+        switch (playerCostume)
         {
-        case DEFAULT_COSTUME:
-            trainerPic = TRAINER_PIC_SCOTT;
-            break;
-        case COSTUME_FREDDY:
-            trainerPic = TRAINER_PIC_RS_BRENDAN;
-            break;
-        case COSTUME_GHOST:
-            trainerPic = TRAINER_PIC_RS_BRENDAN;
-            break;
+            default:
+                trainerPic = TRAINER_PIC_SCOTT;
+                break;
+            case GLASSES:
+                trainerPic = TRAINER_PIC_SCOTT;
+                break;
         }
     }
 

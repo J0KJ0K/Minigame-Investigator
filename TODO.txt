@@ -4,7 +4,7 @@ TODO
 	Make pool of blood	for the fnaf 2 location (and the afton fight)
 	Make dead child	body	for the fnaf 2 location
 	Make rain optional 	for foxy go! go! go!
-	Make minigame logic 	for foxy go! go! go!
+	Make fireworks		for foxy go! go! go!
 
 	Make "Hurricane"	for the dear diary section
 	Make "family"		for the dear diary section
@@ -27,3 +27,4 @@ DONE
 	Update the copyright	in the title screen
 	Update the copyright	in the copyright screen
 	Make posters 		for the fnaf 1 location
+	Make minigame logic 	for foxy go! go! go!

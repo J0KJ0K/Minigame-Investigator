@@ -256,8 +256,6 @@ enum {
     PLAYER_AVATAR_STATE_WATERING,
 };
 
-#define PLAYER_AVATAR_STATE_COUNT 8
-
 #define PLAYER_AVATAR_FLAG_ON_FOOT      (1 << 0)
 #define PLAYER_AVATAR_FLAG_MACH_BIKE    (1 << 1)
 #define PLAYER_AVATAR_FLAG_ACRO_BIKE    (1 << 2)
@@ -266,6 +264,8 @@ enum {
 #define PLAYER_AVATAR_FLAG_CONTROLLABLE (1 << 5)
 #define PLAYER_AVATAR_FLAG_FORCED_MOVE  (1 << 6)
 #define PLAYER_AVATAR_FLAG_DASH         (1 << 7)
+
+#define PLAYER_AVATAR_FLAG_COUNT               8
 
 enum
 {

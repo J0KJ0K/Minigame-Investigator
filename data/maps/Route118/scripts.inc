@@ -62,6 +62,7 @@ ReturnToEntrance:
 
 Night5::
 	call DeleteFoxy
+	setvar VAR_TEMP_0, 1
 	setflag FLAG_HIDE_GHOSTS
 	setflag FLAG_HIDE_CHILDREN
 	clearflag FLAG_HIDE_FOXY_SCRAPS

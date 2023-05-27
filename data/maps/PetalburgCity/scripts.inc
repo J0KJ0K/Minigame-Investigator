@@ -5,9 +5,7 @@ PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_OnFrame
 	.byte 0
 
-PetalburgCity_OnTransition: @ 81DC2D7
-	setvar VAR_COSTUME, 0
-	special	SwapPlayersCostume
+PetalburgCity_OnTransition:: @ 81DC2D7
 	end
 
 PetalburgCity_OnFrame: @ 81DC31C
@@ -548,7 +546,7 @@ Door_FNaF1::
 	special SwapPlayersCostume
 	fadescreen FADE_FROM_BLACK
 	releaseall
-	end
+	end	
 
 Door_FNaF2::
 	lockall

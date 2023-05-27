@@ -193,13 +193,6 @@
 #define VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT 0x40D9
 #define VAR_REGISTER_BIRCH_STATE                         0x40DA
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
-#define VAR_GIFT_UNUSED_1                                0x40DE // Var is written to, but never read
-#define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
-#define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_4                                0x40E1 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_5                                0x40E2 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_6                                0x40E3 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_7                                0x40E4 // var is written to, but never read
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
 #define VAR_DAILY_BLENDER                                0x40E8
@@ -248,7 +241,7 @@
 #define VAR_ROOM_IN_NOW               0x406B // Unused Var
 #define VAR_SFREDDY_FACING                   0x406C // Unused Var
 
-#define VAR_MINIGAME_ID                  0x406D
+#define VAR_MINIGAME_ID                  0x406D // do we really need this for maps other than FNaF 1?
 /*0. Normal Gameplay
 1. FNaF 3 End Of Night 1
 2. FNaF 3 End Of Night 2
@@ -258,7 +251,25 @@
 6. Foxy Go! Go! Go! - 1
 7. Foxy Go! Go! Go! - 2
 8. Foxy Go! Go! Go! - 3
+9. Give Gifts Give Life
+10. SAVETHEM
+11. FNaF 4 Night 1
+12. FNaF 4 Night 2
+13. FNaF 4 Night 3
+14. FNaF 4 Night 4
+15. FNaF 4 Night 5
+16. FNaF 4 Night 6
+16. TURTLE CRUSHER
+17. The Puppet Minigame
+18. Midnight Motorist
+19. Fruity Maze
+20. BB's Air Adventure
+21. Mangle's Quest
+22. Stage 01
+23. SHADOW BONNIE'S STAGE
+24. Happiest Day
 */
+
 #define VAR_ROUTE115_STATE                   0x406E // Unused Var
 #define VAR_ROUTE117_STATE                   0x4070 // Unused Var
 #define VAR_ROUTE120_STATE                   0x4073 // Unused Var
@@ -295,9 +306,15 @@
 #define VAR_UNUSED_0x40FD                    0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                    0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                    0x40FF // Unused Var
-
-#define VARS_END                                         0x40FF
-#define VARS_COUNT                                       (VARS_END - VARS_START + 1)
+#define VAR_GIFT_UNUSED_1                    0x40DE // Var is written to, but never read
+#define VAR_GIFT_UNUSED_2                    0x40DF // Var is written to, but never read
+#define VAR_GIFT_UNUSED_3                    0x40E0 // Var is written to, but never read
+#define VAR_GIFT_UNUSED_4                    0x40E1 // Var is written to, but never read
+#define VAR_GIFT_UNUSED_5                    0x40E2 // Var is written to, but never read
+#define VAR_GIFT_UNUSED_6                    0x40E3 // Var is written to, but never read
+#define VAR_GIFT_UNUSED_7                    0x40E4 // var is written to, but never read
+#define VARS_END                             0x40FF
+#define VARS_COUNT                           (VARS_END - VARS_START + 1)
 
 #define SPECIAL_VARS_START            0x8000
 // special vars
