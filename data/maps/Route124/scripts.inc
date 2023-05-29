@@ -254,12 +254,7 @@ SpringbonnieDeath::
 	applymovement LOCALID_SPRINGBONNIE, ImminentDeath
 	waitmovement 0
 	applymovement LOCALID_SPRINGBONNIE, ImminentDeath
-	fadescreenspeed FADE_TO_BLACK, 1
-	setvar VAR_COSTUME, 0
-	releaseall
-	warp MAP_PETALBURG_CITY, 17, 0, 0
-	waitstate
-	releaseall
+	goto ReturnFromMinigame
 	end
 
 LaughEvil:

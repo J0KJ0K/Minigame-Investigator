@@ -213,33 +213,50 @@
 
 //unused - customizable
 #define VAR_COSTUME				             0x404E // Tracks the CostumeID
-    /**/
+    /*
+    DEFAULT_COSTUME - Scott / Yeva
+    COSTUME_FREDDY - 
+    COSTUME_BONNIE
+    COSTUME_CHICA
+    COSTUME_FOXY
+    COSTUME_GHOST
+    COSTUME_PUPPET
+    COSTUME_WFREDDY
+    COSTUME_BABY
+    COSTUME_CRYING
+    COSTUME_ORANGE
+    COSTUME_SUSIE
+    COSTUME_BB
+    COSTUME_MANGLE
+    COSTUME_TCHICA
+    COSTUME_FREDBEAR
+    COSTUME_SHBONNIE
+    COSTUME_PUPGHOST
+    GLASSES
+    */
 
 #define VAR_ANIMATRONIC_ID              0x4052 // Tracks the AnimatronicID
-#define VAR_COMPLETIONIST_COSTUME           0x4055 // Might track the costume set by the player, after Story Mode is completed
+#define VAR_COMPLETIONIST_COSTUME            0x4055 // will be set at 0 in normal playthroughs, will be the default costume
 
 #define VAR_PLAYER_X            0x4056 // Unused Var
 #define VAR_PLAYER_Y              0x4059 // Unused Var
 #define VAR_TURNED_HIMSELF_INTO_SCRAPS               0x405B // Unused Var
 #define VAR_MILES_STATE              0x405C // Unused Var
 
-#define VAR_TRIGGER_NUMBER           0x405F // Unused Var
 #define VAR_GAME_VERSION                   0x4061 // Unused Var
 
 #define VAR_STORIES_TO_TELL                   0x4062 // Unused Var
 
-#define VAR_KEEP_AT_0                   0x4064 // Unused Var
+#define VAR_KEEP_AT_0                   0x4064 // Used for Shadow Freddy shenanigans; do NOT touch
+#define VAR_ROOM_IN_NOW               0x406B // Used for Shadow Freddy shenanigans; do NOT touch
+#define VAR_SFREDDY_FACING                   0x406C // Used for Shadow Freddy shenanigans; do NOT touch
 
-#define VAR_AFTON_STATE                   0x4065 // Unused Var
+#define VAR_AFTON_STATE                   0x4065 // Used for Afton running away in fnaf 3
+#define VAR_AFTON_X                   0x4066 // Used for Afton running away in fnaf 3
+#define VAR_AFTON_Y                   0x4067 // Used for Afton running away in fnaf 3
 
-#define VAR_AFTON_X                   0x4066 // Unused Var
-#define VAR_AFTON_Y                   0x4067 // Unused Var
-
-#define VAR_PLAYER_X2                 0x4068 // Unused Var
-#define VAR_PLAYER_Y2                   0x406A // Unused Var
-
-#define VAR_ROOM_IN_NOW               0x406B // Unused Var
-#define VAR_SFREDDY_FACING                   0x406C // Unused Var
+#define VAR_PLAYER_X_STORED                 0x4068 // Will store the X coordinate of the map the player warped from
+#define VAR_PLAYER_Y_STORED             0x406A // Will store the Y coordinate of the map the player warped
 
 #define VAR_MINIGAME_ID                  0x406D // do we really need this for maps other than FNaF 1?
 /*0. Normal Gameplay
@@ -270,6 +287,7 @@
 24. Happiest Day
 */
 
+#define VAR_UNUSED_0x405F                    0x405F // Unused Var
 #define VAR_ROUTE115_STATE                   0x406E // Unused Var
 #define VAR_ROUTE117_STATE                   0x4070 // Unused Var
 #define VAR_ROUTE120_STATE                   0x4073 // Unused Var

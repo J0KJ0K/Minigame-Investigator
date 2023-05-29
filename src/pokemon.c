@@ -6878,9 +6878,9 @@ u16 GetTrainerFrontSpriteBasedOnPlayerCostumeAndGender(u8 playerCostume, u8 play
             default:
                 trainerPic = TRAINER_PIC_YEVA;
                 break;
-            case GLASSES:
+            /*case GLASSES:
                 trainerPic = TRAINER_PIC_YEVA;
-                break;
+                break;*/
         }
     }
     else
@@ -6890,9 +6890,9 @@ u16 GetTrainerFrontSpriteBasedOnPlayerCostumeAndGender(u8 playerCostume, u8 play
             default:
                 trainerPic = TRAINER_PIC_SCOTT;
                 break;
-            case GLASSES:
+            /*case GLASSES:
                 trainerPic = TRAINER_PIC_SCOTT;
-                break;
+                break;*/
         }
     }
 

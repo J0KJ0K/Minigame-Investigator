@@ -79,9 +79,8 @@
 #define FLAG_HIDE_CHILDREN    0x39 // Hides Children for FOXY! GO! GO! GO!
 
 #define FLAG_DEVELOPER_COMMENTARY    0x3A // Tracks if it's listening to the Developer Commentary
+#define FLAG_PERMANENT_COSTUME    0x3B // Unused Flag
 
-
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag

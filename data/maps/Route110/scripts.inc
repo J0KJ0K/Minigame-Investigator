@@ -15,6 +15,8 @@ Route110_OnResume: @ 81EF279
 
 Route110_OnTransition: @ 81EF27D
 	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setflag FLAG_HIDE_GHOSTS
+	setflag FLAG_HIDE_CHILDREN
 	compare VAR_MINIGAME_ID, 5
 	goto_if_eq Deletehim
 	call Common_EventScript_SetupRivalGfxId

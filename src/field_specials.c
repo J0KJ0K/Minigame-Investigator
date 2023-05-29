@@ -4274,11 +4274,13 @@ u8 Script_TryGainNewFanFromCounter(void)
 
 void SwapPlayersCostume(void)
 {
-    struct ObjectEvent *objEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    gSaveBlock2Ptr->playerCostume = VarGet(VAR_TEMP_1);
-    ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByCurrentState());
-    ObjectEventTurn(objEvent, objEvent->movementDirection);
-    BlendPalettes(0xFFFFFFFF, 16, 0);
+    if(!FlagGet(FLAG_PERMANENT_COSTUME)) {
+        struct ObjectEvent *objEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+        gSaveBlock2Ptr->playerCostume = VarGet(VAR_COSTUME);
+        ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByCurrentState());
+        ObjectEventTurn(objEvent, objEvent->movementDirection);
+        BlendPalettes(0xFFFFFFFF, 16, 0);
+    }
 }
 
 u8 GetPlayerCostumeId(void)
