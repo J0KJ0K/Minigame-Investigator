@@ -1255,7 +1255,8 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
     sprite->x += 8;
     sprite->y += 16 + sprite->centerToCornerVecY;
-    //sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate->paletteTag);
+    // LTODO removed this
+    //sprite->oam.paletteNum = paletteSlot;
     sprite->coordOffsetEnabled = TRUE;
     sprite->sObjEventId = objectEventId;
     objectEvent->spriteId = spriteId;
@@ -1420,6 +1421,8 @@ u8 CreateVirtualObject(u8 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevatio
         sprite->sVirtualObjId = virtualObjId;
         sprite->sVirtualObjElev = elevation;
     
+        //if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
+        //    LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
         if (graphicsInfo->paletteSlot >= 16)
            _PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot | 0xf0);
 
@@ -1564,8 +1567,6 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         }
         if (subspriteTables != NULL)
             SetSubspriteTables(sprite, subspriteTables);
-
-        // sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
         sprite->coordOffsetEnabled = TRUE;
         sprite->sObjEventId = objectEventId;
         objectEvent->spriteId = i;
@@ -1693,7 +1694,8 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
         LoadObjectEventPalette(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
         ObjectEventSetGraphicsId(objectEvent, gBerryTreeObjectEventGraphicsIdTablePointers[berryId][berryStage]);
         sprite->images = gBerryTreePicTablePointers[berryId];
-        sprite->oam.paletteNum = gBerryTreePaletteTagTablePointers[berryId][berryStage];
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
+        UpdatePaletteGammaType(sprite->oam.paletteNum, COLOR_MAP_CONTRAST);
         StartSpriteAnim(sprite, berryStage);
     }
 }
@@ -1809,15 +1811,6 @@ void LoadObjectEventPalette(u16 paletteTag)
     if (i != OBJ_EVENT_PAL_TAG_NONE)
 #endif
         LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
-}
-
-// Unused
-static void LoadObjectEventPaletteSet(u16 *paletteTags)
-{
-    u8 i;
-
-    for (i = 0; paletteTags[i] != OBJ_EVENT_PAL_TAG_NONE; i++)
-        LoadObjectEventPalette(paletteTags[i]);
 }
 
 static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *spritePalette)

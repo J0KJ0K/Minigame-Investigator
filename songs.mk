@@ -3,6 +3,20 @@ STD_REVERB = 50
 $(MID_BUILDDIR)/%.o: $(MID_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -I sound -o $@ $<
 
+$(MID_SUBDIR)/custom/mus_title.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G059 -V090
+
+$(MID_SUBDIR)/custom/mus_drum_test.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G000 -V076
+
+
+
+
+
+
+
+
+
 $(MID_SUBDIR)/mus_aqua_magma_hideout.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G076 -V084
 
@@ -609,9 +623,6 @@ $(MID_SUBDIR)/mus_littleroot_test.s: %.s: %.mid
 $(MID_SUBDIR)/mus_credits.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G101 -V100
 
-$(MID_SUBDIR)/mus_title.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G059 -V090
-
 $(MID_SUBDIR)/mus_fallarbor.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G083 -V100
 
@@ -632,9 +643,6 @@ $(MID_SUBDIR)/mus_vs_rayquaza.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_flaming_dance.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V078
-
-$(MID_SUBDIR)/mus_drum_test.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G000 -V076
 
 $(MID_SUBDIR)/mus_encounter_hiker.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G097 -V076

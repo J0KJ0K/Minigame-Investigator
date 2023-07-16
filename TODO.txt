@@ -14,11 +14,14 @@ TODO
 	Make voicegroup		for drumset
 	Make voicegroup		for general purposes
 	Update Miles' dialogue	for the appropriate version
+
+	Make Cirno		as an object event
+	Fix error with dynamic palettes
+	Fix the posters		in the fnaf 1 walls
 	
 DONE
 	Merge with main
 	Implement dynamic palettes
-	Make Cirno		as an object event
 	Implement mugshots
 	Implement mugshot	of Cirno
 	Put male MC		as an object event

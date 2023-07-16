@@ -26,9 +26,9 @@ static void UpdateFeetInFlowingWaterFieldEffect(struct Sprite *);
 static void UpdateAshFieldEffect_Wait(struct Sprite *);
 static void UpdateAshFieldEffect_Show(struct Sprite *);
 static void UpdateAshFieldEffect_End(struct Sprite *);
-static void SynchroniseSurfAnim(struct ObjectEvent *, struct Sprite *);
-static void SynchroniseSurfPosition(struct ObjectEvent *, struct Sprite *);
-static void UpdateBobbingEffect(struct ObjectEvent *, struct Sprite *, struct Sprite *);
+void SynchroniseSurfAnim(struct ObjectEvent *, struct Sprite *);
+void SynchroniseSurfPosition(struct ObjectEvent *, struct Sprite *);
+void UpdateBobbingEffect(struct ObjectEvent *, struct Sprite *, struct Sprite *);
 static void SpriteCB_UnderwaterSurfBlob(struct Sprite *);
 static u32 ShowDisguiseFieldEffect(u8, u8);
 static void LoadFieldEffectPalette_(u8 fieldEffect, bool8 updateGammaType);
@@ -103,30 +103,16 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
 
 void LoadSpecialReflectionPalette(struct Sprite *sprite)
 {
-    u32 R, G, B, i;
-	u16 color;
-	u16* pal;
 	struct SpritePalette reflectionPalette;
 
-	CpuCopy16(&gPlttBufferUnfaded[0x100 + sprite->oam.paletteNum * 16], gReflectionPaletteBuffer, 32);
-	pal = gReflectionPaletteBuffer;
-	for (i = 0; i < 16; ++i)
-	{
-		color = pal[i];
-		R = GET_R(color) + 8;
-		G = GET_G(color) + 8;
-		B = GET_B(color) + 16;
-		if (R > 31) R = 31;
-		if (G > 31) G = 31;
-		if (B > 31) B = 31;
-		pal[i] = RGB(R, G, B);
-	}
-	reflectionPalette.data = gReflectionPaletteBuffer;
-	reflectionPalette.tag = GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) + 0x1000;
-	LoadSpritePalette(&reflectionPalette);
-	sprite->oam.paletteNum = IndexOfSpritePaletteTag(reflectionPalette.tag);
-	UpdatePaletteGammaType(sprite->oam.paletteNum, COLOR_MAP_CONTRAST);
-	UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
+    CpuCopy16(&gPlttBufferUnfaded[0x100 + sprite->oam.paletteNum * 16], gReflectionPaletteBuffer, 32);
+    TintPalette_CustomTone(gReflectionPaletteBuffer, 16, Q_8_8(1.0), Q_8_8(1.0), Q_8_8(3.5));
+    reflectionPalette.data = gReflectionPaletteBuffer;
+    reflectionPalette.tag = GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) + 0x1000;
+    LoadSpritePalette(&reflectionPalette);
+    sprite->oam.paletteNum = IndexOfSpritePaletteTag(reflectionPalette.tag);
+    UpdatePaletteGammaType(sprite->oam.paletteNum, COLOR_MAP_CONTRAST);
+    UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
 }
 
 static void UpdateObjectReflectionSprite(struct Sprite *reflectionSprite)
@@ -1079,7 +1065,7 @@ void UpdateSurfBlobFieldEffect(struct Sprite *sprite)
     sprite->oam.priority = playerSprite->oam.priority;
 }
 
-static void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
+void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
 {
     // Indexes into sAnimTable_SurfBlob
     u8 surfBlobDirectionAnims[] = {
@@ -1122,7 +1108,7 @@ void SynchroniseSurfPosition(struct ObjectEvent *playerObj, struct Sprite *sprit
     }
 }
 
-static void UpdateBobbingEffect(struct ObjectEvent *playerObj, struct Sprite *playerSprite, struct Sprite *sprite)
+void UpdateBobbingEffect(struct ObjectEvent *playerObj, struct Sprite *playerSprite, struct Sprite *sprite)
 {
     u16 intervals[] = {3, 7};
     u8 bobState = GetSurfBlob_BobState(sprite);

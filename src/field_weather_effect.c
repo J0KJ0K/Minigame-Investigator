@@ -1694,8 +1694,9 @@ static void DestroyAshSprites(void)
 {
     u16 i;
 
-    if (gWeatherPtr->ashSpritesCreated)
+    if (!gWeatherPtr->ashSpritesCreated)
     {
+        LoadCustomWeatherSpritePalette(&sFogSpritePalette);
         for (i = 0; i < NUM_ASH_SPRITES; i++)
         {
             if (gWeatherPtr->sprites.s2.ashSprites[i] != NULL)
@@ -1864,7 +1865,7 @@ static const union AnimCmd *const sFogDiagonalSpriteAnimCmds[] =
 static const struct SpriteTemplate sFogDiagonalSpriteTemplate =
 {
     .tileTag = GFXTAG_FOG_D,
-    .paletteTag = PALTAG_WEATHER,
+    .paletteTag = 0x1201,
     .oam = &sFogDiagonalSpriteOamData,
     .anims = sFogDiagonalSpriteAnimCmds,
     .images = NULL,
@@ -1886,6 +1887,7 @@ static void CreateFogDiagonalSprites(void)
     {
         fogDiagonalSpriteSheet = sFogDiagonalSpriteSheet;
         LoadSpriteSheet(&fogDiagonalSpriteSheet);
+        LoadCustomWeatherSpritePalette(&sFogSpritePalette);
         for (i = 0; i < NUM_FOG_DIAGONAL_SPRITES; i++)
         {
             spriteId = CreateSpriteAtEnd(&sFogDiagonalSpriteTemplate, 0, (i / 5) * 64, 0xFF);

@@ -134,7 +134,7 @@ voicegroup192:: @ 86B429C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0	@ taiko drum
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0	@ melodic tom
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0	@ synth drum
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0	@ reverce cymball
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0	@ reverse cymball
 	@ sound effects
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0	@ guitar fret
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0	@ breath

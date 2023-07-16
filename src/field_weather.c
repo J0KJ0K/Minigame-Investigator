@@ -56,7 +56,7 @@ static u8 None_Finish(void);
 EWRAM_DATA struct Weather gWeather = {0};
 EWRAM_DATA static u8 sFieldEffectPaletteColorMapTypes[32] = {0};
 
-static const u8 *sPaletteColorMapTypes;
+EWRAM_DATA u8 *sPaletteColorMapTypes;
 
 // The drought weather effect uses a precalculated color lookup table. Presumably this
 // is because the underlying color shift calculation is slow.
@@ -274,7 +274,7 @@ static void BuildColorMaps(void)
     s16 diff;
 
     for (i = 0; i <= 12; i++)
-        sBasePaletteColorMapTypes[i] = COLOR_MAP_DARK_CONTRAST;    
+        sBasePaletteColorMapTypes[i] = COLOR_MAP_DARK_CONTRAST;
 
     sPaletteColorMapTypes = sBasePaletteColorMapTypes;
     for (i = 0; i < 2; i++)
@@ -1109,5 +1109,5 @@ void ResetPreservedPalettesInWeather(void)
 void UpdatePaletteGammaType(u8 index, u8 gammaType)
 {
     if (index != 0xFF)
-        sBasePaletteColorMapTypes[index + 16] = gammaType;
+        sPaletteColorMapTypes[index + 16] = gammaType;
 }
