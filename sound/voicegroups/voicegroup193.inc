@@ -1,7 +1,11 @@
 	.align 2
 voicegroup193:: @ 86B429C
+<<<<<<< HEAD
 	voice_keysplit_all voicegroup003 @voice_directsound 63, 64, HenrySpeech, 255, 235, 0, 231
+=======
+>>>>>>> parent of 5a26d3bd7 (The Identity Update)
 	voice_keysplit_all voicegroup003
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

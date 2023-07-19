@@ -171,11 +171,8 @@ static const union AnimCmd *const sSpriteAnimTable_Icons[] =
 
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =
 {
-    .tileTag = TAG_NONE,
-    .paletteTag = TAG_NONE,
-    /* .tileTag = 0xffff,   // originally
+    .tileTag = 0xffff,
     .paletteTag = 0x1100,
-    */
     .oam = &sOamData_Icons,
     .anims = sSpriteAnimTable_Icons,
     .images = sSpriteImageTable_ExclamationQuestionMark,

@@ -1,8 +1,8 @@
-.include "sound/voicegroups/voicegroup000.inc" @ used for testing i guess?
-.include "sound/voicegroups/voicegroup001.inc" @ used as a drum, with only one direct sound
-.include "sound/voicegroups/voicegroup002.inc" @ used as a drumset
-.include "sound/voicegroups/voicegroup003.inc" @ used as a drumset (i think)
-.include "sound/voicegroups/voicegroup004.inc" @ used as a drumset (i think)
+.include "sound/voicegroups/voicegroup000.inc"
+.include "sound/voicegroups/voicegroup001.inc"
+.include "sound/voicegroups/voicegroup002.inc"
+.include "sound/voicegroups/voicegroup003.inc"
+.include "sound/voicegroups/voicegroup004.inc"
 .include "sound/voicegroups/voicegroup005.inc"
 .include "sound/voicegroups/voicegroup006.inc"
 .include "sound/voicegroups/voicegroup007.inc"
@@ -190,6 +190,12 @@
 .include "sound/voicegroups/voicegroup188.inc"
 .include "sound/voicegroups/voicegroup189.inc"
 .include "sound/voicegroups/voicegroup190.inc"
+<<<<<<< HEAD
 .include "sound/voicegroups/voicegroup191.inc" @ used for flaming_dance
 .include "sound/voicegroups/voicegroup192.inc" @ test general purpose according to anvil midi
 .include "sound/voicegroups/voicegroup193.inc" @ test drumkit for Minigame Investigator 
+=======
+.include "sound/voicegroups/voicegroup191.inc"
+.include "sound/voicegroups/voicegroup192.inc"
+.include "sound/voicegroups/voicegroup193.inc"
+>>>>>>> parent of 5a26d3bd7 (The Identity Update)
